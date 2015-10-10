@@ -40,7 +40,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th translate="global.field.id">ID</th>
                     <th translate="kucharzApp.produkt.name">Name</th>
                     <th translate="kucharzApp.produkt.miaraProduktu">miaraProduktu</th>
                     <th translate="kucharzApp.produkt.rodzajProduktu">rodzajProduktu</th>
@@ -49,13 +48,14 @@
             </thead>
             <tbody>
                 <tr ng-repeat="produkt in produkts track by produkt.id">
-                    <td><a ui-sref="produkt.detail({id:produkt.id})">{{produkt.id}}</a></td>
-                    <td>{{produkt.name}}</td>
                     <td>
-                        <a ui-sref="miaraProduktu.detail({id:produkt.miaraProduktu.id})">{{produkt.miaraProduktu.id}}</a>
+                    	<a ui-sref="produkt.detail({id:produkt.id})">{{produkt.name}}</a>
                     </td>
                     <td>
-                        <a ui-sref="rodzajProduktu.detail({id:produkt.rodzajProduktu.id})">{{produkt.rodzajProduktu.id}}</a>
+                        <a ui-sref="miaraProduktu.detail({id:produkt.miaraProduktu.id})">{{produkt.miaraProduktu.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="rodzajProduktu.detail({id:produkt.rodzajProduktu.id})">{{produkt.rodzajProduktu.name}}</a>
                     </td>
                     <td>
                         <button type="submit"

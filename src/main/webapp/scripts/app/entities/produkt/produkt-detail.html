@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span translate="kucharzApp.produkt.detail.title">Produkt</span> {{produkt.id}}</h2>
+    <h2><span translate="kucharzApp.produkt.detail.title">Produkt</span> {{produkt.name}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -23,7 +23,7 @@
                     <span translate="kucharzApp.produkt.miaraProduktu">miaraProduktu</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="miaraProduktu.detail({id:produkt.miaraProduktu.id})">{{produkt.miaraProduktu.id}}</a>
+                    <a class="form-control-static" ui-sref="miaraProduktu.detail({id:produkt.miaraProduktu.id})">{{produkt.miaraProduktu.name}}</a>
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,7 @@
                     <span translate="kucharzApp.produkt.rodzajProduktu">rodzajProduktu</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="rodzajProduktu.detail({id:produkt.rodzajProduktu.id})">{{produkt.rodzajProduktu.id}}</a>
+                    <a class="form-control-static" ui-sref="rodzajProduktu.detail({id:produkt.rodzajProduktu.id})">{{produkt.rodzajProduktu.name}}</a>
                 </td>
             </tr>
             </tbody>

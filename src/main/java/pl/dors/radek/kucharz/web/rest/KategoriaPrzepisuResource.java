@@ -44,7 +44,7 @@ public class KategoriaPrzepisuResource {
         }
         KategoriaPrzepisu result = kategoriaPrzepisuRepository.save(kategoriaPrzepisu);
         return ResponseEntity.created(new URI("/api/kategoriaPrzepisus/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("kategoriaPrzepisu", result.getId().toString()))
+                .headers(HeaderUtil.createEntityCreationAlert("kategoriaPrzepisu", result.getName()))
                 .body(result);
     }
 
@@ -62,7 +62,7 @@ public class KategoriaPrzepisuResource {
         }
         KategoriaPrzepisu result = kategoriaPrzepisuRepository.save(kategoriaPrzepisu);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("kategoriaPrzepisu", kategoriaPrzepisu.getId().toString()))
+                .headers(HeaderUtil.createEntityUpdateAlert("kategoriaPrzepisu", result.getName()))
                 .body(result);
     }
 

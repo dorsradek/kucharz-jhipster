@@ -2,9 +2,9 @@
     "kucharzApp": {
         "kategoriaPrzepisu" : {
             "home": {
-                "title": "KategoriaPrzepisus",
-                "createLabel": "Create a new KategoriaPrzepisu",
-                "createOrEditLabel": "Create or edit a KategoriaPrzepisu"
+                "title": "Category",
+                "createLabel": "Create a new category",
+                "createOrEditLabel": "Create or edit a category"
             },
             "created": "A new KategoriaPrzepisu is created with identifier {{ param }}",
             "updated": "A KategoriaPrzepisu is updated with identifier {{ param }}",

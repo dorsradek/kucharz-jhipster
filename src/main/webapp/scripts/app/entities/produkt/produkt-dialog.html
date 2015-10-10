@@ -8,11 +8,11 @@
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="produkt.id" readonly>
-        </div>
+        </div>-->
         <div class="form-group">
             <label translate="kucharzApp.produkt.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
@@ -22,13 +22,13 @@
 
         <div class="form-group">
             <label translate="kucharzApp.produkt.miaraProduktu" for="field_miaraProduktu">miaraProduktu</label>
-            <select class="form-control" id="field_miaraProduktu" name="miaraProduktu" ng-model="produkt.miaraProduktu" ng-options="miaraProduktu as miaraProduktu.id for miaraProduktu in miaraproduktus track by miaraProduktu.id">
+            <select class="form-control" id="field_miaraProduktu" name="miaraProduktu" ng-model="produkt.miaraProduktu" ng-options="miaraProduktu as miaraProduktu.name for miaraProduktu in miaraproduktus track by miaraProduktu.name">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label translate="kucharzApp.produkt.rodzajProduktu" for="field_rodzajProduktu">rodzajProduktu</label>
-            <select class="form-control" id="field_rodzajProduktu" name="rodzajProduktu" ng-model="produkt.rodzajProduktu" ng-options="rodzajProduktu as rodzajProduktu.id for rodzajProduktu in rodzajproduktus track by rodzajProduktu.id">
+            <select class="form-control" id="field_rodzajProduktu" name="rodzajProduktu" ng-model="produkt.rodzajProduktu" ng-options="rodzajProduktu as rodzajProduktu.name for rodzajProduktu in rodzajproduktus track by rodzajProduktu.name">
                 <option value=""></option>
             </select>
         </div>
