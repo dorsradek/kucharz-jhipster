@@ -1,0 +1,28 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "produkt",
+            "otherEntityName": "produkt",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "przepis",
+            "otherEntityName": "przepis",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "quantity",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20151010142612",
+    "dto": "no",
+    "pagination": "no"
+}

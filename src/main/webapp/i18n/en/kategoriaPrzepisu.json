@@ -1,0 +1,22 @@
+{
+    "kucharzApp": {
+        "kategoriaPrzepisu" : {
+            "home": {
+                "title": "KategoriaPrzepisus",
+                "createLabel": "Create a new KategoriaPrzepisu",
+                "createOrEditLabel": "Create or edit a KategoriaPrzepisu"
+            },
+            "created": "A new KategoriaPrzepisu is created with identifier {{ param }}",
+            "updated": "A KategoriaPrzepisu is updated with identifier {{ param }}",
+            "deleted": "A KategoriaPrzepisu is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete KategoriaPrzepisu {{ id }}?"
+            },
+            "detail": {
+                "title": "KategoriaPrzepisu"
+            },
+            "name": "Name",
+            "przepis": "Przepis"
+        }
+    }
+}

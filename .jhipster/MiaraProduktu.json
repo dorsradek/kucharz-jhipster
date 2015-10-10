@@ -1,0 +1,26 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "produkt",
+            "otherEntityName": "produkt",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "miaraProduktu"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "shortcut",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151010135123",
+    "dto": "no",
+    "pagination": "no"
+}

@@ -1,0 +1,21 @@
+{
+    "kucharzApp": {
+        "miaraProduktu" : {
+            "home": {
+                "title": "MiaraProduktus",
+                "createLabel": "Créer un nouveau MiaraProduktu",
+                "createOrEditLabel": "Créer ou éditer un MiaraProduktu"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le MiaraProduktu {{ id }} ?"
+            },
+            "detail": {
+                "title": "MiaraProduktu"
+            },
+            "name": "Name",
+            "shortcut": "Shortcut",
+            "produkt": "Produkt"
+        }
+    }
+}
+

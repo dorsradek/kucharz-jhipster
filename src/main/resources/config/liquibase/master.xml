@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010123512_added_entity_KategoriaPrzepisu.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010135123_added_entity_MiaraProduktu.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010135231_added_entity_PracochlonnoscPrzepisu.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010141132_added_entity_Przepis.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010140023_added_entity_RodzajProduktu.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010140248_added_entity_Produkt.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151010142612_added_entity_PrzepisProdukt.xml" relativeToChangelogFile="false"/>
+    <!-- JHipster will add liquibase changelogs here -->
+</databaseChangeLog>

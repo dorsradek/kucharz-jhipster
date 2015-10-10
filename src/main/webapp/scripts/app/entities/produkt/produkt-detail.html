@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="kucharzApp.produkt.detail.title">Produkt</span> {{produkt.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="kucharzApp.produkt.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{produkt.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kucharzApp.produkt.miaraProduktu">miaraProduktu</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="miaraProduktu.detail({id:produkt.miaraProduktu.id})">{{produkt.miaraProduktu.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kucharzApp.produkt.rodzajProduktu">rodzajProduktu</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="rodzajProduktu.detail({id:produkt.rodzajProduktu.id})">{{produkt.rodzajProduktu.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

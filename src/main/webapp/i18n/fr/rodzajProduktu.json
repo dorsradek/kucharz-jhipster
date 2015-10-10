@@ -1,0 +1,20 @@
+{
+    "kucharzApp": {
+        "rodzajProduktu" : {
+            "home": {
+                "title": "RodzajProduktus",
+                "createLabel": "Créer un nouveau RodzajProduktu",
+                "createOrEditLabel": "Créer ou éditer un RodzajProduktu"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le RodzajProduktu {{ id }} ?"
+            },
+            "detail": {
+                "title": "RodzajProduktu"
+            },
+            "name": "Name",
+            "produkt": "Produkt"
+        }
+    }
+}
+

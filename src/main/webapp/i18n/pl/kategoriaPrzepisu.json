@@ -1,0 +1,19 @@
+{
+    "kucharzApp": {
+        "kategoriaPrzepisu" : {
+            "home": {
+                "title": "KategoriaPrzepisu",
+                "createLabel": "Dodaj KategoriaPrzepisu",
+                "createOrEditLabel": "Dodaj lub edytuj: KategoriaPrzepisu"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć KategoriaPrzepisu {{ id }}?"
+            },
+            "detail": {
+                "title": "KategoriaPrzepisu"
+            },
+            "name": "Name",
+            "przepis": "Przepis"
+        }
+    }
+}

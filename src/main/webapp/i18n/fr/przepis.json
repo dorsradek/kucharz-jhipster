@@ -1,0 +1,26 @@
+{
+    "kucharzApp": {
+        "przepis" : {
+            "home": {
+                "title": "Przepiss",
+                "createLabel": "Créer un nouveau Przepis",
+                "createOrEditLabel": "Créer ou éditer un Przepis"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Przepis {{ id }} ?"
+            },
+            "detail": {
+                "title": "Przepis"
+            },
+            "duration": "Duration",
+            "creationDate": "CreationDate",
+            "modificationDate": "ModificationDate",
+            "name": "Name",
+            "description": "Description",
+            "kategoriaPrzepisu": "KategoriaPrzepisu",
+            "pracochlonnoscPrzepisu": "PracochlonnoscPrzepisu",
+            "przepisProdukt": "PrzepisProdukt"
+        }
+    }
+}
+

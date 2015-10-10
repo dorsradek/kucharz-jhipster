@@ -1,0 +1,11 @@
+jhipster-prod-postgresql:
+  container_name: kucharz-prod-postgresql
+  image: postgres
+  # volumes:
+  # - ~/volumes/jhipster/kucharz/prod-postgresql/:/var/lib/postgresql/
+  environment:
+  - POSTGRES_USER=kucharz
+  - POSTGRES_PASSWORD=
+  ports:
+  - "5432:5432"
+

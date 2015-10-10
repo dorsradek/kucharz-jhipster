@@ -1,0 +1,20 @@
+{
+    "kucharzApp": {
+        "przepisProdukt" : {
+            "home": {
+                "title": "PrzepisProdukt",
+                "createLabel": "Dodaj PrzepisProdukt",
+                "createOrEditLabel": "Dodaj lub edytuj: PrzepisProdukt"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć PrzepisProdukt {{ id }}?"
+            },
+            "detail": {
+                "title": "PrzepisProdukt"
+            },
+            "quantity": "Quantity",
+            "produkt": "Produkt",
+            "przepis": "Przepis"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "przepis",
+            "otherEntityName": "przepis",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "kategoriaPrzepisu"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151010123512",
+    "dto": "no",
+    "pagination": "no"
+}

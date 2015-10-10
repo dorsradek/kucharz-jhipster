@@ -1,0 +1,21 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "produkt",
+            "otherEntityName": "produkt",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "rodzajProduktu"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151010140023",
+    "dto": "no",
+    "pagination": "no"
+}

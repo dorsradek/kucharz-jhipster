@@ -1,0 +1,35 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "miaraProduktu",
+            "otherEntityName": "miaraProduktu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "rodzajProduktu",
+            "otherEntityName": "rodzajProduktu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "przepisProdukt",
+            "otherEntityName": "przepisProdukt",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "produkt"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151010140248",
+    "dto": "no",
+    "pagination": "no"
+}

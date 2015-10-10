@@ -1,0 +1,25 @@
+{
+    "kucharzApp": {
+        "przepis" : {
+            "home": {
+                "title": "Przepis",
+                "createLabel": "Dodaj Przepis",
+                "createOrEditLabel": "Dodaj lub edytuj: Przepis"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Przepis {{ id }}?"
+            },
+            "detail": {
+                "title": "Przepis"
+            },
+            "duration": "Duration",
+            "creationDate": "CreationDate",
+            "modificationDate": "ModificationDate",
+            "name": "Name",
+            "description": "Description",
+            "kategoriaPrzepisu": "KategoriaPrzepisu",
+            "pracochlonnoscPrzepisu": "PracochlonnoscPrzepisu",
+            "przepisProdukt": "PrzepisProdukt"
+        }
+    }
+}

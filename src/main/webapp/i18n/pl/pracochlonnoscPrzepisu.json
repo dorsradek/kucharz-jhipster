@@ -1,0 +1,19 @@
+{
+    "kucharzApp": {
+        "pracochlonnoscPrzepisu" : {
+            "home": {
+                "title": "PracochlonnoscPrzepisu",
+                "createLabel": "Dodaj PracochlonnoscPrzepisu",
+                "createOrEditLabel": "Dodaj lub edytuj: PracochlonnoscPrzepisu"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć PracochlonnoscPrzepisu {{ id }}?"
+            },
+            "detail": {
+                "title": "PracochlonnoscPrzepisu"
+            },
+            "name": "Name",
+            "przepis": "Przepis"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "kucharzApp": {
+        "pracochlonnoscPrzepisu" : {
+            "home": {
+                "title": "PracochlonnoscPrzepisus",
+                "createLabel": "Create a new PracochlonnoscPrzepisu",
+                "createOrEditLabel": "Create or edit a PracochlonnoscPrzepisu"
+            },
+            "created": "A new PracochlonnoscPrzepisu is created with identifier {{ param }}",
+            "updated": "A PracochlonnoscPrzepisu is updated with identifier {{ param }}",
+            "deleted": "A PracochlonnoscPrzepisu is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PracochlonnoscPrzepisu {{ id }}?"
+            },
+            "detail": {
+                "title": "PracochlonnoscPrzepisu"
+            },
+            "name": "Name",
+            "przepis": "Przepis"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "kategoriaPrzepisu",
+            "otherEntityName": "kategoriaPrzepisu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "pracochlonnoscPrzepisu",
+            "otherEntityName": "pracochlonnoscPrzepisu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "przepisProdukt",
+            "otherEntityName": "przepisProdukt",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "przepis"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "duration",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "creationDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "modificationDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151010141132",
+    "dto": "no",
+    "pagination": "no"
+}

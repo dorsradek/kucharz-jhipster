@@ -1,0 +1,20 @@
+{
+    "kucharzApp": {
+        "miaraProduktu" : {
+            "home": {
+                "title": "MiaraProduktu",
+                "createLabel": "Dodaj MiaraProduktu",
+                "createOrEditLabel": "Dodaj lub edytuj: MiaraProduktu"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć MiaraProduktu {{ id }}?"
+            },
+            "detail": {
+                "title": "MiaraProduktu"
+            },
+            "name": "Name",
+            "shortcut": "Shortcut",
+            "produkt": "Produkt"
+        }
+    }
+}
