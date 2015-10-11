@@ -22,13 +22,15 @@
         <![endif]-->
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
         <div ui-view="navbar" ng-cloak=""></div>
-        <div class="container">
-            <div class="well" ui-view="content"></div>
-
-<!--            <div class="footer">
-                <p translate="footer">This is your footer</p>
-            </div>
+        <div class="container index-container">
+        	<div class="row">
+	        	<div class="col-lg-3 col-md-3 col-sm-4" ui-view="navbar-left" ng-cloak="" ng-show="isAuthenticated()"></div>
+	            <div class="well col-lg-9 col-md-9 col-sm-8" ui-view="content"></div>
+				<!--<div class="footer">
+	                <p translate="footer">This is your footer</p>
+	            </div>
             -->
+            </div>
         </div>
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
@@ -92,6 +94,8 @@
     <script src="scripts/components/interceptor/notification.interceptor.js"></script>
     <script src="scripts/components/navbar/navbar.directive.js"></script>
     <script src="scripts/components/navbar/navbar.controller.js"></script>
+    <script src="scripts/components/navbar-left/navbar-left.directive.js"></script>
+    <script src="scripts/components/navbar-left/navbar-left.controller.js"></script>
     <script src="scripts/components/user/user.service.js"></script>
     <script src="scripts/components/util/truncate.filter.js"></script>
     <script src="scripts/components/util/base64.service.js"></script>

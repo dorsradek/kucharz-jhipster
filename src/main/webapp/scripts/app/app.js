@@ -67,6 +67,10 @@ angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
                 'navbar@': {
                     templateUrl: 'scripts/components/navbar/navbar.html',
                     controller: 'NavbarController'
+                },
+                'navbar-left@': {
+                    templateUrl: 'scripts/components/navbar-left/navbar-left.html',
+                    controller: 'NavbarLeftController'
                 }
             },
             resolve: {
