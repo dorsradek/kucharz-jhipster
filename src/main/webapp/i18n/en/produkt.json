@@ -2,22 +2,22 @@
     "kucharzApp": {
         "produkt" : {
             "home": {
-                "title": "Produkts",
-                "createLabel": "Create a new Produkt",
-                "createOrEditLabel": "Create or edit a Produkt"
+                "title": "Products",
+                "createLabel": "Create",
+                "createOrEditLabel": "Create or edit"
             },
-            "created": "A new Produkt is created with identifier {{ param }}",
-            "updated": "A Produkt is updated with identifier {{ param }}",
-            "deleted": "A Produkt is deleted with identifier {{ param }}",
+            "created": "Created {{ param }}",
+            "updated": "Updated {{ param }}",
+            "deleted": "Deleted {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Produkt {{ id }}?"
+                "question": "Are you sure you want to delete {{ name }}?"
             },
             "detail": {
-                "title": "Produkt"
+                "title": "Product"
             },
             "name": "Name",
-            "miaraProduktu": "MiaraProduktu",
-            "rodzajProduktu": "RodzajProduktu",
+            "miaraProduktu": "Measure",
+            "rodzajProduktu": "Type",
             "przepisProdukt": "PrzepisProdukt"
         }
     }

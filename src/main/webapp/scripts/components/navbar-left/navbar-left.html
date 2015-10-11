@@ -2,36 +2,30 @@
  <div class="container" ng-switch="isAuthenticated()">  
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()"> -->
             <ul class="nav nav-pills nav-stacked">
-            	<li ui-sref-active="active">
-                	<span class="hidden-sm" translate="global.menu.home">Home</span>
-                </li>
-            
                 <li ui-sref-active="active">
                     <a ui-sref="home" data-toggle="collapse" data-target=".navbar-collapse.in">
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="hidden-sm" translate="global.menu.home">Home</span>
                     </a>
                 </li>
-                <li ui-sref-active="active" ><a ui-sref="przepis" data-toggle="collapse" data-target=".navbar-collapse.in">
-                	<span class="glyphicon glyphicon-asterisk"></span>
-                	&#xA0;
-                	<span translate="global.menu.entities.przepis">
-                		przepis
-                	</span>
+                <li ui-sref-active="active" >
+                	<a ui-sref="przepis" data-toggle="collapse" data-target=".navbar-collapse.in">
+                		<span class="glyphicon glyphicon-asterisk"></span>
+                		&#xA0;
+                		<span translate="global.menu.entities.przepis">
+                			przepis
+                		</span>
                 	</a>
                 </li>
-				<li ui-sref-active="active" ><a ui-sref="kategoriaPrzepisu" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.kategoriaPrzepisu">kategoriaPrzepisu</span></a></li>
-				<li ui-sref-active="active" ><a ui-sref="miaraProduktu" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.miaraProduktu">miaraProduktu</span></a></li>
-				<li ui-sref-active="active" ><a ui-sref="pracochlonnoscPrzepisu" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.pracochlonnoscPrzepisu">pracochlonnoscPrzepisu</span></a></li>
-				<li ui-sref-active="active" ><a ui-sref="rodzajProduktu" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.rodzajProduktu">rodzajProduktu</span></a></li>
-				<li ui-sref-active="active" ><a ui-sref="przepisProdukt" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.przepisProdukt">przepisProdukt</span></a></li>
-				<li ui-sref-active="active" ><a ui-sref="produkt" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-				&#xA0;<span translate="global.menu.entities.produkt">produkt</span></a></li>
+				<li ui-sref-active="active" >
+					<a ui-sref="produkt" data-toggle="collapse" data-target=".navbar-collapse.in">
+						<span class="glyphicon glyphicon-asterisk"></span>
+						&#xA0;
+						<span translate="global.menu.entities.produkt">
+							produkt
+						</span>
+					</a>
+				</li>
             </ul>
        <!--  </div>
  </div>

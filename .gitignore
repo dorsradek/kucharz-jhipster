@@ -150,3 +150,4 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+src/main/resources/.h2.server.properties

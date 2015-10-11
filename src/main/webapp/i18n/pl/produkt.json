@@ -2,19 +2,22 @@
     "kucharzApp": {
         "produkt" : {
             "home": {
-                "title": "Produkt",
-                "createLabel": "Dodaj Produkt",
-                "createOrEditLabel": "Dodaj lub edytuj: Produkt"
+                "title": "Produkty",
+                "createLabel": "Dodaj",
+                "createOrEditLabel": "Dodaj lub edytuj"
             },
+            "created": "Dodano {{ param }}",
+            "updated": "Zaktualizowano {{ param }}",
+            "deleted": "Usunięto {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Produkt {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć {{ name }}?"
             },
             "detail": {
                 "title": "Produkt"
             },
-            "name": "Name",
-            "miaraProduktu": "MiaraProduktu",
-            "rodzajProduktu": "RodzajProduktu",
+            "name": "Nazwa",
+            "miaraProduktu": "Miara",
+            "rodzajProduktu": "Rodzaj",
             "przepisProdukt": "PrzepisProdukt"
         }
     }
