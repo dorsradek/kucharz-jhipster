@@ -16,18 +16,18 @@
 			<input type="text" class="form-control" name="name" id="field_name"
 				ng-model="produkt.name" ng-minlength=1 ng-maxlength=20
 				ng-pattern="/^[a-zA-Z0-9]*$/" required>
-			<div ng-show="form.name.$dirty && form.name.$invalid">
-				<p class="help-block" ng-show="form.name.$error.required"
-					translate="register.messages.validate.login.required">Your
+			<div ng-show="editForm.name.$dirty && editForm.name.$invalid">
+				<p class="help-block" ng-show="editForm.name.$error.required"
+					translate="kucharzApp.produkt.validate.name.required">Your
 					username is required.</p>
-				<p class="help-block" ng-show="form.name.$error.minlength"
-					translate="register.messages.validate.login.minlength">Your
+				<p class="help-block" ng-show="editForm.name.$error.minlength"
+					translate="kucharzApp.produkt.validate.name.minlength">Your
 					username is required to be at least 1 character.</p>
-				<p class="help-block" ng-show="form.name.$error.maxlength"
-					translate="register.messages.validate.login.maxlength">Your
+				<p class="help-block" ng-show="editForm.name.$error.maxlength"
+					translate="kucharzApp.produkt.validate.name.maxlength">Your
 					username cannot be longer than 50 characters.</p>
-				<p class="help-block" ng-show="form.name.$error.pattern"
-					translate="register.messages.validate.login.pattern">Your
+				<p class="help-block" ng-show="editForm.name.$error.pattern"
+					translate="kucharzApp.produkt.validate.name.pattern">Your
 					username can only contain lower-case letters and digits.</p>
 			</div>
 		</div>

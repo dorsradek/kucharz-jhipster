@@ -18,7 +18,15 @@
             "name": "Nazwa",
             "miaraProduktu": "Miara",
             "rodzajProduktu": "Rodzaj",
-            "przepisProdukt": "PrzepisProdukt"
+            "przepisProdukt": "PrzepisProdukt",
+            "validate": {
+                "name": {
+                    "required": "Nazwa jest wymagana.",
+                    "minlength": "Nazwa wymaga przynajmniej 1 znaku.",
+                    "maxlength": "Nazwa nie może być dłuższa niż 20 znaków.",
+                    "pattern": "Nazwa może zawierać tylko litery i cyfry."
+                }
+            }
         }
     }
 }

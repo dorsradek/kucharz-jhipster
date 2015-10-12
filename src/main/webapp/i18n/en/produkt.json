@@ -18,7 +18,15 @@
             "name": "Name",
             "miaraProduktu": "Measure",
             "rodzajProduktu": "Type",
-            "przepisProdukt": "PrzepisProdukt"
+            "przepisProdukt": "PrzepisProdukt",
+            "validate": {
+                "name": {
+                    "required": "Name is required.",
+                    "minlength": "Name is required to be at least 1 character.",
+                    "maxlength": "Name cannot be longer than 20 characters.",
+                    "pattern": "Name can only contain letters and digits."
+                }
+            }
         }
     }
 }
