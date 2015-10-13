@@ -19,12 +19,20 @@
             "miaraProduktu": "Measure",
             "rodzajProduktu": "Type",
             "przepisProdukt": "PrzepisProdukt",
+            "defaultType" : "Select type",
+            "defaultMeasure" : "Select measure",
             "validate": {
                 "name": {
                     "required": "Name is required.",
                     "minlength": "Name is required to be at least 1 character.",
                     "maxlength": "Name cannot be longer than 20 characters.",
                     "pattern": "Name can only contain letters and digits."
+                },
+                "miaraProduktu": {
+                    "required": "Measure is required."
+                },
+                "rodzajProduktu": {
+                    "required": "Type is required."
                 }
             }
         }
