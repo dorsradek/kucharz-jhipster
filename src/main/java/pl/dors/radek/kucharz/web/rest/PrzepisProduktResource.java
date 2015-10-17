@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.PrzepisProdukt;
-import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.PrzepisProdukt;
+import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class PrzepisProduktResource {
      * POST  /przepisProdukts -> Create a new przepisProdukt.
      */
     @RequestMapping(value = "/przepisProdukts",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PrzepisProdukt> createPrzepisProdukt(@RequestBody PrzepisProdukt przepisProdukt) throws URISyntaxException {
         log.debug("REST request to save PrzepisProdukt : {}", przepisProdukt);
@@ -44,8 +43,8 @@ public class PrzepisProduktResource {
         }
         PrzepisProdukt result = przepisProduktRepository.save(przepisProdukt);
         return ResponseEntity.created(new URI("/api/przepisProdukts/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("przepisProdukt", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("przepisProdukt", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class PrzepisProduktResource {
         }
         PrzepisProdukt result = przepisProduktRepository.save(przepisProdukt);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("przepisProdukt", przepisProdukt.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("przepisProdukt", przepisProdukt.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /przepisProdukts -> get all the przepisProdukts.
      */
     @RequestMapping(value = "/przepisProdukts",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<PrzepisProdukt> getAllPrzepisProdukts() {
         log.debug("REST request to get all PrzepisProdukts");
@@ -82,8 +81,8 @@ public class PrzepisProduktResource {
      * GET  /przepisProdukts/:id -> get the "id" przepisProdukt.
      */
     @RequestMapping(value = "/przepisProdukts/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PrzepisProdukt> getPrzepisProdukt(@PathVariable Long id) {
         log.debug("REST request to get PrzepisProdukt : {}", id);
@@ -98,8 +97,8 @@ public class PrzepisProduktResource {
      * DELETE  /przepisProdukts/:id -> delete the "id" przepisProdukt.
      */
     @RequestMapping(value = "/przepisProdukts/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePrzepisProdukt(@PathVariable Long id) {
         log.debug("REST request to delete PrzepisProdukt : {}", id);

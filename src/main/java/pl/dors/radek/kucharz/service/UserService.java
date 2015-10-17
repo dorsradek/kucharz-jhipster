@@ -1,19 +1,18 @@
 package pl.dors.radek.kucharz.service;
 
-import pl.dors.radek.kucharz.domain.Authority;
-import pl.dors.radek.kucharz.domain.User;
-import pl.dors.radek.kucharz.repository.AuthorityRepository;
-import pl.dors.radek.kucharz.repository.UserRepository;
-import pl.dors.radek.kucharz.security.SecurityUtils;
-import pl.dors.radek.kucharz.service.util.RandomUtil;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.dors.radek.kucharz.domain.Authority;
+import pl.dors.radek.kucharz.domain.User;
+import pl.dors.radek.kucharz.repository.AuthorityRepository;
+import pl.dors.radek.kucharz.repository.UserRepository;
+import pl.dors.radek.kucharz.security.SecurityUtils;
+import pl.dors.radek.kucharz.service.util.RandomUtil;
 
 import javax.inject.Inject;
 import java.util.HashSet;
@@ -54,31 +53,31 @@ public class UserService {
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
-       log.debug("Reset user password for reset key {}", key);
+        log.debug("Reset user password for reset key {}", key);
 
-       return userRepository.findOneByResetKey(key)
-           .filter(user -> {
-               DateTime oneDayAgo = DateTime.now().minusHours(24);
-               return user.getResetDate().isAfter(oneDayAgo.toInstant().getMillis());
-           })
-           .map(user -> {
-               user.setPassword(passwordEncoder.encode(newPassword));
-               user.setResetKey(null);
-               user.setResetDate(null);
-               userRepository.save(user);
-               return user;
-           });
+        return userRepository.findOneByResetKey(key)
+            .filter(user -> {
+                DateTime oneDayAgo = DateTime.now().minusHours(24);
+                return user.getResetDate().isAfter(oneDayAgo.toInstant().getMillis());
+            })
+            .map(user -> {
+                user.setPassword(passwordEncoder.encode(newPassword));
+                user.setResetKey(null);
+                user.setResetDate(null);
+                userRepository.save(user);
+                return user;
+            });
     }
 
     public Optional<User> requestPasswordReset(String mail) {
-       return userRepository.findOneByEmail(mail)
-           .filter(user -> user.getActivated() == true)
-           .map(user -> {
-               user.setResetKey(RandomUtil.generateResetKey());
-               user.setResetDate(DateTime.now());
-               userRepository.save(user);
-               return user;
-           });
+        return userRepository.findOneByEmail(mail)
+            .filter(user -> user.getActivated() == true)
+            .map(user -> {
+                user.setResetKey(RandomUtil.generateResetKey());
+                user.setResetDate(DateTime.now());
+                userRepository.save(user);
+                return user;
+            });
     }
 
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
@@ -118,7 +117,7 @@ public class UserService {
     }
 
     public void changePassword(String password) {
-        userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u-> {
+        userRepository.findOneByLogin(SecurityUtils.getCurrentLogin()).ifPresent(u -> {
             String encryptedPassword = passwordEncoder.encode(password);
             u.setPassword(encryptedPassword);
             userRepository.save(u);

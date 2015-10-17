@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Produkt.
@@ -19,7 +19,7 @@ public class Produkt implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+
     @Column(name = "name")
     private String name;
 
@@ -84,7 +84,7 @@ public class Produkt implements Serializable {
 
         Produkt produkt = (Produkt) o;
 
-        if ( ! Objects.equals(id, produkt.id)) return false;
+        if (!Objects.equals(id, produkt.id)) return false;
 
         return true;
     }
@@ -97,8 +97,8 @@ public class Produkt implements Serializable {
     @Override
     public String toString() {
         return "Produkt{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                '}';
+            "id=" + id +
+            ", name='" + name + "'" +
+            '}';
     }
 }

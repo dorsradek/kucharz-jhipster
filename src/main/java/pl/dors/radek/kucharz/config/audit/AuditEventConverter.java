@@ -1,9 +1,9 @@
 package pl.dors.radek.kucharz.config.audit;
 
-import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
+import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public class AuditEventConverter {
      */
     public AuditEvent convertToAuditEvent(PersistentAuditEvent persistentAuditEvent) {
         return new AuditEvent(persistentAuditEvent.getAuditEventDate().toDate(), persistentAuditEvent.getPrincipal(),
-                persistentAuditEvent.getAuditEventType(), convertDataToObjects(persistentAuditEvent.getData()));
+            persistentAuditEvent.getAuditEventType(), convertDataToObjects(persistentAuditEvent.getData()));
     }
 
     /**

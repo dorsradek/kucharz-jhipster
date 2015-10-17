@@ -3,15 +3,15 @@
 angular.module('kucharzApp')
     .controller('PrzepisController', function ($scope, Przepis) {
         $scope.przepiss = [];
-        $scope.loadAll = function() {
-            Przepis.query(function(result) {
-               $scope.przepiss = result;
+        $scope.loadAll = function () {
+            Przepis.query(function (result) {
+                $scope.przepiss = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            Przepis.get({id: id}, function(result) {
+            Przepis.get({id: id}, function (result) {
                 $scope.przepis = result;
                 $('#deletePrzepisConfirmation').modal('show');
             });
@@ -37,7 +37,6 @@ angular.module('kucharzApp')
                 creationDate: null,
                 modificationDate: null,
                 name: null,
-                description: null,
                 id: null
             };
         };

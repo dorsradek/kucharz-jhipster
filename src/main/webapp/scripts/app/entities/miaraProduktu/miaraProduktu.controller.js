@@ -3,15 +3,15 @@
 angular.module('kucharzApp')
     .controller('MiaraProduktuController', function ($scope, MiaraProduktu) {
         $scope.miaraProduktus = [];
-        $scope.loadAll = function() {
-            MiaraProduktu.query(function(result) {
-               $scope.miaraProduktus = result;
+        $scope.loadAll = function () {
+            MiaraProduktu.query(function (result) {
+                $scope.miaraProduktus = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            MiaraProduktu.get({id: id}, function(result) {
+            MiaraProduktu.get({id: id}, function (result) {
                 $scope.miaraProduktu = result;
                 $('#deleteMiaraProduktuConfirmation').modal('show');
             });

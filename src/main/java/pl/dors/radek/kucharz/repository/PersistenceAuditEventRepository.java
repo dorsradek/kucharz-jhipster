@@ -1,8 +1,8 @@
 package pl.dors.radek.kucharz.repository;
 
-import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 
 import java.util.List;
 

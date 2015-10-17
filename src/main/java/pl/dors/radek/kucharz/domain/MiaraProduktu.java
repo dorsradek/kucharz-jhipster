@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A MiaraProduktu.
@@ -19,10 +19,10 @@ public class MiaraProduktu implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "shortcut")
     private String shortcut;
 
@@ -73,7 +73,7 @@ public class MiaraProduktu implements Serializable {
 
         MiaraProduktu miaraProduktu = (MiaraProduktu) o;
 
-        if ( ! Objects.equals(id, miaraProduktu.id)) return false;
+        if (!Objects.equals(id, miaraProduktu.id)) return false;
 
         return true;
     }
@@ -86,9 +86,9 @@ public class MiaraProduktu implements Serializable {
     @Override
     public String toString() {
         return "MiaraProduktu{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                ", shortcut='" + shortcut + "'" +
-                '}';
+            "id=" + id +
+            ", name='" + name + "'" +
+            ", shortcut='" + shortcut + "'" +
+            '}';
     }
 }

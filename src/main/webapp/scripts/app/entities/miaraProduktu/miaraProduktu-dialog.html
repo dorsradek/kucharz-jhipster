@@ -1,35 +1,36 @@
-
 <form name="editForm" role="form" novalidate ng-submit="save()">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myMiaraProduktuLabel" translate="kucharzApp.miaraProduktu.home.createOrEditLabel">Create or edit a MiaraProduktu</h4>
+        <h4 class="modal-title" id="myMiaraProduktuLabel" translate="kucharzApp.miaraProduktu.home.createOrEditLabel">
+            Create or edit a MiaraProduktu</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="miaraProduktu.id" readonly>
+                   ng-model="miaraProduktu.id" readonly>
         </div>
         <div class="form-group">
             <label translate="kucharzApp.miaraProduktu.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="miaraProduktu.name"
-                    >
+                   ng-model="miaraProduktu.name"
+                >
         </div>
         <div class="form-group">
             <label translate="kucharzApp.miaraProduktu.shortcut" for="field_shortcut">Shortcut</label>
             <input type="text" class="form-control" name="shortcut" id="field_shortcut"
-                    ng-model="miaraProduktu.shortcut"
-                    >
+                   ng-model="miaraProduktu.shortcut"
+                >
         </div>
 
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>

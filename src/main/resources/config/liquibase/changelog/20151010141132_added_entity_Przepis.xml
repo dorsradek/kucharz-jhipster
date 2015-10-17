@@ -19,14 +19,13 @@
     -->
     <changeSet id="20151010141132" author="jhipster">
         <createTable tableName="przepis">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="duration" type="varchar(255)"/>
             <column name="creation_date" type="timestamp"/>
             <column name="modification_date" type="timestamp"/>
             <column name="name" type="varchar(255)"/>
-            <column name="description" type="varchar(255)"/>
             <column name="kategoria_przepisu_id" type="bigint"/>
             <column name="pracochlonnosc_przepisu_id" type="bigint"/>
         </createTable>
@@ -34,7 +33,7 @@
 
         <dropDefaultValue tableName="przepis" columnName="modification_date" columnDataType="datetime"/>
 
-        
+
         <addForeignKeyConstraint baseColumnNames="kategoria_przepisu_id"
                                  baseTableName="przepis"
                                  constraintName="fk_przepis_kategoriaprzepisu_id"

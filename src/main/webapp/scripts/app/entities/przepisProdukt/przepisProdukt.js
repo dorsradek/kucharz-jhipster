@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('przepisProdukt');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'PrzepisProdukt', function($stateParams, PrzepisProdukt) {
-                        return PrzepisProdukt.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'PrzepisProdukt', function ($stateParams, PrzepisProdukt) {
+                        return PrzepisProdukt.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/przepisProdukt/przepisProdukt-dialog.html',
                         controller: 'PrzepisProduktDialogController',
@@ -66,11 +66,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('przepisProdukt', null, { reload: true });
-                    }, function() {
-                        $state.go('przepisProdukt');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('przepisProdukt', null, {reload: true});
+                        }, function () {
+                            $state.go('przepisProdukt');
+                        })
                 }]
             })
             .state('przepisProdukt.edit', {
@@ -79,21 +79,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/przepisProdukt/przepisProdukt-dialog.html',
                         controller: 'PrzepisProduktDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['PrzepisProdukt', function(PrzepisProdukt) {
-                                return PrzepisProdukt.get({id : $stateParams.id});
+                            entity: ['PrzepisProdukt', function (PrzepisProdukt) {
+                                return PrzepisProdukt.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('przepisProdukt', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('przepisProdukt', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });

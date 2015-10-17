@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('pracochlonnoscPrzepisu');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'PracochlonnoscPrzepisu', function($stateParams, PracochlonnoscPrzepisu) {
-                        return PracochlonnoscPrzepisu.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'PracochlonnoscPrzepisu', function ($stateParams, PracochlonnoscPrzepisu) {
+                        return PracochlonnoscPrzepisu.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/pracochlonnoscPrzepisu/pracochlonnoscPrzepisu-dialog.html',
                         controller: 'PracochlonnoscPrzepisuDialogController',
@@ -66,11 +66,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('pracochlonnoscPrzepisu', null, { reload: true });
-                    }, function() {
-                        $state.go('pracochlonnoscPrzepisu');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('pracochlonnoscPrzepisu', null, {reload: true});
+                        }, function () {
+                            $state.go('pracochlonnoscPrzepisu');
+                        })
                 }]
             })
             .state('pracochlonnoscPrzepisu.edit', {
@@ -79,21 +79,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/pracochlonnoscPrzepisu/pracochlonnoscPrzepisu-dialog.html',
                         controller: 'PracochlonnoscPrzepisuDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['PracochlonnoscPrzepisu', function(PracochlonnoscPrzepisu) {
-                                return PracochlonnoscPrzepisu.get({id : $stateParams.id});
+                            entity: ['PracochlonnoscPrzepisu', function (PracochlonnoscPrzepisu) {
+                                return PracochlonnoscPrzepisu.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('pracochlonnoscPrzepisu', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('pracochlonnoscPrzepisu', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });

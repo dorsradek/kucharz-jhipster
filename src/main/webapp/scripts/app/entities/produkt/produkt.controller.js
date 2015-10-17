@@ -3,15 +3,15 @@
 angular.module('kucharzApp')
     .controller('ProduktController', function ($scope, Produkt) {
         $scope.produkts = [];
-        $scope.loadAll = function() {
-            Produkt.query(function(result) {
-               $scope.produkts = result;
+        $scope.loadAll = function () {
+            Produkt.query(function (result) {
+                $scope.produkts = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            Produkt.get({id: id}, function(result) {
+            Produkt.get({id: id}, function (result) {
                 $scope.produkt = result;
                 $('#deleteProduktConfirmation').modal('show');
             });

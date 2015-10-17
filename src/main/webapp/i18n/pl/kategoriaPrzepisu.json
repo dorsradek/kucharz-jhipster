@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "kategoriaPrzepisu" : {
+        "kategoriaPrzepisu": {
             "home": {
                 "title": "KategoriaPrzepisu",
                 "createLabel": "Dodaj KategoriaPrzepisu",

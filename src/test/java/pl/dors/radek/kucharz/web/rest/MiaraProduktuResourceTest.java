@@ -1,31 +1,30 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.domain.MiaraProduktu;
-import pl.dors.radek.kucharz.repository.MiaraProduktuRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import pl.dors.radek.kucharz.Application;
+import pl.dors.radek.kucharz.domain.MiaraProduktu;
+import pl.dors.radek.kucharz.repository.MiaraProduktuRepository;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -84,9 +83,9 @@ public class MiaraProduktuResourceTest {
         // Create the MiaraProduktu
 
         restMiaraProduktuMockMvc.perform(post("/api/miaraProduktus")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(miaraProduktu)))
-                .andExpect(status().isCreated());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(miaraProduktu)))
+            .andExpect(status().isCreated());
 
         // Validate the MiaraProduktu in the database
         List<MiaraProduktu> miaraProduktus = miaraProduktuRepository.findAll();
@@ -104,11 +103,11 @@ public class MiaraProduktuResourceTest {
 
         // Get all the miaraProduktus
         restMiaraProduktuMockMvc.perform(get("/api/miaraProduktus"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(miaraProduktu.getId().intValue())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].shortcut").value(hasItem(DEFAULT_SHORTCUT.toString())));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(miaraProduktu.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].shortcut").value(hasItem(DEFAULT_SHORTCUT.toString())));
     }
 
     @Test
@@ -131,7 +130,7 @@ public class MiaraProduktuResourceTest {
     public void getNonExistingMiaraProduktu() throws Exception {
         // Get the miaraProduktu
         restMiaraProduktuMockMvc.perform(get("/api/miaraProduktus/{id}", Long.MAX_VALUE))
-                .andExpect(status().isNotFound());
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -140,16 +139,16 @@ public class MiaraProduktuResourceTest {
         // Initialize the database
         miaraProduktuRepository.saveAndFlush(miaraProduktu);
 
-		int databaseSizeBeforeUpdate = miaraProduktuRepository.findAll().size();
+        int databaseSizeBeforeUpdate = miaraProduktuRepository.findAll().size();
 
         // Update the miaraProduktu
         miaraProduktu.setName(UPDATED_NAME);
         miaraProduktu.setShortcut(UPDATED_SHORTCUT);
 
         restMiaraProduktuMockMvc.perform(put("/api/miaraProduktus")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(miaraProduktu)))
-                .andExpect(status().isOk());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(miaraProduktu)))
+            .andExpect(status().isOk());
 
         // Validate the MiaraProduktu in the database
         List<MiaraProduktu> miaraProduktus = miaraProduktuRepository.findAll();
@@ -165,12 +164,12 @@ public class MiaraProduktuResourceTest {
         // Initialize the database
         miaraProduktuRepository.saveAndFlush(miaraProduktu);
 
-		int databaseSizeBeforeDelete = miaraProduktuRepository.findAll().size();
+        int databaseSizeBeforeDelete = miaraProduktuRepository.findAll().size();
 
         // Get the miaraProduktu
         restMiaraProduktuMockMvc.perform(delete("/api/miaraProduktus/{id}", miaraProduktu.getId())
-                .accept(TestUtil.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .andExpect(status().isOk());
 
         // Validate the database is empty
         List<MiaraProduktu> miaraProduktus = miaraProduktuRepository.findAll();

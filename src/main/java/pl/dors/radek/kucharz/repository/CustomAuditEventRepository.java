@@ -1,7 +1,5 @@
 package pl.dors.radek.kucharz.repository;
 
-import pl.dors.radek.kucharz.config.audit.AuditEventConverter;
-import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 import org.joda.time.LocalDateTime;
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
@@ -9,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import pl.dors.radek.kucharz.config.audit.AuditEventConverter;
+import pl.dors.radek.kucharz.domain.PersistentAuditEvent;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -43,7 +43,7 @@ public class CustomAuditEventRepository {
                     persistentAuditEvents = persistenceAuditEventRepository.findByPrincipal(principal);
                 } else {
                     persistentAuditEvents =
-                            persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfter(principal, new LocalDateTime(after));
+                        persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfter(principal, new LocalDateTime(after));
                 }
                 return auditEventConverter.convertToAuditEvent(persistentAuditEvents);
             }
@@ -51,8 +51,8 @@ public class CustomAuditEventRepository {
             @Override
             @Transactional(propagation = Propagation.REQUIRES_NEW)
             public void add(AuditEvent event) {
-                if(!AUTHORIZATION_FAILURE.equals(event.getType()) &&
-                    !ANONYMOUS_USER.equals(event.getPrincipal().toString())){
+                if (!AUTHORIZATION_FAILURE.equals(event.getType()) &&
+                    !ANONYMOUS_USER.equals(event.getPrincipal().toString())) {
 
                     PersistentAuditEvent persistentAuditEvent = new PersistentAuditEvent();
                     persistentAuditEvent.setPrincipal(event.getPrincipal());

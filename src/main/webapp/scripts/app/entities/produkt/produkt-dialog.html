@@ -1,84 +1,91 @@
-
 <form name="editForm" role="form" novalidate ng-submit="save()"
-	show-validation>
+      show-validation>
 
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal"
-			aria-hidden="true" ng-click="clear()">&times;</button>
-		<h4 class="modal-title" id="myProduktLabel"
-			translate="kucharzApp.produkt.home.createOrEditLabel">Create or
-			edit a Produkt</h4>
-	</div>
-	<div class="modal-body">
-		<jh-alert-error></jh-alert-error>
-		<div class="form-group">
-			<label translate="kucharzApp.produkt.name" for="field_name">Name</label>
-			<input type="text" class="form-control" name="name" id="field_name"
-				ng-model="produkt.name" ng-minlength=1 ng-maxlength=20
-				ng-pattern="/^[a-zA-Z0-9]*$/" required>
-			<div ng-show="editForm.name.$dirty && editForm.name.$invalid">
-				<p class="help-block" ng-show="editForm.name.$error.required"
-					translate="kucharzApp.produkt.validate.name.required">Name is
-					required.</p>
-				<p class="help-block" ng-show="editForm.name.$error.minlength"
-					translate="kucharzApp.produkt.validate.name.minlength">Name is
-					required to be at least 1 character.</p>
-				<p class="help-block" ng-show="editForm.name.$error.maxlength"
-					translate="kucharzApp.produkt.validate.name.maxlength">Name
-					cannot be longer than 50 characters.</p>
-				<p class="help-block" ng-show="editForm.name.$error.pattern"
-					translate="kucharzApp.produkt.validate.name.pattern">Name can
-					only contain lower-case letters and digits.</p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label translate="kucharzApp.produkt.miaraProduktu"
-				for="field_miaraProduktu">miaraProduktu</label> <select
-				class="form-control" id="field_miaraProduktu" name="miaraProduktu"
-				ng-model="produkt.miaraProduktu"
-				ng-options="miaraProduktu as miaraProduktu.name for miaraProduktu in miaraproduktus track by miaraProduktu.name"
-				required>
-				<option value="" translate="kucharzApp.produkt.defaultMeasure">Select
-					measure</option>
-			</select>
-			<div
-				ng-show="editForm.miaraProduktu.$dirty && editForm.miaraProduktu.$invalid">
-				<p class="help-block"
-					ng-show="editForm.miaraProduktu.$error.required"
-					translate="kucharzApp.produkt.validate.miaraProduktu.required">Measure
-					is required.</p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label translate="kucharzApp.produkt.rodzajProduktu"
-				for="field_rodzajProduktu">rodzajProduktu</label> <select
-				class="form-control" id="field_rodzajProduktu" name="rodzajProduktu"
-				ng-model="produkt.rodzajProduktu"
-				ng-options="rodzajProduktu as rodzajProduktu.name for rodzajProduktu in rodzajproduktus track by rodzajProduktu.name"
-				required>
-				<option value="" translate="kucharzApp.produkt.defaultType">Select
-					type</option>
-			</select>
-			<div
-				ng-show="editForm.rodzajProduktu.$dirty && editForm.rodzajProduktu.$invalid">
-				<p class="help-block"
-					ng-show="editForm.rodzajProduktu.$error.required"
-					translate="kucharzApp.produkt.validate.rodzajProduktu.required">Type
-					is required.</p>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal"
-			ng-click="clear()">
-			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
-				translate="entity.action.cancel">Cancel</span>
-		</button>
-		<button type="submit"
-			ng-disabled="editForm.$invalid || editForm.$submitted"
-			class="btn btn-primary">
-			<span class="glyphicon glyphicon-save"></span>&nbsp;<span
-				translate="entity.action.save">Save</span>
-		</button>
-	</div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true" ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myProduktLabel"
+            translate="kucharzApp.produkt.home.createOrEditLabel">Create or
+            edit a Produkt</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label translate="kucharzApp.produkt.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                   ng-model="produkt.name" ng-minlength=1 ng-maxlength=20
+                   ng-pattern="/^[a-zA-Z0-9]*$/" required>
+
+            <div ng-show="editForm.name.$dirty && editForm.name.$invalid">
+                <p class="help-block" ng-show="editForm.name.$error.required"
+                   translate="kucharzApp.produkt.validate.name.required">Name is
+                    required.</p>
+
+                <p class="help-block" ng-show="editForm.name.$error.minlength"
+                   translate="kucharzApp.produkt.validate.name.minlength">Name is
+                    required to be at least 1 character.</p>
+
+                <p class="help-block" ng-show="editForm.name.$error.maxlength"
+                   translate="kucharzApp.produkt.validate.name.maxlength">Name
+                    cannot be longer than 50 characters.</p>
+
+                <p class="help-block" ng-show="editForm.name.$error.pattern"
+                   translate="kucharzApp.produkt.validate.name.pattern">Name can
+                    only contain lower-case letters and digits.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="kucharzApp.produkt.miaraProduktu"
+                   for="field_miaraProduktu">miaraProduktu</label> <select
+            class="form-control" id="field_miaraProduktu" name="miaraProduktu"
+            ng-model="produkt.miaraProduktu"
+            ng-options="miaraProduktu as miaraProduktu.name for miaraProduktu in miaraproduktus track by miaraProduktu.name"
+            required>
+            <option value="" translate="kucharzApp.produkt.defaultMeasure">Select
+                measure
+            </option>
+        </select>
+
+            <div
+                ng-show="editForm.miaraProduktu.$dirty && editForm.miaraProduktu.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.miaraProduktu.$error.required"
+                   translate="kucharzApp.produkt.validate.miaraProduktu.required">Measure
+                    is required.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="kucharzApp.produkt.rodzajProduktu"
+                   for="field_rodzajProduktu">rodzajProduktu</label> <select
+            class="form-control" id="field_rodzajProduktu" name="rodzajProduktu"
+            ng-model="produkt.rodzajProduktu"
+            ng-options="rodzajProduktu as rodzajProduktu.name for rodzajProduktu in rodzajproduktus track by rodzajProduktu.name"
+            required>
+            <option value="" translate="kucharzApp.produkt.defaultType">Select
+                type
+            </option>
+        </select>
+
+            <div
+                ng-show="editForm.rodzajProduktu.$dirty && editForm.rodzajProduktu.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.rodzajProduktu.$error.required"
+                   translate="kucharzApp.produkt.validate.rodzajProduktu.required">Type
+                    is required.</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"
+                ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit"
+                ng-disabled="editForm.$invalid || editForm.$submitted"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span
+            translate="entity.action.save">Save</span>
+        </button>
+    </div>
 </form>

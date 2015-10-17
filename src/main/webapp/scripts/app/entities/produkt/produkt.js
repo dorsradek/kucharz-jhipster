@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('produkt');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'Produkt', function($stateParams, Produkt) {
-                        return Produkt.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'Produkt', function ($stateParams, Produkt) {
+                        return Produkt.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/produkt/produkt-dialog.html',
                         controller: 'ProduktDialogController',
@@ -66,11 +66,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('produkt', null, { reload: true });
-                    }, function() {
-                        $state.go('produkt');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('produkt', null, {reload: true});
+                        }, function () {
+                            $state.go('produkt');
+                        })
                 }]
             })
             .state('produkt.edit', {
@@ -79,21 +79,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/produkt/produkt-dialog.html',
                         controller: 'ProduktDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['Produkt', function(Produkt) {
-                                return Produkt.get({id : $stateParams.id});
+                            entity: ['Produkt', function (Produkt) {
+                                return Produkt.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('produkt', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('produkt', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });

@@ -3,15 +3,15 @@
 angular.module('kucharzApp')
     .controller('PracochlonnoscPrzepisuController', function ($scope, PracochlonnoscPrzepisu) {
         $scope.pracochlonnoscPrzepisus = [];
-        $scope.loadAll = function() {
-            PracochlonnoscPrzepisu.query(function(result) {
-               $scope.pracochlonnoscPrzepisus = result;
+        $scope.loadAll = function () {
+            PracochlonnoscPrzepisu.query(function (result) {
+                $scope.pracochlonnoscPrzepisus = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            PracochlonnoscPrzepisu.get({id: id}, function(result) {
+            PracochlonnoscPrzepisu.get({id: id}, function (result) {
                 $scope.pracochlonnoscPrzepisu = result;
                 $('#deletePracochlonnoscPrzepisuConfirmation').modal('show');
             });

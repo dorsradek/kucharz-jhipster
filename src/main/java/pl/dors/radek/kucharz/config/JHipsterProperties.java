@@ -1,15 +1,14 @@
 package pl.dors.radek.kucharz.config;
 
-import javax.validation.constraints.NotNull;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Properties specific to JHipster.
- *
  * <p>
- *     Properties are configured in the application.yml file.
+ * <p>
+ * Properties are configured in the application.yml file.
  * </p>
  */
 @ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
@@ -207,7 +206,7 @@ public class JHipsterProperties {
         }
 
         public void setHost(String host) {
-                this.host = host;
+            this.host = host;
         }
 
         public int getPort() {
@@ -312,6 +311,7 @@ public class JHipsterProperties {
                 }
             }
         }
+
         public static class Rememberme {
 
             @NotNull

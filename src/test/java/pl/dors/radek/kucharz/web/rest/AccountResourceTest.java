@@ -1,14 +1,5 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.domain.Authority;
-import pl.dors.radek.kucharz.domain.User;
-import pl.dors.radek.kucharz.repository.AuthorityRepository;
-import pl.dors.radek.kucharz.repository.UserRepository;
-import pl.dors.radek.kucharz.security.AuthoritiesConstants;
-import pl.dors.radek.kucharz.service.MailService;
-import pl.dors.radek.kucharz.service.UserService;
-import pl.dors.radek.kucharz.web.rest.dto.UserDTO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +13,15 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import pl.dors.radek.kucharz.Application;
+import pl.dors.radek.kucharz.domain.Authority;
+import pl.dors.radek.kucharz.domain.User;
+import pl.dors.radek.kucharz.repository.AuthorityRepository;
+import pl.dors.radek.kucharz.repository.UserRepository;
+import pl.dors.radek.kucharz.security.AuthoritiesConstants;
+import pl.dors.radek.kucharz.service.MailService;
+import pl.dors.radek.kucharz.service.UserService;
+import pl.dors.radek.kucharz.web.rest.dto.UserDTO;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -91,21 +91,21 @@ public class AccountResourceTest {
     @Test
     public void testNonAuthenticatedUser() throws Exception {
         restUserMockMvc.perform(get("/api/authenticate")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(""));
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().string(""));
     }
 
     @Test
     public void testAuthenticatedUser() throws Exception {
         restUserMockMvc.perform(get("/api/authenticate")
-                .with(request -> {
-                    request.setRemoteUser("test");
-                    return request;
-                })
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string("test"));
+            .with(request -> {
+                request.setRemoteUser("test");
+                return request;
+            })
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().string("test"));
     }
 
     @Test
@@ -124,14 +124,14 @@ public class AccountResourceTest {
         when(mockUserService.getUserWithAuthorities()).thenReturn(user);
 
         restUserMockMvc.perform(get("/api/account")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.login").value("test"))
-                .andExpect(jsonPath("$.firstName").value("john"))
-                .andExpect(jsonPath("$.lastName").value("doe"))
-                .andExpect(jsonPath("$.email").value("john.doe@jhipter.com"))
-                .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.login").value("test"))
+            .andExpect(jsonPath("$.firstName").value("john"))
+            .andExpect(jsonPath("$.lastName").value("doe"))
+            .andExpect(jsonPath("$.email").value("john.doe@jhipter.com"))
+            .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
     }
 
     @Test
@@ -139,8 +139,8 @@ public class AccountResourceTest {
         when(mockUserService.getUserWithAuthorities()).thenReturn(null);
 
         restUserMockMvc.perform(get("/api/account")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isInternalServerError());
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isInternalServerError());
     }
 
     @Test

@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
-import pl.dors.radek.kucharz.repository.KategoriaPrzepisuRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
+import pl.dors.radek.kucharz.repository.KategoriaPrzepisuRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class KategoriaPrzepisuResource {
      * POST  /kategoriaPrzepisus -> Create a new kategoriaPrzepisu.
      */
     @RequestMapping(value = "/kategoriaPrzepisus",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<KategoriaPrzepisu> createKategoriaPrzepisu(@RequestBody KategoriaPrzepisu kategoriaPrzepisu) throws URISyntaxException {
         log.debug("REST request to save KategoriaPrzepisu : {}", kategoriaPrzepisu);
@@ -44,8 +43,8 @@ public class KategoriaPrzepisuResource {
         }
         KategoriaPrzepisu result = kategoriaPrzepisuRepository.save(kategoriaPrzepisu);
         return ResponseEntity.created(new URI("/api/kategoriaPrzepisus/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("kategoriaPrzepisu", result.getName()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("kategoriaPrzepisu", result.getName()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class KategoriaPrzepisuResource {
         }
         KategoriaPrzepisu result = kategoriaPrzepisuRepository.save(kategoriaPrzepisu);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("kategoriaPrzepisu", result.getName()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("kategoriaPrzepisu", result.getName()))
+            .body(result);
     }
 
     /**
      * GET  /kategoriaPrzepisus -> get all the kategoriaPrzepisus.
      */
     @RequestMapping(value = "/kategoriaPrzepisus",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<KategoriaPrzepisu> getAllKategoriaPrzepisus() {
         log.debug("REST request to get all KategoriaPrzepisus");
@@ -82,8 +81,8 @@ public class KategoriaPrzepisuResource {
      * GET  /kategoriaPrzepisus/:id -> get the "id" kategoriaPrzepisu.
      */
     @RequestMapping(value = "/kategoriaPrzepisus/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<KategoriaPrzepisu> getKategoriaPrzepisu(@PathVariable Long id) {
         log.debug("REST request to get KategoriaPrzepisu : {}", id);
@@ -98,8 +97,8 @@ public class KategoriaPrzepisuResource {
      * DELETE  /kategoriaPrzepisus/:id -> delete the "id" kategoriaPrzepisu.
      */
     @RequestMapping(value = "/kategoriaPrzepisus/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteKategoriaPrzepisu(@PathVariable Long id) {
         log.debug("REST request to delete KategoriaPrzepisu : {}", id);

@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A PracochlonnoscPrzepisu.
@@ -19,7 +19,7 @@ public class PracochlonnoscPrzepisu implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+
     @Column(name = "name")
     private String name;
 
@@ -62,7 +62,7 @@ public class PracochlonnoscPrzepisu implements Serializable {
 
         PracochlonnoscPrzepisu pracochlonnoscPrzepisu = (PracochlonnoscPrzepisu) o;
 
-        if ( ! Objects.equals(id, pracochlonnoscPrzepisu.id)) return false;
+        if (!Objects.equals(id, pracochlonnoscPrzepisu.id)) return false;
 
         return true;
     }
@@ -75,8 +75,8 @@ public class PracochlonnoscPrzepisu implements Serializable {
     @Override
     public String toString() {
         return "PracochlonnoscPrzepisu{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                '}';
+            "id=" + id +
+            ", name='" + name + "'" +
+            '}';
     }
 }

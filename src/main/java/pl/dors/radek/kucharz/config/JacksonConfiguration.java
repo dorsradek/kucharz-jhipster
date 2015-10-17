@@ -1,15 +1,14 @@
 package pl.dors.radek.kucharz.config;
 
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import pl.dors.radek.kucharz.domain.util.CustomDateTimeDeserializer;
 import pl.dors.radek.kucharz.domain.util.CustomDateTimeSerializer;
 import pl.dors.radek.kucharz.domain.util.CustomLocalDateSerializer;
 import pl.dors.radek.kucharz.domain.util.ISO8601LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 @Configuration
 public class JacksonConfiguration {

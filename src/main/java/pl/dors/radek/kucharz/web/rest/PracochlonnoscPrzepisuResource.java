@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.PracochlonnoscPrzepisu;
-import pl.dors.radek.kucharz.repository.PracochlonnoscPrzepisuRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.PracochlonnoscPrzepisu;
+import pl.dors.radek.kucharz.repository.PracochlonnoscPrzepisuRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class PracochlonnoscPrzepisuResource {
      * POST  /pracochlonnoscPrzepisus -> Create a new pracochlonnoscPrzepisu.
      */
     @RequestMapping(value = "/pracochlonnoscPrzepisus",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PracochlonnoscPrzepisu> createPracochlonnoscPrzepisu(@RequestBody PracochlonnoscPrzepisu pracochlonnoscPrzepisu) throws URISyntaxException {
         log.debug("REST request to save PracochlonnoscPrzepisu : {}", pracochlonnoscPrzepisu);
@@ -44,8 +43,8 @@ public class PracochlonnoscPrzepisuResource {
         }
         PracochlonnoscPrzepisu result = pracochlonnoscPrzepisuRepository.save(pracochlonnoscPrzepisu);
         return ResponseEntity.created(new URI("/api/pracochlonnoscPrzepisus/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("pracochlonnoscPrzepisu", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("pracochlonnoscPrzepisu", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class PracochlonnoscPrzepisuResource {
         }
         PracochlonnoscPrzepisu result = pracochlonnoscPrzepisuRepository.save(pracochlonnoscPrzepisu);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("pracochlonnoscPrzepisu", pracochlonnoscPrzepisu.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("pracochlonnoscPrzepisu", pracochlonnoscPrzepisu.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /pracochlonnoscPrzepisus -> get all the pracochlonnoscPrzepisus.
      */
     @RequestMapping(value = "/pracochlonnoscPrzepisus",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<PracochlonnoscPrzepisu> getAllPracochlonnoscPrzepisus() {
         log.debug("REST request to get all PracochlonnoscPrzepisus");
@@ -82,8 +81,8 @@ public class PracochlonnoscPrzepisuResource {
      * GET  /pracochlonnoscPrzepisus/:id -> get the "id" pracochlonnoscPrzepisu.
      */
     @RequestMapping(value = "/pracochlonnoscPrzepisus/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PracochlonnoscPrzepisu> getPracochlonnoscPrzepisu(@PathVariable Long id) {
         log.debug("REST request to get PracochlonnoscPrzepisu : {}", id);
@@ -98,8 +97,8 @@ public class PracochlonnoscPrzepisuResource {
      * DELETE  /pracochlonnoscPrzepisus/:id -> delete the "id" pracochlonnoscPrzepisu.
      */
     @RequestMapping(value = "/pracochlonnoscPrzepisus/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePracochlonnoscPrzepisu(@PathVariable Long id) {
         log.debug("REST request to delete PracochlonnoscPrzepisu : {}", id);

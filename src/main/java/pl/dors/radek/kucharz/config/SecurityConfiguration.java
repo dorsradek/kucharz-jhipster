@@ -1,28 +1,22 @@
 package pl.dors.radek.kucharz.config;
 
-import pl.dors.radek.kucharz.security.*;
-import pl.dors.radek.kucharz.security.xauth.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import org.springframework.data.repository.query.spi.EvaluationContextExtension;
-import org.springframework.data.repository.query.spi.EvaluationContextExtensionSupport;
-import org.springframework.security.access.expression.SecurityExpressionRoot;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
-
+import pl.dors.radek.kucharz.security.AuthoritiesConstants;
+import pl.dors.radek.kucharz.security.Http401UnauthorizedEntryPoint;
+import pl.dors.radek.kucharz.security.xauth.TokenProvider;
+import pl.dors.radek.kucharz.security.xauth.XAuthTokenConfigurer;
 
 import javax.inject.Inject;
 
@@ -49,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
+            .passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -69,16 +63,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .exceptionHandling()
             .authenticationEntryPoint(authenticationEntryPoint)
-        .and()
+            .and()
             .csrf()
             .disable()
             .headers()
             .frameOptions()
             .disable()
-        .and()
+            .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
+            .and()
             .authorizeRequests()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()
@@ -104,14 +98,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/configuration/security").permitAll()
             .antMatchers("/configuration/ui").permitAll()
             .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/protected/**").authenticated() 
-        .and()
+            .antMatchers("/protected/**").authenticated()
+            .and()
             .apply(securityConfigurerAdapter());
 
     }
 
     private XAuthTokenConfigurer securityConfigurerAdapter() {
-      return new XAuthTokenConfigurer(userDetailsService, tokenProvider);
+        return new XAuthTokenConfigurer(userDetailsService, tokenProvider);
     }
 
     @Bean

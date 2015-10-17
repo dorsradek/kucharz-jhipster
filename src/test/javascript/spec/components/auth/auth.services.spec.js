@@ -7,7 +7,7 @@ describe('Services Tests ', function () {
     describe('Auth', function () {
         var $httpBackend, spiedLocalStorageService, authService, spiedAuthServerProvider;
 
-        beforeEach(inject(function($injector, localStorageService, Auth, AuthServerProvider) {
+        beforeEach(inject(function ($injector, localStorageService, Auth, AuthServerProvider) {
             $httpBackend = $injector.get('$httpBackend');
             spiedLocalStorageService = localStorageService;
             authService = Auth;
@@ -19,15 +19,15 @@ describe('Services Tests ', function () {
             var mainJson = new RegExp('i18n\/.*\/main.json');
             $httpBackend.whenGET(globalJson).respond({});
             $httpBackend.whenGET(mainJson).respond({});
-          }));
+        }));
         //make sure no expectations were missed in your tests.
         //(e.g. expectGET or expectPOST)
-        afterEach(function() {
+        afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });
-        
-          it('should call LocalStorageService.clearAll on logout', function(){
+
+        it('should call LocalStorageService.clearAll on logout', function () {
             //GIVEN
             //Set spy
             spyOn(spiedLocalStorageService, "clearAll").and.callThrough();
@@ -39,7 +39,7 @@ describe('Services Tests ', function () {
 
             //THEN
             expect(spiedLocalStorageService.clearAll).toHaveBeenCalled();
-          });
+        });
 
     });
 });

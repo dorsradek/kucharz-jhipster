@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "przepisProdukt" : {
+        "przepisProdukt": {
             "home": {
                 "title": "PrzepisProdukt",
                 "createLabel": "Dodaj PrzepisProdukt",

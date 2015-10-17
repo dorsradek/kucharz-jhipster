@@ -6,13 +6,9 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Collection;
 
 public class AuthenticationProvider implements org.springframework.security.authentication.AuthenticationProvider {
 
@@ -30,7 +26,7 @@ public class AuthenticationProvider implements org.springframework.security.auth
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordAuthenticationToken token =
-                (UsernamePasswordAuthenticationToken) authentication;
+            (UsernamePasswordAuthenticationToken) authentication;
 
         String login = token.getName();
         UserDetails user = userDetailsService.loadUserByUsername(login);
@@ -49,6 +45,6 @@ public class AuthenticationProvider implements org.springframework.security.auth
     @Override
     public boolean supports(Class<?> authentication) {
         return UsernamePasswordAuthenticationToken
-                .class.equals(authentication);
+            .class.equals(authentication);
     }
 }

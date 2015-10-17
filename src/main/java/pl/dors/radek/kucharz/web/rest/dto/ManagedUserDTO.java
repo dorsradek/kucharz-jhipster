@@ -1,7 +1,6 @@
 package pl.dors.radek.kucharz.web.rest.dto;
 
 import org.joda.time.DateTime;
-
 import pl.dors.radek.kucharz.domain.User;
 
 /**

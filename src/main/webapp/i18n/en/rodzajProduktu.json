@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "rodzajProduktu" : {
+        "rodzajProduktu": {
             "home": {
                 "title": "RodzajProduktus",
                 "createLabel": "Create a new RodzajProduktu",

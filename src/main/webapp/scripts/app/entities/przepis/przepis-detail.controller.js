@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('kucharzApp')
-    .controller('PrzepisDetailController', function ($scope, $rootScope, $stateParams, entity, Przepis, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisProdukt) {
+    .controller('PrzepisDetailController', function ($scope, $rootScope, $stateParams, entity, Przepis, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisProdukt, PrzepisDescription) {
         $scope.przepis = entity;
         $scope.load = function (id) {
-            Przepis.get({id: id}, function(result) {
+            Przepis.get({id: id}, function (result) {
                 $scope.przepis = result;
             });
         };
-        $rootScope.$on('kucharzApp:przepisUpdate', function(event, result) {
+        $rootScope.$on('kucharzApp:przepisUpdate', function (event, result) {
             $scope.przepis = result;
         });
     });

@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('kucharzApp')
-    .directive('kucharzAppPagination', function() {
+    .directive('kucharzAppPagination', function () {
         return {
             templateUrl: 'scripts/components/form/pagination.html'
         };

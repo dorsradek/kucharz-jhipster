@@ -3,15 +3,15 @@
 angular.module('kucharzApp')
     .controller('RodzajProduktuController', function ($scope, RodzajProduktu) {
         $scope.rodzajProduktus = [];
-        $scope.loadAll = function() {
-            RodzajProduktu.query(function(result) {
-               $scope.rodzajProduktus = result;
+        $scope.loadAll = function () {
+            RodzajProduktu.query(function (result) {
+                $scope.rodzajProduktus = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            RodzajProduktu.get({id: id}, function(result) {
+            RodzajProduktu.get({id: id}, function (result) {
                 $scope.rodzajProduktu = result;
                 $('#deleteRodzajProduktuConfirmation').modal('show');
             });

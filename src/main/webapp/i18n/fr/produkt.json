@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "produkt" : {
+        "produkt": {
             "home": {
                 "title": "Produkts",
                 "createLabel": "Créer un nouveau Produkt",

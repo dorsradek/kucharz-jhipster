@@ -1,12 +1,12 @@
 package pl.dors.radek.kucharz.config;
 
-import pl.dors.radek.kucharz.security.xauth.TokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.dors.radek.kucharz.security.xauth.TokenProvider;
 
 /**
-* Configures x-auth-token security.
-*/
+ * Configures x-auth-token security.
+ */
 @Configuration
 public class XAuthConfiguration {
 

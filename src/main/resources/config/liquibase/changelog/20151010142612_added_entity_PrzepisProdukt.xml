@@ -19,14 +19,14 @@
     -->
     <changeSet id="20151010142612" author="jhipster">
         <createTable tableName="przepis_produkt">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="quantity" type="double"/>
             <column name="produkt_id" type="bigint"/>
             <column name="przepis_id" type="bigint"/>
         </createTable>
-        
+
         <addForeignKeyConstraint baseColumnNames="produkt_id"
                                  baseTableName="przepis_produkt"
                                  constraintName="fk_przepisprodukt_produkt_id"

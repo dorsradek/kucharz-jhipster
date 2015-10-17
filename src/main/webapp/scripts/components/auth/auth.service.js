@@ -9,10 +9,10 @@ angular.module('kucharzApp')
 
                 AuthServerProvider.login(credentials).then(function (data) {
                     // retrieve the logged account information
-                    Principal.identity(true).then(function(account) {
+                    Principal.identity(true).then(function (account) {
                         // After the login the language will be changed to
                         // the language selected by the user during his registration
-                        $translate.use(account.langKey).then(function(){
+                        $translate.use(account.langKey).then(function () {
                             $translate.refresh();
                         });
                         deferred.resolve(data);
@@ -35,9 +35,9 @@ angular.module('kucharzApp')
                 $rootScope.previousStateNameParams = undefined;
             },
 
-            authorize: function(force) {
+            authorize: function (force) {
                 return Principal.identity(force)
-                    .then(function() {
+                    .then(function () {
                         var isAuthenticated = Principal.isAuthenticated();
 
                         // an authenticated user can't access to login and register pages
@@ -112,14 +112,14 @@ angular.module('kucharzApp')
             resetPasswordInit: function (mail, callback) {
                 var cb = callback || angular.noop;
 
-                return PasswordResetInit.save(mail, function() {
+                return PasswordResetInit.save(mail, function () {
                     return cb();
                 }, function (err) {
                     return cb(err);
                 }).$promise;
             },
 
-            resetPasswordFinish: function(keyAndPassword, callback) {
+            resetPasswordFinish: function (keyAndPassword, callback) {
                 var cb = callback || angular.noop;
 
                 return PasswordResetFinish.save(keyAndPassword, function () {

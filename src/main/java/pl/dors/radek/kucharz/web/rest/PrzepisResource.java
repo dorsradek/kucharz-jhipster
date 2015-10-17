@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.Przepis;
-import pl.dors.radek.kucharz.repository.PrzepisRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.Przepis;
+import pl.dors.radek.kucharz.repository.PrzepisRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class PrzepisResource {
      * POST  /przepiss -> Create a new przepis.
      */
     @RequestMapping(value = "/przepiss",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Przepis> createPrzepis(@RequestBody Przepis przepis) throws URISyntaxException {
         log.debug("REST request to save Przepis : {}", przepis);
@@ -44,8 +43,8 @@ public class PrzepisResource {
         }
         Przepis result = przepisRepository.save(przepis);
         return ResponseEntity.created(new URI("/api/przepiss/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("przepis", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("przepis", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class PrzepisResource {
         }
         Przepis result = przepisRepository.save(przepis);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("przepis", przepis.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("przepis", przepis.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /przepiss -> get all the przepiss.
      */
     @RequestMapping(value = "/przepiss",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Przepis> getAllPrzepiss() {
         log.debug("REST request to get all Przepiss");
@@ -82,8 +81,8 @@ public class PrzepisResource {
      * GET  /przepiss/:id -> get the "id" przepis.
      */
     @RequestMapping(value = "/przepiss/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Przepis> getPrzepis(@PathVariable Long id) {
         log.debug("REST request to get Przepis : {}", id);
@@ -98,8 +97,8 @@ public class PrzepisResource {
      * DELETE  /przepiss/:id -> delete the "id" przepis.
      */
     @RequestMapping(value = "/przepiss/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePrzepis(@PathVariable Long id) {
         log.debug("REST request to delete Przepis : {}", id);

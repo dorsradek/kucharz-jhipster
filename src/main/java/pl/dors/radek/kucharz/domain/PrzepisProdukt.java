@@ -3,8 +3,6 @@ package pl.dors.radek.kucharz.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -18,7 +16,7 @@ public class PrzepisProdukt implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+
     @Column(name = "quantity")
     private Double quantity;
 
@@ -71,7 +69,7 @@ public class PrzepisProdukt implements Serializable {
 
         PrzepisProdukt przepisProdukt = (PrzepisProdukt) o;
 
-        if ( ! Objects.equals(id, przepisProdukt.id)) return false;
+        if (!Objects.equals(id, przepisProdukt.id)) return false;
 
         return true;
     }
@@ -84,8 +82,8 @@ public class PrzepisProdukt implements Serializable {
     @Override
     public String toString() {
         return "PrzepisProdukt{" +
-                "id=" + id +
-                ", quantity='" + quantity + "'" +
-                '}';
+            "id=" + id +
+            ", quantity='" + quantity + "'" +
+            '}';
     }
 }

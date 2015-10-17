@@ -3,7 +3,7 @@
 angular.module('kucharzApp')
     .factory('PrzepisProdukt', function ($resource, DateUtils) {
         return $resource('api/przepisProdukts/:id', {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
@@ -11,6 +11,6 @@ angular.module('kucharzApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': {method: 'PUT'}
         });
     });

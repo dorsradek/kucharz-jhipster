@@ -1,10 +1,8 @@
 package pl.dors.radek.kucharz.repository;
 
-import pl.dors.radek.kucharz.domain.User;
-
 import org.joda.time.DateTime;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import pl.dors.radek.kucharz.domain.User;
 
 import java.util.List;
 import java.util.Optional;

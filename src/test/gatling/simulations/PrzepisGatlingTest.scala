@@ -70,7 +70,7 @@ class PrzepisGatlingTest extends Simulation {
             .exec(http("Create new przepis")
             .post("/api/przepiss")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "duration":"SAMPLE_TEXT", "creationDate":"2020-01-01T00:00:00.000Z", "modificationDate":"2020-01-01T00:00:00.000Z", "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "duration":"SAMPLE_TEXT", "creationDate":"2020-01-01T00:00:00.000Z", "modificationDate":"2020-01-01T00:00:00.000Z", "name":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_przepis_url")))
             .pause(10)

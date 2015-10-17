@@ -1,6 +1,5 @@
 package pl.dors.radek.kucharz.config;
 
-import pl.dors.radek.kucharz.config.liquibase.AsyncSpringLiquibase;
 import com.codahale.metrics.MetricRegistry;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.zaxxer.hikari.HikariConfig;
@@ -15,12 +14,12 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.context.ApplicationContextException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
+import pl.dors.radek.kucharz.config.liquibase.AsyncSpringLiquibase;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -30,7 +29,7 @@ import java.util.Arrays;
 @EnableJpaRepositories("pl.dors.radek.kucharz.repository")
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
-public class DatabaseConfiguration  {
+public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
@@ -48,13 +47,13 @@ public class DatabaseConfiguration  {
         if (dataSourceProperties.getUrl() == null && databaseName == null) {
             log.error("Your database connection pool configuration is incorrect! The application" +
                     " cannot start. Please check your Spring profile, current profiles are: {}",
-                    Arrays.toString(env.getActiveProfiles()));
+                Arrays.toString(env.getActiveProfiles()));
 
             throw new ApplicationContextException("Database connection pool is not configured correctly");
         }
         HikariConfig config = new HikariConfig();
         config.setDataSourceClassName(dataSourceProperties.getDriverClassName());
-        if(StringUtils.isEmpty(dataSourceProperties.getUrl())) {
+        if (StringUtils.isEmpty(dataSourceProperties.getUrl())) {
             config.addDataSourceProperty("databaseName", databaseName);
             config.addDataSourceProperty("serverName", jHipsterProperties.getDatasource().getServerName());
         } else {
@@ -79,7 +78,7 @@ public class DatabaseConfiguration  {
 
     @Bean
     public SpringLiquibase liquibase(DataSource dataSource, DataSourceProperties dataSourceProperties,
-        LiquibaseProperties liquibaseProperties) {
+                                     LiquibaseProperties liquibaseProperties) {
 
         // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
         SpringLiquibase liquibase = new AsyncSpringLiquibase();

@@ -1,27 +1,28 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.springframework.http.MediaType;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.springframework.http.MediaType;
 import pl.dors.radek.kucharz.domain.util.CustomDateTimeSerializer;
 import pl.dors.radek.kucharz.domain.util.CustomLocalDateSerializer;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Utility class for testing REST controllers.
  */
 public class TestUtil {
 
-    /** MediaType for JSON UTF8 */
+    /**
+     * MediaType for JSON UTF8
+     */
     public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(
-            MediaType.APPLICATION_JSON.getType(),
-            MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        MediaType.APPLICATION_JSON.getType(),
+        MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
     /**
      * Convert an object to JSON byte array.
@@ -31,7 +32,7 @@ public class TestUtil {
      * @throws IOException
      */
     public static byte[] convertObjectToJsonBytes(Object object)
-            throws IOException {
+        throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         JodaModule module = new JodaModule();

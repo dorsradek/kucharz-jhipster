@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('rodzajProduktu');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'RodzajProduktu', function($stateParams, RodzajProduktu) {
-                        return RodzajProduktu.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'RodzajProduktu', function ($stateParams, RodzajProduktu) {
+                        return RodzajProduktu.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/rodzajProduktu/rodzajProduktu-dialog.html',
                         controller: 'RodzajProduktuDialogController',
@@ -66,11 +66,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('rodzajProduktu', null, { reload: true });
-                    }, function() {
-                        $state.go('rodzajProduktu');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('rodzajProduktu', null, {reload: true});
+                        }, function () {
+                            $state.go('rodzajProduktu');
+                        })
                 }]
             })
             .state('rodzajProduktu.edit', {
@@ -79,21 +79,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/rodzajProduktu/rodzajProduktu-dialog.html',
                         controller: 'RodzajProduktuDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['RodzajProduktu', function(RodzajProduktu) {
-                                return RodzajProduktu.get({id : $stateParams.id});
+                            entity: ['RodzajProduktu', function (RodzajProduktu) {
+                                return RodzajProduktu.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('rodzajProduktu', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('rodzajProduktu', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });

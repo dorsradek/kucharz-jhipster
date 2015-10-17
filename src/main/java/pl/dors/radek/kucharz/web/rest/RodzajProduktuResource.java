@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.RodzajProduktu;
-import pl.dors.radek.kucharz.repository.RodzajProduktuRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.RodzajProduktu;
+import pl.dors.radek.kucharz.repository.RodzajProduktuRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class RodzajProduktuResource {
      * POST  /rodzajProduktus -> Create a new rodzajProduktu.
      */
     @RequestMapping(value = "/rodzajProduktus",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<RodzajProduktu> createRodzajProduktu(@RequestBody RodzajProduktu rodzajProduktu) throws URISyntaxException {
         log.debug("REST request to save RodzajProduktu : {}", rodzajProduktu);
@@ -44,8 +43,8 @@ public class RodzajProduktuResource {
         }
         RodzajProduktu result = rodzajProduktuRepository.save(rodzajProduktu);
         return ResponseEntity.created(new URI("/api/rodzajProduktus/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("rodzajProduktu", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("rodzajProduktu", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class RodzajProduktuResource {
         }
         RodzajProduktu result = rodzajProduktuRepository.save(rodzajProduktu);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("rodzajProduktu", rodzajProduktu.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("rodzajProduktu", rodzajProduktu.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /rodzajProduktus -> get all the rodzajProduktus.
      */
     @RequestMapping(value = "/rodzajProduktus",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<RodzajProduktu> getAllRodzajProduktus() {
         log.debug("REST request to get all RodzajProduktus");
@@ -82,8 +81,8 @@ public class RodzajProduktuResource {
      * GET  /rodzajProduktus/:id -> get the "id" rodzajProduktu.
      */
     @RequestMapping(value = "/rodzajProduktus/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<RodzajProduktu> getRodzajProduktu(@PathVariable Long id) {
         log.debug("REST request to get RodzajProduktu : {}", id);
@@ -98,8 +97,8 @@ public class RodzajProduktuResource {
      * DELETE  /rodzajProduktus/:id -> delete the "id" rodzajProduktu.
      */
     @RequestMapping(value = "/rodzajProduktus/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteRodzajProduktu(@PathVariable Long id) {
         log.debug("REST request to delete RodzajProduktu : {}", id);

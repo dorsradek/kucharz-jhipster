@@ -1,6 +1,5 @@
 package pl.dors.radek.kucharz.service;
 
-import pl.dors.radek.kucharz.domain.User;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import pl.dors.radek.kucharz.domain.User;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -55,7 +55,7 @@ public class MailService {
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
-                isMultipart, isHtml, to, subject, content);
+            isMultipart, isHtml, to, subject, content);
 
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();

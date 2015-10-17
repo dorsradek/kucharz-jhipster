@@ -17,9 +17,9 @@ angular.module('kucharzApp')
                     return $q.when(false);
                 }
 
-                return this.identity().then(function(_id) {
+                return this.identity().then(function (_id) {
                     return _id.authorities && _id.authorities.indexOf(authority) !== -1;
-                }, function(err){
+                }, function (err) {
                     return false;
                 });
             },
@@ -62,7 +62,7 @@ angular.module('kucharzApp')
                         _authenticated = true;
                         deferred.resolve(_identity);
                     })
-                    .catch(function() {
+                    .catch(function () {
                         _identity = null;
                         _authenticated = false;
                         deferred.resolve(_identity);

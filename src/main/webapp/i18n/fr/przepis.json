@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "przepis" : {
+        "przepis": {
             "home": {
                 "title": "Przepiss",
                 "createLabel": "Créer un nouveau Przepis",
@@ -16,10 +16,10 @@
             "creationDate": "CreationDate",
             "modificationDate": "ModificationDate",
             "name": "Name",
-            "description": "Description",
             "kategoriaPrzepisu": "KategoriaPrzepisu",
             "pracochlonnoscPrzepisu": "PracochlonnoscPrzepisu",
-            "przepisProdukt": "PrzepisProdukt"
+            "przepisProdukt": "PrzepisProdukt",
+            "przepisDescription": "PrzepisDescription"
         }
     }
 }

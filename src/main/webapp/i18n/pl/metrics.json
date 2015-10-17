@@ -79,7 +79,7 @@
             "mean": "Średni czas pobierania (ms)"
         },
         "datasource": {
-        	"usage": "Użycie",
+            "usage": "Użycie",
             "title": "Statystyki bazy danych (czas w milisekundach)",
             "name": "Użycie puli połączeń",
             "count": "Licznik",

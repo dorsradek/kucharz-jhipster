@@ -1,10 +1,10 @@
 package pl.dors.radek.kucharz;
 
-import pl.dors.radek.kucharz.config.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import pl.dors.radek.kucharz.config.Constants;
 
 /**
  * This is a helper Java class that provides an alternative to creating a web.xml.
@@ -16,8 +16,8 @@ public class ApplicationWebXml extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.profiles(addDefaultProfile())
-                .showBanner(false)
-                .sources(Application.class);
+            .showBanner(false)
+            .sources(Application.class);
     }
 
     /**

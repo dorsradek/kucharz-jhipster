@@ -1,31 +1,30 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
-import pl.dors.radek.kucharz.repository.KategoriaPrzepisuRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import pl.dors.radek.kucharz.Application;
+import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
+import pl.dors.radek.kucharz.repository.KategoriaPrzepisuRepository;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -81,9 +80,9 @@ public class KategoriaPrzepisuResourceTest {
         // Create the KategoriaPrzepisu
 
         restKategoriaPrzepisuMockMvc.perform(post("/api/kategoriaPrzepisus")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(kategoriaPrzepisu)))
-                .andExpect(status().isCreated());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(kategoriaPrzepisu)))
+            .andExpect(status().isCreated());
 
         // Validate the KategoriaPrzepisu in the database
         List<KategoriaPrzepisu> kategoriaPrzepisus = kategoriaPrzepisuRepository.findAll();
@@ -100,10 +99,10 @@ public class KategoriaPrzepisuResourceTest {
 
         // Get all the kategoriaPrzepisus
         restKategoriaPrzepisuMockMvc.perform(get("/api/kategoriaPrzepisus"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(kategoriaPrzepisu.getId().intValue())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(kategoriaPrzepisu.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test
@@ -125,7 +124,7 @@ public class KategoriaPrzepisuResourceTest {
     public void getNonExistingKategoriaPrzepisu() throws Exception {
         // Get the kategoriaPrzepisu
         restKategoriaPrzepisuMockMvc.perform(get("/api/kategoriaPrzepisus/{id}", Long.MAX_VALUE))
-                .andExpect(status().isNotFound());
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -134,15 +133,15 @@ public class KategoriaPrzepisuResourceTest {
         // Initialize the database
         kategoriaPrzepisuRepository.saveAndFlush(kategoriaPrzepisu);
 
-		int databaseSizeBeforeUpdate = kategoriaPrzepisuRepository.findAll().size();
+        int databaseSizeBeforeUpdate = kategoriaPrzepisuRepository.findAll().size();
 
         // Update the kategoriaPrzepisu
         kategoriaPrzepisu.setName(UPDATED_NAME);
 
         restKategoriaPrzepisuMockMvc.perform(put("/api/kategoriaPrzepisus")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(kategoriaPrzepisu)))
-                .andExpect(status().isOk());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(kategoriaPrzepisu)))
+            .andExpect(status().isOk());
 
         // Validate the KategoriaPrzepisu in the database
         List<KategoriaPrzepisu> kategoriaPrzepisus = kategoriaPrzepisuRepository.findAll();
@@ -157,12 +156,12 @@ public class KategoriaPrzepisuResourceTest {
         // Initialize the database
         kategoriaPrzepisuRepository.saveAndFlush(kategoriaPrzepisu);
 
-		int databaseSizeBeforeDelete = kategoriaPrzepisuRepository.findAll().size();
+        int databaseSizeBeforeDelete = kategoriaPrzepisuRepository.findAll().size();
 
         // Get the kategoriaPrzepisu
         restKategoriaPrzepisuMockMvc.perform(delete("/api/kategoriaPrzepisus/{id}", kategoriaPrzepisu.getId())
-                .accept(TestUtil.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .andExpect(status().isOk());
 
         // Validate the database is empty
         List<KategoriaPrzepisu> kategoriaPrzepisus = kategoriaPrzepisuRepository.findAll();

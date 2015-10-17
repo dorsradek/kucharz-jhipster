@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A KategoriaPrzepisu.
@@ -19,7 +19,7 @@ public class KategoriaPrzepisu implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+
     @Column(name = "name")
     private String name;
 
@@ -62,7 +62,7 @@ public class KategoriaPrzepisu implements Serializable {
 
         KategoriaPrzepisu kategoriaPrzepisu = (KategoriaPrzepisu) o;
 
-        if ( ! Objects.equals(id, kategoriaPrzepisu.id)) return false;
+        if (!Objects.equals(id, kategoriaPrzepisu.id)) return false;
 
         return true;
     }
@@ -75,8 +75,8 @@ public class KategoriaPrzepisu implements Serializable {
     @Override
     public String toString() {
         return "KategoriaPrzepisu{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                '}';
+            "id=" + id +
+            ", name='" + name + "'" +
+            '}';
     }
 }

@@ -1,16 +1,15 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.domain.MiaraProduktu;
-import pl.dors.radek.kucharz.repository.MiaraProduktuRepository;
-import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dors.radek.kucharz.domain.MiaraProduktu;
+import pl.dors.radek.kucharz.repository.MiaraProduktuRepository;
+import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -34,8 +33,8 @@ public class MiaraProduktuResource {
      * POST  /miaraProduktus -> Create a new miaraProduktu.
      */
     @RequestMapping(value = "/miaraProduktus",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<MiaraProduktu> createMiaraProduktu(@RequestBody MiaraProduktu miaraProduktu) throws URISyntaxException {
         log.debug("REST request to save MiaraProduktu : {}", miaraProduktu);
@@ -44,8 +43,8 @@ public class MiaraProduktuResource {
         }
         MiaraProduktu result = miaraProduktuRepository.save(miaraProduktu);
         return ResponseEntity.created(new URI("/api/miaraProduktus/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("miaraProduktu", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("miaraProduktu", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -62,16 +61,16 @@ public class MiaraProduktuResource {
         }
         MiaraProduktu result = miaraProduktuRepository.save(miaraProduktu);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("miaraProduktu", miaraProduktu.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("miaraProduktu", miaraProduktu.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /miaraProduktus -> get all the miaraProduktus.
      */
     @RequestMapping(value = "/miaraProduktus",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<MiaraProduktu> getAllMiaraProduktus() {
         log.debug("REST request to get all MiaraProduktus");
@@ -82,8 +81,8 @@ public class MiaraProduktuResource {
      * GET  /miaraProduktus/:id -> get the "id" miaraProduktu.
      */
     @RequestMapping(value = "/miaraProduktus/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<MiaraProduktu> getMiaraProduktu(@PathVariable Long id) {
         log.debug("REST request to get MiaraProduktu : {}", id);
@@ -98,8 +97,8 @@ public class MiaraProduktuResource {
      * DELETE  /miaraProduktus/:id -> delete the "id" miaraProduktu.
      */
     @RequestMapping(value = "/miaraProduktus/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteMiaraProduktu(@PathVariable Long id) {
         log.debug("REST request to delete MiaraProduktu : {}", id);

@@ -28,7 +28,6 @@ module.exports = function (config) {
             'main/webapp/bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js',
             'main/webapp/bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js',
             'main/webapp/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
-            'main/webapp/bower_components/angular-ui-router/release/angular-ui-router.js',
             'main/webapp/bower_components/bootstrap/dist/js/bootstrap.js',
             'main/webapp/bower_components/json3/lib/json3.js',
             'main/webapp/bower_components/ng-file-upload/ng-file-upload.js',
@@ -52,12 +51,12 @@ module.exports = function (config) {
         reporters: ['dots', 'jenkins', 'coverage', 'progress'],
 
         jenkinsReporter: {
-            
+
             outputFile: '../target/test-results/karma/TESTS-results.xml'
         },
 
         coverageReporter: {
-            
+
             dir: '../target/test-results/coverage',
             reporters: [
                 {type: 'lcov', subdir: 'report-lcov'}
@@ -89,8 +88,8 @@ module.exports = function (config) {
         singleRun: false,
 
         // to avoid DISCONNECTED messages when connecting to slow virtual machines
-        browserDisconnectTimeout : 10000, // default 2000
-        browserDisconnectTolerance : 1, // default 0
-        browserNoActivityTimeout : 4*60*1000 //default 10000
+        browserDisconnectTimeout: 10000, // default 2000
+        browserDisconnectTolerance: 1, // default 0
+        browserNoActivityTimeout: 4 * 60 * 1000 //default 10000
     });
 };

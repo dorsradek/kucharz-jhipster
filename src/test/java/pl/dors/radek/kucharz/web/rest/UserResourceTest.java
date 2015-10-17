@@ -1,8 +1,5 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.repository.UserRepository;
-import pl.dors.radek.kucharz.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +11,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import pl.dors.radek.kucharz.Application;
+import pl.dors.radek.kucharz.repository.UserRepository;
+import pl.dors.radek.kucharz.service.UserService;
 
 import javax.inject.Inject;
 
@@ -50,16 +50,16 @@ public class UserResourceTest {
     @Test
     public void testGetExistingUser() throws Exception {
         restUserMockMvc.perform(get("/api/users/admin")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.lastName").value("Administrator"));
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType("application/json"))
+            .andExpect(jsonPath("$.lastName").value("Administrator"));
     }
 
     @Test
     public void testGetUnknownUser() throws Exception {
         restUserMockMvc.perform(get("/api/users/unknown")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound());
     }
 }

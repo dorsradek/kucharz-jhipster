@@ -3,8 +3,8 @@
 angular.module('kucharzApp')
     .factory('AuthServerProvider', function loginService($http, localStorageService, Base64) {
         return {
-            login: function(credentials) {
-                var data = "username=" +  encodeURIComponent(credentials.username) + "&password="
+            login: function (credentials) {
+                var data = "username=" + encodeURIComponent(credentials.username) + "&password="
                     + encodeURIComponent(credentials.password);
                 return $http.post('api/authenticate', data, {
                     headers: {
@@ -16,7 +16,7 @@ angular.module('kucharzApp')
                     return response;
                 });
             },
-            logout: function() {
+            logout: function () {
                 //Stateless API : No server logout
                 localStorageService.clearAll();
             },

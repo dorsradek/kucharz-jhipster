@@ -1,8 +1,6 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pl.dors.radek.kucharz.security.xauth.Token;
-import pl.dors.radek.kucharz.security.xauth.TokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pl.dors.radek.kucharz.security.xauth.Token;
+import pl.dors.radek.kucharz.security.xauth.TokenProvider;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("/api")
@@ -33,7 +30,7 @@ public class UserXAuthTokenController {
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "/authenticate",
-            method = RequestMethod.POST)
+        method = RequestMethod.POST)
     @Timed
     public Token authorize(@RequestParam String username, @RequestParam String password) {
 

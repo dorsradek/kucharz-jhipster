@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('kategoriaPrzepisu');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'KategoriaPrzepisu', function($stateParams, KategoriaPrzepisu) {
-                        return KategoriaPrzepisu.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'KategoriaPrzepisu', function ($stateParams, KategoriaPrzepisu) {
+                        return KategoriaPrzepisu.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/kategoriaPrzepisu/kategoriaPrzepisu-dialog.html',
                         controller: 'KategoriaPrzepisuDialogController',
@@ -66,11 +66,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('kategoriaPrzepisu', null, { reload: true });
-                    }, function() {
-                        $state.go('kategoriaPrzepisu');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('kategoriaPrzepisu', null, {reload: true});
+                        }, function () {
+                            $state.go('kategoriaPrzepisu');
+                        })
                 }]
             })
             .state('kategoriaPrzepisu.edit', {
@@ -79,21 +79,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/kategoriaPrzepisu/kategoriaPrzepisu-dialog.html',
                         controller: 'KategoriaPrzepisuDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['KategoriaPrzepisu', function(KategoriaPrzepisu) {
-                                return KategoriaPrzepisu.get({id : $stateParams.id});
+                            entity: ['KategoriaPrzepisu', function (KategoriaPrzepisu) {
+                                return KategoriaPrzepisu.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('kategoriaPrzepisu', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('kategoriaPrzepisu', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });

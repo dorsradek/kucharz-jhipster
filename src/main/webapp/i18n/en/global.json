@@ -13,6 +13,7 @@
                 "rodzajProduktu": "RodzajProduktu",
                 "przepisProdukt": "PrzepisProdukt",
                 "produkt": "Produkt",
+                "przepisDescription": "PrzepisDescription",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

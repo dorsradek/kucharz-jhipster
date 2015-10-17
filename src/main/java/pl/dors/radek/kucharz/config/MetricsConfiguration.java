@@ -91,10 +91,10 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
                 String graphitePrefix = jHipsterProperties.getMetrics().getGraphite().getPrefix();
                 Graphite graphite = new Graphite(new InetSocketAddress(graphiteHost, graphitePort));
                 GraphiteReporter graphiteReporter = GraphiteReporter.forRegistry(metricRegistry)
-                        .convertRatesTo(TimeUnit.SECONDS)
-                        .convertDurationsTo(TimeUnit.MILLISECONDS)
-                        .prefixedWith(graphitePrefix)
-                        .build(graphite);
+                    .convertRatesTo(TimeUnit.SECONDS)
+                    .convertDurationsTo(TimeUnit.MILLISECONDS)
+                    .prefixedWith(graphitePrefix)
+                    .build(graphite);
                 graphiteReporter.start(1, TimeUnit.MINUTES);
             }
         }
@@ -120,9 +120,9 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
                 String sparkHost = jHipsterProperties.getMetrics().getSpark().getHost();
                 Integer sparkPort = jHipsterProperties.getMetrics().getSpark().getPort();
                 SparkReporter sparkReporter = SparkReporter.forRegistry(metricRegistry)
-                        .convertRatesTo(TimeUnit.SECONDS)
-                        .convertDurationsTo(TimeUnit.MILLISECONDS)
-                        .build(sparkHost, sparkPort);
+                    .convertRatesTo(TimeUnit.SECONDS)
+                    .convertDurationsTo(TimeUnit.MILLISECONDS)
+                    .build(sparkHost, sparkPort);
                 sparkReporter.start(1, TimeUnit.MINUTES);
             }
         }

@@ -1,6 +1,6 @@
 {
     "kucharzApp": {
-        "produkt" : {
+        "produkt": {
             "home": {
                 "title": "Produkty",
                 "createLabel": "Dodaj",
@@ -19,8 +19,8 @@
             "miaraProduktu": "Miara",
             "rodzajProduktu": "Rodzaj",
             "przepisProdukt": "PrzepisProdukt",
-            "defaultType" : "Wybierz typ",
-            "defaultMeasure" : "Wybierz miarę",
+            "defaultType": "Wybierz typ",
+            "defaultMeasure": "Wybierz miarę",
             "validate": {
                 "name": {
                     "required": "Nazwa jest wymagana.",

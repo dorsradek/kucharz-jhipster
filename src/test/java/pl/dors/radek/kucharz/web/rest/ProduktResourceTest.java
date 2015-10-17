@@ -1,31 +1,30 @@
 package pl.dors.radek.kucharz.web.rest;
 
-import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.domain.Produkt;
-import pl.dors.radek.kucharz.repository.ProduktRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import pl.dors.radek.kucharz.Application;
+import pl.dors.radek.kucharz.domain.Produkt;
+import pl.dors.radek.kucharz.repository.ProduktRepository;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -81,9 +80,9 @@ public class ProduktResourceTest {
         // Create the Produkt
 
         restProduktMockMvc.perform(post("/api/produkts")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(produkt)))
-                .andExpect(status().isCreated());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(produkt)))
+            .andExpect(status().isCreated());
 
         // Validate the Produkt in the database
         List<Produkt> produkts = produktRepository.findAll();
@@ -100,10 +99,10 @@ public class ProduktResourceTest {
 
         // Get all the produkts
         restProduktMockMvc.perform(get("/api/produkts"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(produkt.getId().intValue())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(produkt.getId().intValue())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
     @Test
@@ -125,7 +124,7 @@ public class ProduktResourceTest {
     public void getNonExistingProdukt() throws Exception {
         // Get the produkt
         restProduktMockMvc.perform(get("/api/produkts/{id}", Long.MAX_VALUE))
-                .andExpect(status().isNotFound());
+            .andExpect(status().isNotFound());
     }
 
     @Test
@@ -134,15 +133,15 @@ public class ProduktResourceTest {
         // Initialize the database
         produktRepository.saveAndFlush(produkt);
 
-		int databaseSizeBeforeUpdate = produktRepository.findAll().size();
+        int databaseSizeBeforeUpdate = produktRepository.findAll().size();
 
         // Update the produkt
         produkt.setName(UPDATED_NAME);
 
         restProduktMockMvc.perform(put("/api/produkts")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(produkt)))
-                .andExpect(status().isOk());
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(produkt)))
+            .andExpect(status().isOk());
 
         // Validate the Produkt in the database
         List<Produkt> produkts = produktRepository.findAll();
@@ -157,12 +156,12 @@ public class ProduktResourceTest {
         // Initialize the database
         produktRepository.saveAndFlush(produkt);
 
-		int databaseSizeBeforeDelete = produktRepository.findAll().size();
+        int databaseSizeBeforeDelete = produktRepository.findAll().size();
 
         // Get the produkt
         restProduktMockMvc.perform(delete("/api/produkts/{id}", produkt.getId())
-                .accept(TestUtil.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+            .accept(TestUtil.APPLICATION_JSON_UTF8))
+            .andExpect(status().isOk());
 
         // Validate the database is empty
         List<Produkt> produkts = produktRepository.findAll();

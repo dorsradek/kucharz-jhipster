@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate', 
-               'ui.bootstrap', // for modal dialogs
+angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate',
+    'ui.bootstrap', // for modal dialogs
     'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
@@ -14,39 +14,39 @@ angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
             // Update the language
             Language.getCurrent().then(function (language) {
                 $translate.use(language);
             });
-            
+
         });
 
-        $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-            var titleKey = 'global.title' ;
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            var titleKey = 'global.title';
 
             // Remember previous state unless we've been redirected to login or we've just
             // reset the state memory after logout. If we're redirected to login, our
             // previousState is already set in the authExpiredInterceptor. If we're going
             // to login directly, we don't want to be sent to some previous state anyway
             if (toState.name != 'login' && $rootScope.previousStateName) {
-              $rootScope.previousStateName = fromState.name;
-              $rootScope.previousStateParams = fromParams;
+                $rootScope.previousStateName = fromState.name;
+                $rootScope.previousStateParams = fromParams;
             }
 
             // Set the page title key to the one configured in state or use default one
             if (toState.data.pageTitle) {
                 titleKey = toState.data.pageTitle;
             }
-            
+
             $translate(titleKey).then(function (title) {
                 // Change window title with translated one
                 $window.document.title = title;
             });
-            
+
         });
 
-        $rootScope.back = function() {
+        $rootScope.back = function () {
             // If previous state is 'activate' or do not exist go to 'home'
             if ($rootScope.previousStateName === 'activate' || $state.get($rootScope.previousStateName) === null) {
                 $state.go('home');
@@ -89,7 +89,7 @@ angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
-        
+
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: 'i18n/{lang}/{part}.json'
@@ -103,5 +103,5 @@ angular.module('kucharzApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
         tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
         tmhDynamicLocaleProvider.useCookieStorage();
         tmhDynamicLocaleProvider.storageKey('NG_TRANSLATE_LANG_KEY');
-        
+
     });

@@ -20,6 +20,13 @@
             "otherEntityName": "przepisProdukt",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "przepis"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "przepisDescription",
+            "otherEntityName": "przepisDescription",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "przepis"
         }
     ],
     "fields": [
@@ -41,11 +48,6 @@
         {
             "fieldId": 4,
             "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldId": 5,
-            "fieldName": "description",
             "fieldType": "String"
         }
     ],

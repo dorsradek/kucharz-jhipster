@@ -42,8 +42,8 @@ angular.module('kucharzApp')
                         $translatePartialLoader.addPart('miaraProduktu');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'MiaraProduktu', function($stateParams, MiaraProduktu) {
-                        return MiaraProduktu.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'MiaraProduktu', function ($stateParams, MiaraProduktu) {
+                        return MiaraProduktu.get({id: $stateParams.id});
                     }]
                 }
             })
@@ -53,7 +53,7 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/miaraProduktu/miaraProduktu-dialog.html',
                         controller: 'MiaraProduktuDialogController',
@@ -67,11 +67,11 @@ angular.module('kucharzApp')
                                 };
                             }
                         }
-                    }).result.then(function(result) {
-                        $state.go('miaraProduktu', null, { reload: true });
-                    }, function() {
-                        $state.go('miaraProduktu');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('miaraProduktu', null, {reload: true});
+                        }, function () {
+                            $state.go('miaraProduktu');
+                        })
                 }]
             })
             .state('miaraProduktu.edit', {
@@ -80,21 +80,21 @@ angular.module('kucharzApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/miaraProduktu/miaraProduktu-dialog.html',
                         controller: 'MiaraProduktuDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['MiaraProduktu', function(MiaraProduktu) {
-                                return MiaraProduktu.get({id : $stateParams.id});
+                            entity: ['MiaraProduktu', function (MiaraProduktu) {
+                                return MiaraProduktu.get({id: $stateParams.id});
                             }]
                         }
-                    }).result.then(function(result) {
-                        $state.go('miaraProduktu', null, { reload: true });
-                    }, function() {
-                        $state.go('^');
-                    })
+                    }).result.then(function (result) {
+                            $state.go('miaraProduktu', null, {reload: true});
+                        }, function () {
+                            $state.go('^');
+                        })
                 }]
             });
     });
