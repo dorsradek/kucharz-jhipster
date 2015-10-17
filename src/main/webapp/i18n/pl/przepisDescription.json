@@ -1,0 +1,20 @@
+{
+    "kucharzApp": {
+        "przepisDescription": {
+            "home": {
+                "title": "PrzepisDescription",
+                "createLabel": "Dodaj PrzepisDescription",
+                "createOrEditLabel": "Dodaj lub edytuj: PrzepisDescription"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć PrzepisDescription {{ id }}?"
+            },
+            "detail": {
+                "title": "PrzepisDescription"
+            },
+            "title": "Title",
+            "text": "Text",
+            "przepis": "Przepis"
+        }
+    }
+}
