@@ -12,4 +12,6 @@ public interface PrzepisDescriptionRepository extends JpaRepository<PrzepisDescr
 
     Set<PrzepisDescription> findAllByPrzepisId(Long przepisId);
 
+    Long deleteByPrzepisId(Long przepisId);
+
 }

@@ -5,7 +5,7 @@ angular.module('kucharzApp')
         $stateProvider
             .state('przepis', {
                 parent: 'entity',
-                url: '/przepiss',
+                url: '/przepisy',
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'kucharzApp.przepis.home.title'
@@ -78,8 +78,8 @@ angular.module('kucharzApp')
                 }]
             })
             .state('przepis.edit', {
-                parent: 'przepis',
-                url: '/{id}/edit',
+                parent: 'przepis.detail',
+                url: '/edit',
                 data: {
                     authorities: ['ROLE_USER'],
                 },

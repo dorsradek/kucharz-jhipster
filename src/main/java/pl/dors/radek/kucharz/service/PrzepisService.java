@@ -36,12 +36,24 @@ public class PrzepisService {
     public Optional<Przepis> getPrzepis(Long id) {
         log.debug("REST request to get Przepis : {}", id);
         return Optional.ofNullable(przepisRepository.findOne(id))
-                .map(przepis -> {
-                    Set<PrzepisDescription> przepisDescriptions = przepisDescriptionRepository.findAllByPrzepisId(przepis.getId());
-                    przepis.setPrzepisDescriptions(przepisDescriptions);
-                    Set<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAllByPrzepisId(przepis.getId());
-                    przepis.setPrzepisProdukts(przepisProdukts);
-                    return przepis;
-                });
+            .map(przepis -> {
+                Set<PrzepisDescription> przepisDescriptions = przepisDescriptionRepository.findAllByPrzepisId(przepis.getId());
+                przepis.setPrzepisDescriptions(przepisDescriptions);
+                Set<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAllByPrzepisId(przepis.getId());
+                przepis.setPrzepisProdukts(przepisProdukts);
+                return przepis;
+            });
     }
+
+    public void delete(Long id) {
+        log.debug("REST request to get Przepis : {}", id);
+        Optional.ofNullable(przepisRepository.findOne(id))
+            .map(przepis -> {
+                przepisDescriptionRepository.deleteByPrzepisId(przepis.getId());
+                przepisProduktRepository.deleteByPrzepisId(przepis.getId());
+                przepisRepository.delete(przepis.getId());
+                return przepis;
+            });
+    }
+
 }
