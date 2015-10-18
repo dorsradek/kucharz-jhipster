@@ -23,7 +23,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)"/>
-            <column name="text" type="varchar(255)"/>
+            <column name="text" type="varchar(5000)"/>
             <column name="przepis_id" type="bigint"/>
         </createTable>
 
@@ -32,6 +32,11 @@
                                  constraintName="fk_przepisdescription_przepis_id"
                                  referencedColumnNames="id"
                                  referencedTableName="przepis"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/przepis_description.csv"
+                  separator=";"
+                  tableName="przepis_description"/>
 
     </changeSet>
 </databaseChangeLog>
