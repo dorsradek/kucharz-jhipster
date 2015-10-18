@@ -1,6 +1,8 @@
 package pl.dors.radek.kucharz.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -24,6 +26,7 @@ public class PrzepisDescription implements Serializable {
     private String text;
 
     @ManyToOne
+    @JsonIgnore
     private Przepis przepis;
 
     public Long getId() {

@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.dors.radek.kucharz.Application;
 import pl.dors.radek.kucharz.domain.Przepis;
 import pl.dors.radek.kucharz.repository.PrzepisRepository;
+import pl.dors.radek.kucharz.service.PrzepisService;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -63,6 +64,9 @@ public class PrzepisResourceTest {
     private PrzepisRepository przepisRepository;
 
     @Inject
+    private PrzepisService przepisService;
+
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Inject
@@ -77,6 +81,7 @@ public class PrzepisResourceTest {
         MockitoAnnotations.initMocks(this);
         PrzepisResource przepisResource = new PrzepisResource();
         ReflectionTestUtils.setField(przepisResource, "przepisRepository", przepisRepository);
+        ReflectionTestUtils.setField(przepisResource, "przepisService", przepisService);
         this.restPrzepisMockMvc = MockMvcBuilders.standaloneSetup(przepisResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();

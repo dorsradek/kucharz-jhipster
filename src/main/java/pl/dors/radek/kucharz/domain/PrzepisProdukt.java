@@ -1,6 +1,8 @@
 package pl.dors.radek.kucharz.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -24,6 +26,7 @@ public class PrzepisProdukt implements Serializable {
     private Produkt produkt;
 
     @ManyToOne
+    @JsonIgnore
     private Przepis przepis;
 
     public Long getId() {
@@ -69,9 +72,8 @@ public class PrzepisProdukt implements Serializable {
 
         PrzepisProdukt przepisProdukt = (PrzepisProdukt) o;
 
-        if (!Objects.equals(id, przepisProdukt.id)) return false;
+        return Objects.equals(id, przepisProdukt.id);
 
-        return true;
     }
 
     @Override
@@ -82,8 +84,8 @@ public class PrzepisProdukt implements Serializable {
     @Override
     public String toString() {
         return "PrzepisProdukt{" +
-            "id=" + id +
-            ", quantity='" + quantity + "'" +
-            '}';
+                "id=" + id +
+                ", quantity='" + quantity + "'" +
+                '}';
     }
 }

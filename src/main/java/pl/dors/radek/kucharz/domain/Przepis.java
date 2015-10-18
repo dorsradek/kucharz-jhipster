@@ -1,6 +1,5 @@
 package pl.dors.radek.kucharz.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Type;
@@ -51,11 +50,11 @@ public class Przepis implements Serializable {
     private PracochlonnoscPrzepisu pracochlonnoscPrzepisu;
 
     @OneToMany(mappedBy = "przepis")
-    @JsonIgnore
+    //@JsonIgnore
     private Set<PrzepisProdukt> przepisProdukts = new HashSet<>();
 
     @OneToMany(mappedBy = "przepis")
-    @JsonIgnore
+    //@JsonIgnore
     private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
 
     public Long getId() {
@@ -141,9 +140,8 @@ public class Przepis implements Serializable {
 
         Przepis przepis = (Przepis) o;
 
-        if (!Objects.equals(id, przepis.id)) return false;
+        return Objects.equals(id, przepis.id);
 
-        return true;
     }
 
     @Override

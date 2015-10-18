@@ -65,6 +65,7 @@ angular.module('kucharzApp')
                                     creationDate: null,
                                     modificationDate: null,
                                     name: null,
+                                    description: null,
                                     id: null
                                 };
                             }
