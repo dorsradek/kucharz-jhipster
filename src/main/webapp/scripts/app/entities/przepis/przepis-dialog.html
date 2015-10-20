@@ -1,4 +1,3 @@
-
 <form name="editForm" role="form" novalidate ng-submit="save()">
 
     <div class="modal-header">
@@ -14,35 +13,64 @@
             <input type="text" class="form-control" id="id" name="id"
                    ng-model="przepis.id" readonly>
         </div>
+
+        <div class="form-group">
+            <div class="span4">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="input-append">
+                        <div class="uneditable-input span3">
+                            <i class="icon-file fileupload-exists"></i>
+                            <span class="fileupload-preview" ng-model="userType"></span>
+                        </div>
+                <span class="btn btn-file">
+                    <span class="fileupload-new">Select file</span>
+                    <span class="fileupload-exists">Change</span>
+                    <!--<input type="file" name="file" />-->
+                    <input type="file" ng-model="upFile"
+                           onchange="angular.element(this).scope().setFileEventListener(this)"/>
+                </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+            </div>
+            <div class="span2">
+                <button type="submit" value="Send" id="btnStartUpload" class="btn start" ng-click="uploadFile()"
+                        ng-disabled="!upload_button_state">
+                    <i class="icon-upload"></i>
+                    <span>Upload File</span>
+                </button>
+            </div>
+        </div>
+
         <div class="form-group">
             <label translate="kucharzApp.przepis.duration" for="field_duration">Duration</label>
             <input type="text" class="form-control" name="duration" id="field_duration"
                    ng-model="przepis.duration"
-                    >
+                >
         </div>
         <div class="form-group">
             <label translate="kucharzApp.przepis.creationDate" for="field_creationDate">CreationDate</label>
             <input type="datetime-local" class="form-control" name="creationDate" id="field_creationDate"
                    ng-model="przepis.creationDate" ng-model-options="{timezone: 'UTC'}"
-                    >
+                >
         </div>
         <div class="form-group">
             <label translate="kucharzApp.przepis.modificationDate" for="field_modificationDate">ModificationDate</label>
             <input type="datetime-local" class="form-control" name="modificationDate" id="field_modificationDate"
                    ng-model="przepis.modificationDate" ng-model-options="{timezone: 'UTC'}"
-                    >
+                >
         </div>
         <div class="form-group">
             <label translate="kucharzApp.przepis.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                    ng-model="przepis.name"
-                    >
+                >
         </div>
         <div class="form-group">
             <label translate="kucharzApp.przepis.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
                    ng-model="przepis.description"
-                    >
+                >
         </div>
 
         <div class="form-group">
@@ -66,7 +94,7 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
-                translate="entity.action.cancel">Cancel</span>
+            translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>

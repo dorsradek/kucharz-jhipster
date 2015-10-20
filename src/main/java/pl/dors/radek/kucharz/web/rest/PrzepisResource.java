@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pl.dors.radek.kucharz.domain.Przepis;
 import pl.dors.radek.kucharz.repository.PrzepisRepository;
 import pl.dors.radek.kucharz.service.PrzepisService;
@@ -108,4 +109,15 @@ public class PrzepisResource {
         przepisService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("przepis", id.toString())).build();
     }
+
+    @RequestMapping(value = "/przepisimage",
+        method = RequestMethod.POST)
+    @Timed
+    public ResponseEntity<Void> uploadFile(@RequestParam("file") MultipartFile file) {
+
+        System.out.println(file.getName());
+
+        return ResponseEntity.ok().build();
+    }
+
 }

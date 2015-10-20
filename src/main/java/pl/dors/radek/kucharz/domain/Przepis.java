@@ -9,6 +9,7 @@ import pl.dors.radek.kucharz.domain.util.CustomDateTimeSerializer;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -42,6 +43,10 @@ public class Przepis implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "image")
+    @Lob
+    private Blob image;
 
     @ManyToOne
     private KategoriaPrzepisu kategoriaPrzepisu;
@@ -129,6 +134,14 @@ public class Przepis implements Serializable {
         this.przepisDescriptions = przepisDescriptions;
     }
 
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -159,4 +172,5 @@ public class Przepis implements Serializable {
             ", name='" + name + "'" +
             '}';
     }
+
 }
