@@ -113,7 +113,7 @@ public class PrzepisResource {
     @RequestMapping(value = "/przepisimage",
         method = RequestMethod.POST)
     @Timed
-    public ResponseEntity<Void> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Void> uploadFile(@RequestPart("przepisId") String przepisId, @RequestParam("file") MultipartFile file) {
 
         System.out.println(file.getName());
 

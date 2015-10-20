@@ -53,6 +53,7 @@ angular.module('kucharzApp').controller('PrzepisDialogController',
 
                 var fd = new FormData();
                 fd.append('file', $scope.uploadedFile);
+                fd.append('przepisId', JSON.stringify(1));
 
                 console.log('TEST');
 

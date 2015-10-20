@@ -6,7 +6,9 @@ angular.module('kucharzApp')
             'save': {
                 method: 'POST',
                 transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
+                headers: {
+                    'Content-Type': undefined
+                }
             }
         })
     });
