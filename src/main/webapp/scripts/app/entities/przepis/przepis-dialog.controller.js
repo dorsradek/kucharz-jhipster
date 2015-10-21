@@ -16,6 +16,7 @@ angular.module('kucharzApp').controller('PrzepisDialogController',
 
             var onSaveFinished = function (result) {
                 $scope.$emit('kucharzApp:przepisUpdate', result);
+                $scope.uploadFile(result.id);
                 $modalInstance.close(result);
             };
 
@@ -31,32 +32,11 @@ angular.module('kucharzApp').controller('PrzepisDialogController',
                 $modalInstance.dismiss('cancel');
             };
 
-            $scope.setFileEventListener = function (element) {
-                $scope.uploadedFile = element.files[0];
-
-                if ($scope.uploadedFile) {
-                    $scope.$apply(function () {
-                        $scope.upload_button_state = true;
-                    });
-                }
+            $scope.uploadFile = function (przepisId) {
+                var file = document.getElementById('file').files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+                formData.append('przepisId', JSON.stringify(przepisId));
+                PrzepisImage.save(formData);
             };
-
-            $scope.uploadFile = function () {
-                uploadFile();
-            };
-
-
-            function uploadFile() {
-                if (!$scope.uploadedFile) {
-                    return;
-                }
-
-                var fd = new FormData();
-                fd.append('file', $scope.uploadedFile);
-                fd.append('przepisId', JSON.stringify(1));
-
-                console.log('TEST');
-
-                PrzepisImage.save(fd);
-            }
         }]);

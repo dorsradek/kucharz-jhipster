@@ -14,8 +14,12 @@ import pl.dors.radek.kucharz.service.PrzepisService;
 import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -113,11 +117,23 @@ public class PrzepisResource {
     @RequestMapping(value = "/przepisimage",
         method = RequestMethod.POST)
     @Timed
-    public ResponseEntity<Void> uploadFile(@RequestPart("przepisId") String przepisId, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Przepis> uploadFile(@RequestPart("przepisId") String przepisId, @RequestParam("file") MultipartFile file) {
 
-        System.out.println(file.getName());
+        System.out.println(file.getOriginalFilename());
 
-        return ResponseEntity.ok().build();
+        return przepisService.getPrzepis(Long.valueOf(przepisId))
+            .map(przepis -> {
+                try {
+                    Blob blob = new SerialBlob(file.getBytes());
+                    przepis.setImage(blob);
+                    przepisRepository.save(przepis);
+                } catch (SQLException e) {
+                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                } catch (IOException e) {
+                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(przepis, HttpStatus.OK);
+            }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 }

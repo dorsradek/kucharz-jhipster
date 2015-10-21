@@ -1,5 +1,6 @@
 package pl.dors.radek.kucharz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Type;
@@ -46,6 +47,7 @@ public class Przepis implements Serializable {
 
     @Column(name = "image")
     @Lob
+    @JsonIgnore
     private Blob image;
 
     @ManyToOne
