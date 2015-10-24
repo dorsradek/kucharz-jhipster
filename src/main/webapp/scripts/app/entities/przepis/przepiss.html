@@ -46,10 +46,16 @@
 </div>-->
 
 <div class="row">
-    <img ng-repeat="przepis in przepiss track by przepis.id"
-         ng-src="data:image/PNG;base64,{{przepis.image}}"
-         style="padding: 2px;"
-         ng-class="getClass($index)"/>
+    <ul class="photo-grid">
+        <li class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="przepis in przepiss track by przepis.id">
+            <a ui-sref="przepis.detail({id:przepis.id})">
+                <figure>
+                    <img ng-src="data:image/PNG;base64,{{przepis.image}}">
+                    <figcaption><p>{{przepis.name}}</p></figcaption>
+                </figure>
+            </a>
+        </li>
+    </ul>
 </div>
 
 </div>

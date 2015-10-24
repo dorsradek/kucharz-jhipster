@@ -228,3 +228,59 @@ ul#strengthBar {
     cursor: inherit;
     display: block;
 }
+
+.photo-grid {
+    padding: 0px;
+}
+
+.photo-grid li {
+    border: 2px solid white;
+    display: inline-block;
+    padding: 0px;
+    text-align: center;
+}
+
+.photo-grid figure {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.photo-grid li:hover figcaption {
+    opacity: 1;
+}
+
+.photo-grid img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.photo-grid figcaption p {
+    font-size: 1.5em;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    color: #fafafa;
+}
+
+.photo-grid figcaption {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    transition-delay: 100ms;
+    z-index: 100;
+}
