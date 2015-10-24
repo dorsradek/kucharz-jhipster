@@ -1,64 +1,28 @@
-package pl.dors.radek.kucharz.domain;
+package pl.dors.radek.kucharz.web.rest.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import pl.dors.radek.kucharz.domain.util.CustomDateTimeDeserializer;
-import pl.dors.radek.kucharz.domain.util.CustomDateTimeSerializer;
+import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
+import pl.dors.radek.kucharz.domain.PracochlonnoscPrzepisu;
+import pl.dors.radek.kucharz.domain.PrzepisDescription;
+import pl.dors.radek.kucharz.domain.PrzepisProdukt;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 /**
- * A Przepis.
+ * Created by rdors on 2015-10-24.
  */
-@Entity
-@Table(name = "przepis")
-public class Przepis implements Serializable {
+public class PrzepisDetailDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(name = "duration")
     private String duration;
-
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
-    @Column(name = "creation_date")
     private DateTime creationDate;
-
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
-    @Column(name = "modification_date")
     private DateTime modificationDate;
-
-    @Column(name = "name")
     private String name;
-
-    @ManyToOne
     private KategoriaPrzepisu kategoriaPrzepisu;
-
-    @ManyToOne
     private PracochlonnoscPrzepisu pracochlonnoscPrzepisu;
-
-    @OneToMany(mappedBy = "przepis")
-    //@JsonIgnore
     private Set<PrzepisProdukt> przepisProdukts = new HashSet<>();
-
-    @OneToMany(mappedBy = "przepis")
-    //@JsonIgnore
     private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
-
-    @Transient
-    @JsonSerialize
-    @JsonDeserialize
     private String image;
 
     public Long getId() {
@@ -141,29 +105,10 @@ public class Przepis implements Serializable {
         this.image = image;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Przepis przepis = (Przepis) o;
-
-        return Objects.equals(id, przepis.id);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
 
     @Override
     public String toString() {
-        return "Przepis{" +
+        return "PrzepisDetailDTO{" +
             "id=" + id +
             ", duration='" + duration + "'" +
             ", creationDate='" + creationDate + "'" +

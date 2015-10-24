@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kucharzApp').controller('PrzepisDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Przepis', 'PrzepisImage', 'KategoriaPrzepisu', 'PracochlonnoscPrzepisu', 'PrzepisProdukt',
-        function ($scope, $stateParams, $modalInstance, entity, Przepis, PrzepisImage, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisProdukt) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Przepis', 'KategoriaPrzepisu', 'PracochlonnoscPrzepisu', 'PrzepisProdukt',
+        function ($scope, $stateParams, $modalInstance, entity, Przepis, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisProdukt) {
 
             $scope.przepis = entity;
             $scope.kategoriaprzepisus = KategoriaPrzepisu.query();
@@ -16,27 +16,26 @@ angular.module('kucharzApp').controller('PrzepisDialogController',
 
             var onSaveFinished = function (result) {
                 $scope.$emit('kucharzApp:przepisUpdate', result);
-                $scope.uploadFile(result.id);
                 $modalInstance.close(result);
             };
 
             $scope.save = function () {
-                if ($scope.przepis.id != null) {
-                    Przepis.update($scope.przepis, onSaveFinished);
-                } else {
-                    Przepis.save($scope.przepis, onSaveFinished);
-                }
+                var file = document.getElementById('file').files[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoadedEvent) {
+                    var base64String = fileLoadedEvent.target.result;
+                    $scope.przepis.image = base64String;
+                    if ($scope.przepis.id != null) {
+                        Przepis.update($scope.przepis, onSaveFinished);
+                    } else {
+                        Przepis.save($scope.przepis, onSaveFinished);
+                    }
+                };
+                fileReader.readAsDataURL(file);
             };
 
             $scope.clear = function () {
                 $modalInstance.dismiss('cancel');
             };
 
-            $scope.uploadFile = function (przepisId) {
-                var file = document.getElementById('file').files[0];
-                var formData = new FormData();
-                formData.append('file', file);
-                formData.append('przepisId', JSON.stringify(przepisId));
-                PrzepisImage.save(formData);
-            };
         }]);

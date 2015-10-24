@@ -25,4 +25,13 @@ angular.module('kucharzApp')
                 id: null
             };
         };
+
+        $scope.getClass = function (idx) {
+            //if(idx < 2) {
+            //    return "col-xs-12 col-sm-6 col-lg-6";
+            //} else {
+            return "col-xs-12 col-sm-6 col-lg-4";
+            //}
+
+        };
     });

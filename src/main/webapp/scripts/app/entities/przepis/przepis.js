@@ -44,9 +44,6 @@ angular.module('kucharzApp')
                     }],
                     entity: ['$stateParams', 'Przepis', function ($stateParams, Przepis) {
                         return Przepis.get({id: $stateParams.id});
-                    }],
-                    entityImage: ['$stateParams', 'PrzepisImage', function ($stateParams, PrzepisImage) {
-                        return PrzepisImage.get({id: $stateParams.id});
                     }]
                 }
             })
