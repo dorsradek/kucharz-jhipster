@@ -1,11 +1,13 @@
 package pl.dors.radek.kucharz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.dors.radek.kucharz.domain.Przepis;
@@ -14,13 +16,13 @@ import pl.dors.radek.kucharz.service.PrzepisService;
 import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.inject.Inject;
-import javax.sql.rowset.serial.SerialBlob;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing Przepis.
@@ -80,9 +82,24 @@ public class PrzepisResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Przepis> getAllPrzepiss() {
+    public List<Przepis> getAllPrzepiss(HttpServletRequest request) {
         log.debug("REST request to get all Przepiss");
-        return przepisRepository.findAll();
+
+        //TODO: przeniesc do servicu
+        List<Przepis> przepisy = przepisRepository.findAll();
+        String globalPath = request.getSession().getServletContext().getRealPath("/");
+        for (Przepis p : przepisy) {
+            String imagePath = globalPath + File.separator + p.getId() + ".png";
+            String imageBase64String = "";
+            try {
+                byte[] data = Base64.encode(FileUtils.readFileToByteArray(new File(imagePath)));
+                imageBase64String = new String(data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            p.setImage(imageBase64String);
+        }
+        return przepisy;
     }
 
     /**
@@ -117,23 +134,49 @@ public class PrzepisResource {
     @RequestMapping(value = "/przepisimage",
         method = RequestMethod.POST)
     @Timed
-    public ResponseEntity<Przepis> uploadFile(@RequestPart("przepisId") String przepisId, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<Void> uploadFile(@RequestPart("przepisId") String przepisId, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
 
-        System.out.println(file.getOriginalFilename());
+        String rpath = request.getSession().getServletContext().getRealPath("/");
+        rpath = rpath + File.separator + przepisId + ".png";
 
-        return przepisService.getPrzepis(Long.valueOf(przepisId))
-            .map(przepis -> {
-                try {
-                    Blob blob = new SerialBlob(file.getBytes());
-                    przepis.setImage(blob);
-                    przepisRepository.save(przepis);
-                } catch (SQLException e) {
-                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                } catch (IOException e) {
-                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                return new ResponseEntity<>(przepis, HttpStatus.OK);
-            }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        try {
+            FileUtils.writeByteArrayToFile(new File(rpath), file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+//        return przepisService.getPrzepis(Long.valueOf(przepisId))
+//            .map(przepis -> {
+//                try {
+//                    Blob blob = new SerialBlob(file.getBytes());
+//                    przepis.setImage(blob);
+//                    przepisRepository.save(przepis);
+//                } catch (SQLException e) {
+//                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//                } catch (IOException e) {
+//                    new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//                }
+//                return new ResponseEntity<>(przepis, HttpStatus.OK);
+//            }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "przepisimage/{przepisId}", method = RequestMethod.GET)
+    @Timed
+    public ResponseEntity<String> downloadImage(@PathVariable Long przepisId, HttpServletRequest request) {
+        Optional<Przepis> przepis = przepisService.getPrzepis(Long.valueOf(przepisId));
+        String rpath = request.getSession().getServletContext().getRealPath("/");
+        rpath = rpath + File.separator + przepisId + ".png";
+
+        String response = "";
+        try {
+            byte[] data = Base64.encode(FileUtils.readFileToByteArray(new File(rpath)));
+            response = "{\"test\": \"" + new String(data) + "\"}";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

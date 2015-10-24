@@ -9,6 +9,10 @@ angular.module('kucharzApp')
                 headers: {
                     'Content-Type': undefined
                 }
+            },
+            'get': {
+                method: 'GET',
+                headers: {'Content-Type': 'image/png'}
             }
         })
     });

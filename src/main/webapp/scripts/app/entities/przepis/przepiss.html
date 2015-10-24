@@ -46,12 +46,16 @@
 </div>-->
 
 <div class="row">
-    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-12 col-sm-6 col-lg-6"/>
-    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-12 col-sm-6 col-lg-6"/>
+
+
+    <img ng-src="data:image/PNG;base64,{{przepis.image}}">
+    <!--<img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-12 col-sm-6 col-lg-6"/>
+    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-12 col-sm-6 col-lg-6"/>-->
+    <img ng-repeat="przepis in przepiss track by przepis.name" ng-src="data:image/PNG;base64,{{przepis.image}}"
+         style="padding: 2px;" class="col-xs-6 col-sm-4"/>
+    <!--<img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>
     <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>
-    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>
-    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>
-    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>
+    <img src="https://placehold.it/350x150" style="padding: 2px;" class="col-xs-6 col-sm-4"/>-->
 </div>
 
 </div>

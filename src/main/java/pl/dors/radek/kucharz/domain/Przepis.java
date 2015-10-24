@@ -1,6 +1,5 @@
 package pl.dors.radek.kucharz.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.Type;
@@ -10,7 +9,6 @@ import pl.dors.radek.kucharz.domain.util.CustomDateTimeSerializer;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -45,10 +43,7 @@ public class Przepis implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "image")
-    @Lob
-    @JsonIgnore
-    private Blob image;
+    private String image;
 
     @ManyToOne
     private KategoriaPrzepisu kategoriaPrzepisu;
@@ -136,11 +131,11 @@ public class Przepis implements Serializable {
         this.przepisDescriptions = przepisDescriptions;
     }
 
-    public Blob getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
