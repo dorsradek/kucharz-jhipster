@@ -8,6 +8,8 @@ public class PrzepisDTO {
     private Long id;
     private String name;
     private String image;
+    private String pracochlonnosc;
+    private String duration;
 
     public Long getId() {
         return id;
@@ -33,4 +35,19 @@ public class PrzepisDTO {
         this.image = image;
     }
 
+    public String getPracochlonnosc() {
+        return pracochlonnosc;
+    }
+
+    public void setPracochlonnosc(String pracochlonnosc) {
+        this.pracochlonnosc = pracochlonnosc;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
 }

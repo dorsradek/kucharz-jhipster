@@ -234,53 +234,49 @@ ul#strengthBar {
 }
 
 .photo-grid li {
-    border: 2px solid white;
+    margin: 8px;
     display: inline-block;
     padding: 0px;
-    text-align: center;
 }
 
-.photo-grid figure {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.photo-grid li:hover figcaption {
+.photo-grid li:hover .entry_description {
     opacity: 1;
 }
 
-.photo-grid img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-}
-
-.photo-grid figcaption p {
-    font-size: 1.5em;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    color: #fafafa;
-}
-
-.photo-grid figcaption {
-    background: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    left: 0;
-    opacity: 0;
+.entry_description {
+    padding: 15px 14px;
     position: absolute;
-    right: 0;
+    background: linear-gradient(to top, transparent 0, rgba(0, 0, 0, .3) 35%, rgba(0, 0, 0, .3) 100%);
     top: 0;
+    right: 0;
+    left: 0;
+    color: #fff;
+    font-size: 17px;
+    height: 80%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .75);
+    opacity: 0;
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
     transition: all 300ms;
     -webkit-transition-delay: 100ms;
     -moz-transition-delay: 100ms;
     transition-delay: 100ms;
-    z-index: 100;
+}
+
+.entry_title {
+    padding: 40px 14px 15px;
+    position: absolute;
+    background: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, .3) 35%, rgba(0, 0, 0, .3) 100%);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: #fff;
+    font-size: 21px;
+    line-height: 26px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .75)
+}
+
+.entry {
+    padding-left: 2%;
+    margin: 0px;
 }

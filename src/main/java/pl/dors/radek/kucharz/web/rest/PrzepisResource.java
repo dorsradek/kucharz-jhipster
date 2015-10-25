@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.dors.radek.kucharz.domain.Przepis;
@@ -27,7 +26,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,33 +58,38 @@ public class PrzepisResource {
         if (przepis.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new przepis cannot already have an ID").body(null);
         }
-        Przepis result = przepisRepository.save(przepis);
-
         String base64Image = przepis.getImage().split(",", 2)[1];
         byte[] imageBytes = DatatypeConverter.parseBase64Binary(base64Image);
+        przepis.setImage(null);
 
-        String globalPath = request.getSession().getServletContext().getRealPath("/");
+        Przepis result = przepisRepository.save(przepis);
+        result.setImage(String.valueOf(result.getId()));
+        result = przepisRepository.save(result);
+
+
+        Path path = Paths.get(URI.create("file:///C:/java/kucharz/images/"));
+
         try {
             BufferedImage image;
             try (ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes)) {
                 image = ImageIO.read(bais);
             }
 
-            ImageIO.write(image, "jpeg", new File(globalPath + File.separator + "images" + File.separator + result.getId() + "_original.jpeg"));
+            ImageIO.write(image, "jpeg", new File(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_original.jpeg"));
 
             Thumbnails.of(image)
                 .crop(Positions.CENTER)
-                .size(1750, 625)
+                .size(1000, 615)
                 .outputFormat("jpeg")
                 .outputQuality(1)
-                .toFile(globalPath + File.separator + "images" + File.separator + result.getId() + "_medium");
+                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_medium");
 
             Thumbnails.of(image)
                 .crop(Positions.CENTER)
-                .size(420, 150)
+                .size(260, 160)
                 .outputFormat("jpeg")
                 .outputQuality(1)
-                .toFile(globalPath + File.separator + "images" + File.separator + result.getId() + "_thumbnail");
+                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_thumbnail");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -126,19 +131,14 @@ public class PrzepisResource {
         //TODO: przeniesc do servicu
         List<PrzepisDTO> result = new ArrayList<>();
         List<Przepis> przepisy = przepisRepository.findAll();
-        String globalPath = request.getSession().getServletContext().getRealPath("/");
         for (Przepis p : przepisy) {
-            String imagePath = globalPath + File.separator + "images" + File.separator + p.getId() + "_thumbnail.jpeg";
-            String imageBase64String = "";
-            try {
-                imageBase64String = new String(Base64.encode(Files.readAllBytes(new File(imagePath).toPath())));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String imagePath = "images/" + p.getImage() + "_thumbnail.jpeg";
             PrzepisDTO przepisDTO = new PrzepisDTO();
             przepisDTO.setId(p.getId());
             przepisDTO.setName(p.getName());
-            przepisDTO.setImage(imageBase64String);
+            przepisDTO.setImage(imagePath);
+            przepisDTO.setPracochlonnosc(p.getPracochlonnoscPrzepisu().getName());
+            przepisDTO.setDuration(p.getDuration());
 
             result.add(przepisDTO);
         }

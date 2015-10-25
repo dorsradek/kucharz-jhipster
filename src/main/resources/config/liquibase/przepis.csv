@@ -1,5 +1,5 @@
-id;duration;creation_date;modification_date;name;kategoria_przepisu_id;pracochlonnosc_przepisu_id
-1;30 minut;null;null;Pizza;1;1
-2;2 godziny;null;null;Rosół;1;2
-3;3 godziny;null;null;Kotlet;2;2
-4;4 godziny;null;null;Buraki;2;1
+id;duration;creation_date;modification_date;name;kategoria_przepisu_id;pracochlonnosc_przepisu_id;image
+1;30 minut;null;null;Pizza;1;1;1
+2;2 godziny;null;null;Rosół;1;2;2
+3;3 godziny;null;null;Kotlet;2;2;3
+4;4 godziny;null;null;Buraki;2;1;4

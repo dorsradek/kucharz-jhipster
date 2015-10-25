@@ -45,14 +45,23 @@
     </table>
 </div>-->
 
-<div class="row">
+<div>
     <ul class="photo-grid">
-        <li class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="przepis in przepiss track by przepis.id">
+        <li ng-repeat="przepis in przepiss track by przepis.id">
             <a ui-sref="przepis.detail({id:przepis.id})">
-                <figure>
-                    <img ng-src="data:image/PNG;base64,{{przepis.image}}">
-                    <figcaption><p>{{przepis.name}}</p></figcaption>
-                </figure>
+                <div style="position: relative;">
+                    <img style="width: 260px; height: 160px" ng-src="{{przepis.image}}">
+
+                    <div class="entry_description">
+                        <p class="entry">{{przepis.pracochlonnosc}}</p>
+
+                        <p class="entry">{{przepis.duration}}</p>
+                    </div>
+                    <div class="entry_title">
+                        <p class="entry">{{przepis.name}}</p>
+                    </div>
+                </div>
+
             </a>
         </li>
     </ul>

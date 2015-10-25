@@ -42,6 +42,9 @@ public class Przepis implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "image")
+    private String image;
+
     @ManyToOne
     private KategoriaPrzepisu kategoriaPrzepisu;
 
@@ -55,11 +58,6 @@ public class Przepis implements Serializable {
     @OneToMany(mappedBy = "przepis")
     //@JsonIgnore
     private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
-
-    @Transient
-    @JsonSerialize
-    @JsonDeserialize
-    private String image;
 
     public Long getId() {
         return id;
