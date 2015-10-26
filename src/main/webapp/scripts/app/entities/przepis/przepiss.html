@@ -1,7 +1,8 @@
-<img>
+<!--
 <h2 translate="kucharzApp.przepis.home.title">Przepiss</h2>
+-->
 <jh-alert></jh-alert>
-<div class="container">
+<!--<div class="container">
     <div class="row">
         <div class="col-md-4">
             <button class="btn btn-primary" ui-sref="przepis.new">
@@ -11,7 +12,7 @@
             </button>
         </div>
     </div>
-</div>
+</div>-->
 
 <!--<div class="table-responsive">
     <table class="table table-striped">
@@ -47,6 +48,18 @@
 
 <div>
     <ul class="photo-grid">
+        <li>
+            <a ui-sref="przepis.new">
+                <div class="add-new-div">
+                    <div class="add-new-circle">
+                        <div class="add-new-plus">+
+                        </div>
+                    </div>
+                </div>
+
+            </a>
+        </li>
+
         <li ng-repeat="przepis in przepiss track by przepis.id">
             <a ui-sref="przepis.detail({id:przepis.id})">
                 <div style="position: relative;">

@@ -280,3 +280,55 @@ ul#strengthBar {
     padding-left: 2%;
     margin: 0px;
 }
+
+.add-new-div {
+    position: relative;
+    width: 260px;
+    height: 160px;
+    background-color: #E4E4E4;
+}
+
+.add-new-circle {
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    background: whitesmoke;
+    height: 100px;
+    width: 100px;
+    -webkit-border-radius: 80px;
+}
+
+.add-new-plus {
+    color: #E4E4E4;
+    font-size: 100px;
+    text-align: center;
+    height: 100%;
+    line-height: 100px;
+}
+
+.add-new-div:hover .add-new-circle {
+    background: #CECECE;
+
+    top: 25px;
+    left: 75px;
+    height: 110px;
+    width: 110px;
+
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    -webkit-transition-delay: 50ms;
+    -moz-transition-delay: 50ms;
+    transition-delay: 50ms;
+}
+
+.add-new-div:hover .add-new-plus {
+    line-height: 110px;
+
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    -webkit-transition-delay: 50ms;
+    -moz-transition-delay: 50ms;
+    transition-delay: 50ms;
+}
