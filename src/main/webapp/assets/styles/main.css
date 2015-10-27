@@ -202,9 +202,49 @@ ul#strengthBar {
     overflow-x: hidden;
 }
 
-@media only screen and (max-width: 979px) {
+@media only screen and (max-width: 992px) {
     .btn-action {
         font-size: 0;
+    }
+}
+
+.content {
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0;
+    padding: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: none;
+}
+
+.przepis_image {
+    width: 300px;
+    height: 184px;
+}
+
+/* 480 768 992 1200*/
+@media only screen and (max-width: 480px) {
+    .content {
+        width: 360px;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .content {
+        width: 360px;
+    }
+}
+
+@media only screen and (min-width: 680px) {
+    .content {
+        width: 680px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .content {
+        width: 1000px;
     }
 }
 
@@ -234,7 +274,7 @@ ul#strengthBar {
 }
 
 .photo-grid li {
-    margin: 8px;
+    margin: 10px;
     display: inline-block;
     padding: 0px;
 }
@@ -283,15 +323,15 @@ ul#strengthBar {
 
 .add-new-div {
     position: relative;
-    width: 260px;
-    height: 160px;
+    width: 300px;
+    height: 184px;
     background-color: #E4E4E4;
 }
 
 .add-new-circle {
     position: absolute;
-    top: 30px;
-    left: 80px;
+    top: 42px;
+    left: 100px;
     background: whitesmoke;
     height: 100px;
     width: 100px;
@@ -309,8 +349,8 @@ ul#strengthBar {
 .add-new-div:hover .add-new-circle {
     background: #CECECE;
 
-    top: 25px;
-    left: 75px;
+    top: 37px;
+    left: 95px;
     height: 110px;
     width: 110px;
 

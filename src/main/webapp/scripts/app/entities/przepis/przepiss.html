@@ -1,80 +1,31 @@
-<!--
-<h2 translate="kucharzApp.przepis.home.title">Przepiss</h2>
--->
 <jh-alert></jh-alert>
-<!--<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary" ui-sref="przepis.new">
-                <span class="glyphicon glyphicon-flash"></span> <span
-                translate="kucharzApp.przepis.home.createLabel">Create a
-						new Przepis</span>
-            </button>
-        </div>
-    </div>
-</div>-->
-
-<!--<div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th translate="kucharzApp.przepis.name">Name</th>
-            <th translate="kucharzApp.przepis.duration">Duration</th>
-            <th translate="kucharzApp.przepis.pracochlonnoscPrzepisu">pracochlonnoscPrzepisu</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="przepis in przepiss track by przepis.name">
-            <td><a ui-sref="przepis.detail({id:przepis.id})">{{przepis.name}}</a></td>
-            <td>{{przepis.duration}}</td>
-            <td>{{przepis.pracochlonnoscPrzepisu.name}}</td>
-            <td>
-                <button type="submit" ui-sref="przepis.edit({id:przepis.id})"
-                        class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
-                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
-                    translate="entity.action.edit"> Edit</span>
-                </button>
-                <button type="submit" ng-click="delete(przepis.id)"
-                        class="btn btn-danger btn-sm" has-authority="ROLE_ADMIN">
-                    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-                    translate="entity.action.delete"> Delete</span>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>-->
-
 <div>
     <ul class="photo-grid">
         <li>
             <a ui-sref="przepis.new">
                 <div class="add-new-div">
+                    <img class="przepis_image">
+
                     <div class="add-new-circle">
                         <div class="add-new-plus">+
                         </div>
                     </div>
                 </div>
-
             </a>
         </li>
-
         <li ng-repeat="przepis in przepiss track by przepis.id">
             <a ui-sref="przepis.detail({id:przepis.id})">
                 <div style="position: relative;">
-                    <img style="width: 260px; height: 160px" ng-src="{{przepis.image}}">
+                    <img class="przepis_image" ng-src="{{przepis.image}}">
 
                     <div class="entry_description">
                         <p class="entry">{{przepis.pracochlonnosc}}</p>
-
                         <p class="entry">{{przepis.duration}}</p>
                     </div>
                     <div class="entry_title">
                         <p class="entry">{{przepis.name}}</p>
                     </div>
                 </div>
-
             </a>
         </li>
     </ul>

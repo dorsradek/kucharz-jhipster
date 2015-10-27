@@ -77,16 +77,16 @@ public class PrzepisResource {
 
             ImageIO.write(image, "jpeg", new File(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_original.jpeg"));
 
-            Thumbnails.of(image)
+            /*Thumbnails.of(image)
                 .crop(Positions.CENTER)
-                .size(1000, 615)
+                .size(900, 552)
                 .outputFormat("jpeg")
                 .outputQuality(1)
-                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_medium");
+                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_medium");*/
 
             Thumbnails.of(image)
                 .crop(Positions.CENTER)
-                .size(260, 160)
+                .size(300, 184)
                 .outputFormat("jpeg")
                 .outputQuality(1)
                 .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_thumbnail");

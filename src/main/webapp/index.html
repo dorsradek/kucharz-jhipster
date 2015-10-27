@@ -25,8 +25,13 @@
 <div ui-view="navbar" ng-cloak=""></div>
 <div class="container index-container">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-4" ui-view="navbar-left" ng-cloak="" ng-show="isAuthenticated()"></div>
-        <div class="well col-lg-9 col-md-9 col-sm-8" ui-view="content"></div>
+        <!--
+                <div class="col-lg-3 col-md-3 col-sm-4" ui-view="navbar-left" ng-cloak="" ng-show="isAuthenticated()"></div>
+        -->
+        <!--
+                <div class="well col-lg-9 col-md-9 col-sm-8" ui-view="content"></div>
+        -->
+        <div class="well content" ui-view="content"></div>
         <!--<div class="footer">
             <p translate="footer">This is your footer</p>
         </div>
