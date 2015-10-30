@@ -28,24 +28,6 @@ Developement Ribbon
     background-repeat: no-repeat;
 }
 
-.image-duration {
-    display: inline-block;
-    width: 15px;
-    height: 18px;
-    content: "";
-    background: url("../images/time_new.png") no-repeat 0 0;
-    background-size: 100%;
-}
-
-.image-pracochlonnosc-easy {
-    display: inline-block;
-    width: 19px;
-    height: 21px;
-    content: "";
-    background: url("../images/easy_new.png") no-repeat 0 0;
-    background-size: 100%;
-}
-
 /* ==========================================================================
 Version number in navbar
 ========================================================================== */
@@ -388,4 +370,22 @@ ul#strengthBar {
     -webkit-transition-delay: 50ms;
     -moz-transition-delay: 50ms;
     transition-delay: 50ms;
+}
+
+.image-duration {
+    display: inline-block;
+    width: 15px;
+    height: 18px;
+    content: "";
+    background: url("../images/time_new.png") no-repeat 0 0;
+    background-size: 100%;
+}
+
+.image-pracochlonnosc-easy {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    content: "";
+    background: url("../images/cook.png") no-repeat 0 0;
+    background-size: 100%;
 }
