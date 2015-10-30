@@ -19,18 +19,30 @@
                     <img class="przepis_image" ng-src="{{przepis.image}}">
 
                     <div class="entry_description">
-                        <p>
-                            <span class="entry">{{przepis.pracochlonnosc}}</span>
-
-                        <div style="height: 24px; display: inline-block;">
-                            <img style="margin-top: -5px;" src="/assets/images/cook.png"/>
+                        <div class="przepiss-entry">
+                            <div class="przepiss-entry-img-container">
+                                <img class="przepiss-entry-img" src="/assets/images/cook.png">
+                            </div>
+                            <div class="przepiss-entry-img-container"
+                                 ng-show="{{przepis.pracochlonnosc === 'Medium' || przepis.pracochlonnosc === 'Hard'}}">
+                                <img class="przepiss-entry-img" src="/assets/images/cook.png">
+                            </div>
+                            <div class="przepiss-entry-img-container" ng-show="{{przepis.pracochlonnosc === 'Hard'}}">
+                                <img class="przepiss-entry-img" src="/assets/images/cook.png">
+                            </div>
+                            <span class="przepiss-entry-description">{{przepis.pracochlonnosc}}</span>
                         </div>
-                        </p>
 
-                        <p><span class="image-duration"/><span class="entry">{{przepis.duration}}</span></p>
+                        <div class="przepiss-entry">
+                            <div class="przepiss-entry-img-container">
+                                <img class="przepiss-entry-img" src="/assets/images/clock.png">
+                            </div>
+                            <span class="przepiss-entry-description">{{divide(przepis.duration)}}</span>
+                        </div>
                     </div>
+
                     <div class="entry_title">
-                        <p class="entry">{{przepis.name}}</p>
+                        <p class="przepiss-entry-description">{{przepis.name}}</p>
                     </div>
                 </div>
             </a>
