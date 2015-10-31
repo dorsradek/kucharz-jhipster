@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dors.radek.kucharz.Application;
-import pl.dors.radek.kucharz.domain.PrzepisProdukt;
+import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
 import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
 
 import javax.annotation.PostConstruct;
@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
-public class PrzepisProduktResourceTest {
+public class PrzepisPartProduktResourceTest {
 
 
     private static final Double DEFAULT_QUANTITY = 1D;
@@ -55,7 +55,7 @@ public class PrzepisProduktResourceTest {
 
     private MockMvc restPrzepisProduktMockMvc;
 
-    private PrzepisProdukt przepisProdukt;
+    private PrzepisPartProdukt przepisPartProdukt;
 
     @PostConstruct
     public void setup() {
@@ -69,8 +69,8 @@ public class PrzepisProduktResourceTest {
 
     @Before
     public void initTest() {
-        przepisProdukt = new PrzepisProdukt();
-        przepisProdukt.setQuantity(DEFAULT_QUANTITY);
+        przepisPartProdukt = new PrzepisPartProdukt();
+        przepisPartProdukt.setQuantity(DEFAULT_QUANTITY);
     }
 
     @Test
@@ -78,31 +78,31 @@ public class PrzepisProduktResourceTest {
     public void createPrzepisProdukt() throws Exception {
         int databaseSizeBeforeCreate = przepisProduktRepository.findAll().size();
 
-        // Create the PrzepisProdukt
+        // Create the PrzepisPartProdukt
 
-        restPrzepisProduktMockMvc.perform(post("/api/przepisProdukts")
+        restPrzepisProduktMockMvc.perform(post("/api/przepisPartProdukts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(przepisProdukt)))
+            .content(TestUtil.convertObjectToJsonBytes(przepisPartProdukt)))
             .andExpect(status().isCreated());
 
-        // Validate the PrzepisProdukt in the database
-        List<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAll();
-        assertThat(przepisProdukts).hasSize(databaseSizeBeforeCreate + 1);
-        PrzepisProdukt testPrzepisProdukt = przepisProdukts.get(przepisProdukts.size() - 1);
-        assertThat(testPrzepisProdukt.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
+        // Validate the PrzepisPartProdukt in the database
+        List<PrzepisPartProdukt> przepisPartProdukts = przepisProduktRepository.findAll();
+        assertThat(przepisPartProdukts).hasSize(databaseSizeBeforeCreate + 1);
+        PrzepisPartProdukt testPrzepisPartProdukt = przepisPartProdukts.get(przepisPartProdukts.size() - 1);
+        assertThat(testPrzepisPartProdukt.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
     }
 
     @Test
     @Transactional
     public void getAllPrzepisProdukts() throws Exception {
         // Initialize the database
-        przepisProduktRepository.saveAndFlush(przepisProdukt);
+        przepisProduktRepository.saveAndFlush(przepisPartProdukt);
 
         // Get all the przepisProdukts
         restPrzepisProduktMockMvc.perform(get("/api/przepisProdukts"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(przepisProdukt.getId().intValue())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(przepisPartProdukt.getId().intValue())))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY.doubleValue())));
     }
 
@@ -110,20 +110,20 @@ public class PrzepisProduktResourceTest {
     @Transactional
     public void getPrzepisProdukt() throws Exception {
         // Initialize the database
-        przepisProduktRepository.saveAndFlush(przepisProdukt);
+        przepisProduktRepository.saveAndFlush(przepisPartProdukt);
 
-        // Get the przepisProdukt
-        restPrzepisProduktMockMvc.perform(get("/api/przepisProdukts/{id}", przepisProdukt.getId()))
+        // Get the przepisPartProdukt
+        restPrzepisProduktMockMvc.perform(get("/api/przepisProdukts/{id}", przepisPartProdukt.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(przepisProdukt.getId().intValue()))
+            .andExpect(jsonPath("$.id").value(przepisPartProdukt.getId().intValue()))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY.doubleValue()));
     }
 
     @Test
     @Transactional
     public void getNonExistingPrzepisProdukt() throws Exception {
-        // Get the przepisProdukt
+        // Get the przepisPartProdukt
         restPrzepisProduktMockMvc.perform(get("/api/przepisProdukts/{id}", Long.MAX_VALUE))
             .andExpect(status().isNotFound());
     }
@@ -132,40 +132,40 @@ public class PrzepisProduktResourceTest {
     @Transactional
     public void updatePrzepisProdukt() throws Exception {
         // Initialize the database
-        przepisProduktRepository.saveAndFlush(przepisProdukt);
+        przepisProduktRepository.saveAndFlush(przepisPartProdukt);
 
         int databaseSizeBeforeUpdate = przepisProduktRepository.findAll().size();
 
-        // Update the przepisProdukt
-        przepisProdukt.setQuantity(UPDATED_QUANTITY);
+        // Update the przepisPartProdukt
+        przepisPartProdukt.setQuantity(UPDATED_QUANTITY);
 
-        restPrzepisProduktMockMvc.perform(put("/api/przepisProdukts")
+        restPrzepisProduktMockMvc.perform(put("/api/przepisPartProdukts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(przepisProdukt)))
+            .content(TestUtil.convertObjectToJsonBytes(przepisPartProdukt)))
             .andExpect(status().isOk());
 
-        // Validate the PrzepisProdukt in the database
-        List<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAll();
-        assertThat(przepisProdukts).hasSize(databaseSizeBeforeUpdate);
-        PrzepisProdukt testPrzepisProdukt = przepisProdukts.get(przepisProdukts.size() - 1);
-        assertThat(testPrzepisProdukt.getQuantity()).isEqualTo(UPDATED_QUANTITY);
+        // Validate the PrzepisPartProdukt in the database
+        List<PrzepisPartProdukt> przepisPartProdukts = przepisProduktRepository.findAll();
+        assertThat(przepisPartProdukts).hasSize(databaseSizeBeforeUpdate);
+        PrzepisPartProdukt testPrzepisPartProdukt = przepisPartProdukts.get(przepisPartProdukts.size() - 1);
+        assertThat(testPrzepisPartProdukt.getQuantity()).isEqualTo(UPDATED_QUANTITY);
     }
 
     @Test
     @Transactional
     public void deletePrzepisProdukt() throws Exception {
         // Initialize the database
-        przepisProduktRepository.saveAndFlush(przepisProdukt);
+        przepisProduktRepository.saveAndFlush(przepisPartProdukt);
 
         int databaseSizeBeforeDelete = przepisProduktRepository.findAll().size();
 
-        // Get the przepisProdukt
-        restPrzepisProduktMockMvc.perform(delete("/api/przepisProdukts/{id}", przepisProdukt.getId())
+        // Get the przepisPartProdukt
+        restPrzepisProduktMockMvc.perform(delete("/api/przepisPartProdukts/{id}", przepisPartProdukt.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAll();
-        assertThat(przepisProdukts).hasSize(databaseSizeBeforeDelete - 1);
+        List<PrzepisPartProdukt> przepisPartProdukts = przepisProduktRepository.findAll();
+        assertThat(przepisPartProdukts).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

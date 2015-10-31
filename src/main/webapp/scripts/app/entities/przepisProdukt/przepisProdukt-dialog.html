@@ -3,7 +3,8 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myPrzepisProduktLabel" translate="kucharzApp.przepisProdukt.home.createOrEditLabel">
+        <h4 class="modal-title" id="myPrzepisProduktLabel"
+            translate="kucharzApp.przepisPartProdukt.home.createOrEditLabel">
             Create or edit a PrzepisProdukt</h4>
     </div>
     <div class="modal-body">
@@ -11,25 +12,25 @@
         <div class="form-group">
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   ng-model="przepisProdukt.id" readonly>
+                   ng-model="przepisPartProdukt.id" readonly>
         </div>
         <div class="form-group">
-            <label translate="kucharzApp.przepisProdukt.quantity" for="field_quantity">Quantity</label>
+            <label translate="kucharzApp.przepisPartProdukt.quantity" for="field_quantity">Quantity</label>
             <input type="number" class="form-control" name="quantity" id="field_quantity"
-                   ng-model="przepisProdukt.quantity"
+                   ng-model="przepisPartProdukt.quantity"
                 >
         </div>
 
         <div class="form-group">
-            <label translate="kucharzApp.przepisProdukt.produkt" for="field_produkt">produkt</label>
-            <select class="form-control" id="field_produkt" name="produkt" ng-model="przepisProdukt.produkt"
+            <label translate="kucharzApp.przepisPartProdukt.produkt" for="field_produkt">produkt</label>
+            <select class="form-control" id="field_produkt" name="produkt" ng-model="przepisPartProdukt.produkt"
                     ng-options="produkt as produkt.id for produkt in produkts track by produkt.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label translate="kucharzApp.przepisProdukt.przepis" for="field_przepis">przepis</label>
-            <select class="form-control" id="field_przepis" name="przepis" ng-model="przepisProdukt.przepis"
+            <label translate="kucharzApp.przepisPartProdukt.przepis" for="field_przepis">przepis</label>
+            <select class="form-control" id="field_przepis" name="przepis" ng-model="przepisPartProdukt.przepis"
                     ng-options="przepis as przepis.id for przepis in przepiss track by przepis.id">
                 <option value=""></option>
             </select>

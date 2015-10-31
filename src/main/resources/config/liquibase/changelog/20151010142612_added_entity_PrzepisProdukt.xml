@@ -15,7 +15,7 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity PrzepisProdukt.
+        Added the entity PrzepisPartProdukt.
     -->
     <changeSet id="20151010142612" author="jhipster">
         <createTable tableName="przepis_produkt">

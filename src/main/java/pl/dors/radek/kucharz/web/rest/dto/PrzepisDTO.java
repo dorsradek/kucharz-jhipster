@@ -10,6 +10,8 @@ public class PrzepisDTO {
     private String image;
     private String pracochlonnosc;
     private String duration;
+    private String category;
+
 
     public Long getId() {
         return id;
@@ -49,5 +51,14 @@ public class PrzepisDTO {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dors.radek.kucharz.domain.Przepis;
 import pl.dors.radek.kucharz.domain.PrzepisDescription;
-import pl.dors.radek.kucharz.domain.PrzepisProdukt;
+import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
 import pl.dors.radek.kucharz.repository.PrzepisDescriptionRepository;
 import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
 import pl.dors.radek.kucharz.repository.PrzepisRepository;
@@ -39,8 +39,8 @@ public class PrzepisService {
             .map(przepis -> {
                 Set<PrzepisDescription> przepisDescriptions = przepisDescriptionRepository.findAllByPrzepisId(przepis.getId());
                 przepis.setPrzepisDescriptions(przepisDescriptions);
-                Set<PrzepisProdukt> przepisProdukts = przepisProduktRepository.findAllByPrzepisId(przepis.getId());
-                przepis.setPrzepisProdukts(przepisProdukts);
+                Set<PrzepisPartProdukt> przepisPartProdukts = przepisProduktRepository.findAllByPrzepisId(przepis.getId());
+                przepis.setPrzepisPartProdukts(przepisPartProdukts);
                 return przepis;
             });
     }

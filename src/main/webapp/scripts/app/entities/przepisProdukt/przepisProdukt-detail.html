@@ -1,5 +1,6 @@
 <div>
-    <h2><span translate="kucharzApp.przepisProdukt.detail.title">PrzepisProdukt</span> {{przepisProdukt.id}}</h2>
+    <h2><span translate="kucharzApp.przepisPartProdukt.detail.title">PrzepisProdukt</span> {{przepisPartProdukt.id}}
+    </h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -12,26 +13,26 @@
             <tbody>
             <tr>
                 <td>
-                    <span translate="kucharzApp.przepisProdukt.quantity">Quantity</span>
+                    <span translate="kucharzApp.przepisPartProdukt.quantity">Quantity</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{przepisProdukt.quantity}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="kucharzApp.przepisProdukt.produkt">produkt</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="produkt.detail({id:przepisProdukt.produkt.id})">{{przepisProdukt.produkt.id}}</a>
+                    <span class="form-control-static">{{przepisPartProdukt.quantity}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="kucharzApp.przepisProdukt.przepis">przepis</span>
+                    <span translate="kucharzApp.przepisPartProdukt.produkt">produkt</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="przepis.detail({id:przepisProdukt.przepis.id})">{{przepisProdukt.przepis.id}}</a>
+                    <a class="form-control-static" ui-sref="produkt.detail({id:przepisPartProdukt.produkt.id})">{{przepisPartProdukt.produkt.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kucharzApp.przepisPartProdukt.przepis">przepis</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="przepis.detail({id:przepisPartProdukt.przepis.id})">{{przepisPartProdukt.przepis.id}}</a>
                 </td>
             </tr>
             </tbody>

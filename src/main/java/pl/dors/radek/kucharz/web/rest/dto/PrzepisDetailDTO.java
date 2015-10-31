@@ -4,7 +4,7 @@ import org.joda.time.DateTime;
 import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
 import pl.dors.radek.kucharz.domain.PracochlonnoscPrzepisu;
 import pl.dors.radek.kucharz.domain.PrzepisDescription;
-import pl.dors.radek.kucharz.domain.PrzepisProdukt;
+import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +21,7 @@ public class PrzepisDetailDTO {
     private String name;
     private KategoriaPrzepisu kategoriaPrzepisu;
     private PracochlonnoscPrzepisu pracochlonnoscPrzepisu;
-    private Set<PrzepisProdukt> przepisProdukts = new HashSet<>();
+    private Set<PrzepisPartProdukt> przepisPartProdukts = new HashSet<>();
     private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
     private String image;
 
@@ -81,12 +81,12 @@ public class PrzepisDetailDTO {
         this.pracochlonnoscPrzepisu = pracochlonnoscPrzepisu;
     }
 
-    public Set<PrzepisProdukt> getPrzepisProdukts() {
-        return przepisProdukts;
+    public Set<PrzepisPartProdukt> getPrzepisPartProdukts() {
+        return przepisPartProdukts;
     }
 
-    public void setPrzepisProdukts(Set<PrzepisProdukt> przepisProdukts) {
-        this.przepisProdukts = przepisProdukts;
+    public void setPrzepisPartProdukts(Set<PrzepisPartProdukt> przepisPartProdukts) {
+        this.przepisPartProdukts = przepisPartProdukts;
     }
 
     public Set<PrzepisDescription> getPrzepisDescriptions() {

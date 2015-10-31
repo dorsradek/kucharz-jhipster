@@ -1,5 +1,6 @@
 package pl.dors.radek.kucharz.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -9,29 +10,28 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * A Produkt.
+ * A PrzepisDescription.
  */
 @Entity
-@Table(name = "produkt")
-public class Produkt implements Serializable {
+@Table(name = "przepis_part")
+public class PrzepisPart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "description")
+    private String description;
 
-    @ManyToOne
-    private MiaraProduktu miaraProduktu;
-
-    @ManyToOne
-    private RodzajProduktu rodzajProduktu;
-
-    @OneToMany(mappedBy = "produkt")
-    @JsonIgnore
+    @OneToMany(mappedBy = "przepisPart")
     private Set<PrzepisPartProdukt> przepisPartProdukts = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnore
+    private Przepis przepis;
 
     public Long getId() {
         return id;
@@ -41,28 +41,20 @@ public class Produkt implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public MiaraProduktu getMiaraProduktu() {
-        return miaraProduktu;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMiaraProduktu(MiaraProduktu miaraProduktu) {
-        this.miaraProduktu = miaraProduktu;
-    }
-
-    public RodzajProduktu getRodzajProduktu() {
-        return rodzajProduktu;
-    }
-
-    public void setRodzajProduktu(RodzajProduktu rodzajProduktu) {
-        this.rodzajProduktu = rodzajProduktu;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<PrzepisPartProdukt> getPrzepisPartProdukts() {
@@ -71,6 +63,14 @@ public class Produkt implements Serializable {
 
     public void setPrzepisPartProdukts(Set<PrzepisPartProdukt> przepisPartProdukts) {
         this.przepisPartProdukts = przepisPartProdukts;
+    }
+
+    public Przepis getPrzepis() {
+        return przepis;
+    }
+
+    public void setPrzepis(Przepis przepis) {
+        this.przepis = przepis;
     }
 
     @Override
@@ -82,9 +82,9 @@ public class Produkt implements Serializable {
             return false;
         }
 
-        Produkt produkt = (Produkt) o;
+        PrzepisPart przepisDescription = (PrzepisPart) o;
 
-        return Objects.equals(id, produkt.id);
+        return Objects.equals(id, przepisDescription.id);
 
     }
 
@@ -95,9 +95,10 @@ public class Produkt implements Serializable {
 
     @Override
     public String toString() {
-        return "Produkt{" +
+        return "PrzepisPart{" +
             "id=" + id +
-            ", name='" + name + "'" +
+            ", title='" + title + "'" +
+            ", text='" + text + "'" +
             '}';
     }
 }

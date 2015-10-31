@@ -77,13 +77,6 @@ public class PrzepisResource {
 
             ImageIO.write(image, "jpeg", new File(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_original.jpeg"));
 
-            /*Thumbnails.of(image)
-                .crop(Positions.CENTER)
-                .size(900, 552)
-                .outputFormat("jpeg")
-                .outputQuality(1)
-                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_medium");*/
-
             Thumbnails.of(image)
                 .crop(Positions.CENTER)
                 .size(300, 184)
@@ -139,6 +132,7 @@ public class PrzepisResource {
             przepisDTO.setImage(imagePath);
             przepisDTO.setPracochlonnosc(p.getPracochlonnoscPrzepisu().getName());
             przepisDTO.setDuration(p.getDuration());
+            przepisDTO.setCategory(p.getKategoriaPrzepisu().getName());
 
             result.add(przepisDTO);
         }

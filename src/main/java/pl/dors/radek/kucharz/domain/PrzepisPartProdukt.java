@@ -8,16 +8,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A PrzepisProdukt.
+ * A PrzepisPartProdukt.
  */
 @Entity
-@Table(name = "przepis_produkt")
-public class PrzepisProdukt implements Serializable {
+@Table(name = "przepis_part_produkt")
+public class PrzepisPartProdukt implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
 
     @Column(name = "quantity")
     private Double quantity;
@@ -27,7 +26,7 @@ public class PrzepisProdukt implements Serializable {
 
     @ManyToOne
     @JsonIgnore
-    private Przepis przepis;
+    private PrzepisPart przepisPart;
 
     public Long getId() {
         return id;
@@ -53,12 +52,12 @@ public class PrzepisProdukt implements Serializable {
         this.produkt = produkt;
     }
 
-    public Przepis getPrzepis() {
-        return przepis;
+    public PrzepisPart getPrzepisPart() {
+        return przepisPart;
     }
 
-    public void setPrzepis(Przepis przepis) {
-        this.przepis = przepis;
+    public void setPrzepisPart(PrzepisPart przepisPart) {
+        this.przepisPart = przepisPart;
     }
 
     @Override
@@ -70,9 +69,9 @@ public class PrzepisProdukt implements Serializable {
             return false;
         }
 
-        PrzepisProdukt przepisProdukt = (PrzepisProdukt) o;
+        PrzepisPartProdukt przepisPartProdukt = (PrzepisPartProdukt) o;
 
-        return Objects.equals(id, przepisProdukt.id);
+        return Objects.equals(id, przepisPartProdukt.id);
 
     }
 
@@ -83,9 +82,9 @@ public class PrzepisProdukt implements Serializable {
 
     @Override
     public String toString() {
-        return "PrzepisProdukt{" +
-                "id=" + id +
-                ", quantity='" + quantity + "'" +
-                '}';
+        return "PrzepisPartProdukt{" +
+            "id=" + id +
+            ", quantity='" + quantity + "'" +
+            '}';
     }
 }

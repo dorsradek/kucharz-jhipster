@@ -53,7 +53,7 @@ public class Przepis implements Serializable {
 
     @OneToMany(mappedBy = "przepis")
     //@JsonIgnore
-    private Set<PrzepisProdukt> przepisProdukts = new HashSet<>();
+    private Set<PrzepisPartProdukt> przepisPartProdukts = new HashSet<>();
 
     @OneToMany(mappedBy = "przepis")
     //@JsonIgnore
@@ -115,12 +115,12 @@ public class Przepis implements Serializable {
         this.pracochlonnoscPrzepisu = pracochlonnoscPrzepisu;
     }
 
-    public Set<PrzepisProdukt> getPrzepisProdukts() {
-        return przepisProdukts;
+    public Set<PrzepisPartProdukt> getPrzepisPartProdukts() {
+        return przepisPartProdukts;
     }
 
-    public void setPrzepisProdukts(Set<PrzepisProdukt> przepisProdukts) {
-        this.przepisProdukts = przepisProdukts;
+    public void setPrzepisPartProdukts(Set<PrzepisPartProdukt> przepisPartProdukts) {
+        this.przepisPartProdukts = przepisPartProdukts;
     }
 
     public Set<PrzepisDescription> getPrzepisDescriptions() {

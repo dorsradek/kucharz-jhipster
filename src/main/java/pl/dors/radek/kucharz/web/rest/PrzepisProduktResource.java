@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.dors.radek.kucharz.domain.PrzepisProdukt;
+import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
 import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
 import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing PrzepisProdukt.
+ * REST controller for managing PrzepisPartProdukt.
  */
 @RestController
 @RequestMapping("/api")
@@ -30,38 +30,38 @@ public class PrzepisProduktResource {
     private PrzepisProduktRepository przepisProduktRepository;
 
     /**
-     * POST  /przepisProdukts -> Create a new przepisProdukt.
+     * POST  /przepisProdukts -> Create a new przepisPartProdukt.
      */
     @RequestMapping(value = "/przepisProdukts",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<PrzepisProdukt> createPrzepisProdukt(@RequestBody PrzepisProdukt przepisProdukt) throws URISyntaxException {
-        log.debug("REST request to save PrzepisProdukt : {}", przepisProdukt);
-        if (przepisProdukt.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new przepisProdukt cannot already have an ID").body(null);
+    public ResponseEntity<PrzepisPartProdukt> createPrzepisProdukt(@RequestBody PrzepisPartProdukt przepisPartProdukt) throws URISyntaxException {
+        log.debug("REST request to save PrzepisPartProdukt : {}", przepisPartProdukt);
+        if (przepisPartProdukt.getId() != null) {
+            return ResponseEntity.badRequest().header("Failure", "A new przepisPartProdukt cannot already have an ID").body(null);
         }
-        PrzepisProdukt result = przepisProduktRepository.save(przepisProdukt);
+        PrzepisPartProdukt result = przepisProduktRepository.save(przepisPartProdukt);
         return ResponseEntity.created(new URI("/api/przepisProdukts/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("przepisProdukt", result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert("przepisPartProdukt", result.getId().toString()))
             .body(result);
     }
 
     /**
-     * PUT  /przepisProdukts -> Updates an existing przepisProdukt.
+     * PUT  /przepisProdukts -> Updates an existing przepisPartProdukt.
      */
     @RequestMapping(value = "/przepisProdukts",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<PrzepisProdukt> updatePrzepisProdukt(@RequestBody PrzepisProdukt przepisProdukt) throws URISyntaxException {
-        log.debug("REST request to update PrzepisProdukt : {}", przepisProdukt);
-        if (przepisProdukt.getId() == null) {
-            return createPrzepisProdukt(przepisProdukt);
+    public ResponseEntity<PrzepisPartProdukt> updatePrzepisProdukt(@RequestBody PrzepisPartProdukt przepisPartProdukt) throws URISyntaxException {
+        log.debug("REST request to update PrzepisPartProdukt : {}", przepisPartProdukt);
+        if (przepisPartProdukt.getId() == null) {
+            return createPrzepisProdukt(przepisPartProdukt);
         }
-        PrzepisProdukt result = przepisProduktRepository.save(przepisProdukt);
+        PrzepisPartProdukt result = przepisProduktRepository.save(przepisPartProdukt);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("przepisProdukt", przepisProdukt.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("przepisPartProdukt", przepisPartProdukt.getId().toString()))
             .body(result);
     }
 
@@ -72,20 +72,20 @@ public class PrzepisProduktResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<PrzepisProdukt> getAllPrzepisProdukts() {
+    public List<PrzepisPartProdukt> getAllPrzepisProdukts() {
         log.debug("REST request to get all PrzepisProdukts");
         return przepisProduktRepository.findAll();
     }
 
     /**
-     * GET  /przepisProdukts/:id -> get the "id" przepisProdukt.
+     * GET  /przepisProdukts/:id -> get the "id" przepisPartProdukt.
      */
     @RequestMapping(value = "/przepisProdukts/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<PrzepisProdukt> getPrzepisProdukt(@PathVariable Long id) {
-        log.debug("REST request to get PrzepisProdukt : {}", id);
+    public ResponseEntity<PrzepisPartProdukt> getPrzepisProdukt(@PathVariable Long id) {
+        log.debug("REST request to get PrzepisPartProdukt : {}", id);
         return Optional.ofNullable(przepisProduktRepository.findOne(id))
             .map(przepisProdukt -> new ResponseEntity<>(
                 przepisProdukt,
@@ -94,15 +94,15 @@ public class PrzepisProduktResource {
     }
 
     /**
-     * DELETE  /przepisProdukts/:id -> delete the "id" przepisProdukt.
+     * DELETE  /przepisProdukts/:id -> delete the "id" przepisPartProdukt.
      */
     @RequestMapping(value = "/przepisProdukts/{id}",
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePrzepisProdukt(@PathVariable Long id) {
-        log.debug("REST request to delete PrzepisProdukt : {}", id);
+        log.debug("REST request to delete PrzepisPartProdukt : {}", id);
         przepisProduktRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("przepisProdukt", id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("przepisPartProdukt", id.toString())).build();
     }
 }

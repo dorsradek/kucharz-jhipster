@@ -52,8 +52,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="przepisProdukt in przepis.przepisProdukts track by przepisProdukt.id">
-                            <td><span>{{przepisProdukt.quantity}}{{przepisProdukt.produkt.miaraProduktu.shortcut}} {{przepisProdukt.produkt.name}}</span>
+                        <tr ng-repeat="przepisPartProdukt in przepis.przepisPartProdukts track by przepisPartProdukt.id">
+                            <td><span>{{przepisPartProdukt.quantity}}{{przepisPartProdukt.produkt.miaraProduktu.shortcut}} {{przepisPartProdukt.produkt.name}}</span>
                             </td>
                         </tr>
                     </table>
