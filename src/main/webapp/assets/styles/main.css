@@ -227,11 +227,35 @@ ul#strengthBar {
     .content {
         width: 360px;
     }
+
+    .przepis-detail-left {
+        width: 100%;
+    }
+
+    .przepis-detail-right {
+        width: 100%;
+    }
+
+    .photo-grid {
+        padding: 0px;
+    }
 }
 
 @media only screen and (min-width: 480px) {
     .content {
-        width: 360px;
+        width: 480px;
+    }
+
+    .przepis-detail-left {
+        width: 100%;
+    }
+
+    .przepis-detail-right {
+        width: 100%;
+    }
+
+    .photo-grid {
+        padding: 0px 60px;
     }
 }
 
@@ -239,11 +263,35 @@ ul#strengthBar {
     .content {
         width: 680px;
     }
+
+    .przepis-detail-left {
+        width: 200px;
+    }
+
+    .przepis-detail-right {
+        width: 440px;
+    }
+
+    .photo-grid {
+        padding: 0px;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
     .content {
         width: 1000px;
+    }
+
+    .przepis-detail-left {
+        width: 200px;
+    }
+
+    .przepis-detail-right {
+        width: 760px;
+    }
+
+    .photo-grid {
+        padding: 0px;
     }
 }
 
@@ -266,10 +314,6 @@ ul#strengthBar {
     background: white;
     cursor: inherit;
     display: block;
-}
-
-.photo-grid {
-    padding: 0px;
 }
 
 .photo-grid li {
@@ -385,4 +429,12 @@ ul#strengthBar {
 .przepiss-entry-description {
     padding-left: 2%;
     margin: 0px;
+}
+
+.przepis-detail-left {
+    float: left;
+}
+
+.przepis-detail-right {
+    float: left;
 }
