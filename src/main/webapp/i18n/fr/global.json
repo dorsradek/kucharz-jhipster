@@ -11,7 +11,7 @@
                 "miaraProduktu": "MiaraProduktu",
                 "pracochlonnoscPrzepisu": "PracochlonnoscPrzepisu",
                 "rodzajProduktu": "RodzajProduktu",
-                "przepisProdukt": "PrzepisProdukt",
+                "przepisPartProdukt": "PrzepisPartProdukt",
                 "produkt": "Produkt",
                 "przepisDescription": "PrzepisDescription",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"

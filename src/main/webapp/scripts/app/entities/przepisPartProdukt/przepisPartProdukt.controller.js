@@ -1,27 +1,27 @@
 'use strict';
 
 angular.module('kucharzApp')
-    .controller('PrzepisProduktController', function ($scope, PrzepisProdukt) {
-        $scope.przepisProdukts = [];
+    .controller('PrzepisPartProduktController', function ($scope, PrzepisPartProdukt) {
+        $scope.przepisPartProdukts = [];
         $scope.loadAll = function () {
-            PrzepisProdukt.query(function (result) {
-                $scope.przepisProdukts = result;
+            PrzepisPartProdukt.query(function (result) {
+                $scope.przepisPartProdukts = result;
             });
         };
         $scope.loadAll();
 
         $scope.delete = function (id) {
-            PrzepisProdukt.get({id: id}, function (result) {
-                $scope.przepisProdukt = result;
-                $('#deletePrzepisProduktConfirmation').modal('show');
+            PrzepisPartProdukt.get({id: id}, function (result) {
+                $scope.przepisPartProdukt = result;
+                $('#deletePrzepisPartProduktConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            PrzepisProdukt.delete({id: id},
+            PrzepisPartProdukt.delete({id: id},
                 function () {
                     $scope.loadAll();
-                    $('#deletePrzepisProduktConfirmation').modal('hide');
+                    $('#deletePrzepisPartProduktConfirmation').modal('hide');
                     $scope.clear();
                 });
         };
@@ -32,7 +32,7 @@ angular.module('kucharzApp')
         };
 
         $scope.clear = function () {
-            $scope.przepisProdukt = {
+            $scope.przepisPartProdukt = {
                 quantity: null,
                 id: null
             };

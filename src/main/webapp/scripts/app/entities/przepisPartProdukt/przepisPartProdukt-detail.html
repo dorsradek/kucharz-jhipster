@@ -1,5 +1,5 @@
 <div>
-    <h2><span translate="kucharzApp.przepisDescription.detail.title">PrzepisDescription</span> {{przepisDescription.id}}
+    <h2><span translate="kucharzApp.przepisPartProdukt.detail.title">PrzepisPartProdukt</span> {{przepisPartProdukt.id}}
     </h2>
 
     <div class="table-responsive">
@@ -13,26 +13,26 @@
             <tbody>
             <tr>
                 <td>
-                    <span translate="kucharzApp.przepisDescription.title">Title</span>
+                    <span translate="kucharzApp.przepisPartProdukt.quantity">Quantity</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{przepisDescription.title}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="kucharzApp.przepisDescription.text">Text</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{przepisDescription.text}}</span>
+                    <span class="form-control-static">{{przepisPartProdukt.quantity}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span translate="kucharzApp.przepisDescription.przepis">przepis</span>
+                    <span translate="kucharzApp.przepisPartProdukt.produkt">produkt</span>
                 </td>
                 <td>
-                    <a class="form-control-static" ui-sref="przepis.detail({id:przepisDescription.przepis.id})">{{przepisDescription.przepis.id}}</a>
+                    <a class="form-control-static" ui-sref="produkt.detail({id:przepisPartProdukt.produkt.id})">{{przepisPartProdukt.produkt.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kucharzApp.przepisPartProdukt.przepis">przepis</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="przepis.detail({id:przepisPartProdukt.przepis.id})">{{przepisPartProdukt.przepis.id}}</a>
                 </td>
             </tr>
             </tbody>

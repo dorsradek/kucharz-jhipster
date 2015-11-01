@@ -53,11 +53,11 @@ public class Przepis implements Serializable {
 
     @OneToMany(mappedBy = "przepis")
     //@JsonIgnore
-    private Set<PrzepisPartProdukt> przepisPartProdukts = new HashSet<>();
+    private Set<PrzepisPart> przepisParts = new HashSet<>();
 
-    @OneToMany(mappedBy = "przepis")
-    //@JsonIgnore
-    private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
+//    @OneToMany(mappedBy = "przepis")
+//    //@JsonIgnore
+//    private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -115,20 +115,12 @@ public class Przepis implements Serializable {
         this.pracochlonnoscPrzepisu = pracochlonnoscPrzepisu;
     }
 
-    public Set<PrzepisPartProdukt> getPrzepisPartProdukts() {
-        return przepisPartProdukts;
+    public Set<PrzepisPart> getPrzepisParts() {
+        return przepisParts;
     }
 
-    public void setPrzepisPartProdukts(Set<PrzepisPartProdukt> przepisPartProdukts) {
-        this.przepisPartProdukts = przepisPartProdukts;
-    }
-
-    public Set<PrzepisDescription> getPrzepisDescriptions() {
-        return przepisDescriptions;
-    }
-
-    public void setPrzepisDescriptions(Set<PrzepisDescription> przepisDescriptions) {
-        this.przepisDescriptions = przepisDescriptions;
+    public void setPrzepisParts(Set<PrzepisPart> przepisParts) {
+        this.przepisParts = przepisParts;
     }
 
     public String getImage() {

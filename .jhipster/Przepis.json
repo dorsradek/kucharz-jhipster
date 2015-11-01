@@ -16,8 +16,8 @@
         },
         {
             "relationshipId": 3,
-            "relationshipName": "przepisProdukt",
-            "otherEntityName": "przepisProdukt",
+            "relationshipName": "przepisPartProdukt",
+            "otherEntityName": "przepisPartProdukt",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "przepis"
         },

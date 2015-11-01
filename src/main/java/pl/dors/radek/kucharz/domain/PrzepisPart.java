@@ -82,9 +82,9 @@ public class PrzepisPart implements Serializable {
             return false;
         }
 
-        PrzepisPart przepisDescription = (PrzepisPart) o;
+        PrzepisPart przepisPart = (PrzepisPart) o;
 
-        return Objects.equals(id, przepisDescription.id);
+        return Objects.equals(id, przepisPart.id);
 
     }
 
@@ -98,7 +98,7 @@ public class PrzepisPart implements Serializable {
         return "PrzepisPart{" +
             "id=" + id +
             ", title='" + title + "'" +
-            ", text='" + text + "'" +
+            ", description='" + description + "'" +
             '}';
     }
 }

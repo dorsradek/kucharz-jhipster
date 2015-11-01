@@ -15,7 +15,7 @@
             "name": "Name",
             "miaraProduktu": "MiaraProduktu",
             "rodzajProduktu": "RodzajProduktu",
-            "przepisProdukt": "PrzepisProdukt"
+            "przepisPartProdukt": "PrzepisPartProdukt"
         }
     }
 }

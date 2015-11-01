@@ -1,18 +1,18 @@
 <div>
-    <h2 translate="kucharzApp.przepisPartProdukt.home.title">PrzepisProdukts</h2>
+    <h2 translate="kucharzApp.przepisPartProdukt.home.title">PrzepisPartProdukts</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="przepisPartProdukt.new">
                     <span class="glyphicon glyphicon-flash"></span> <span
-                    translate="kucharzApp.przepisPartProdukt.home.createLabel">Create a new PrzepisProdukt</span>
+                    translate="kucharzApp.przepisPartProdukt.home.createLabel">Create a new PrzepisPartProdukt</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="deletePrzepisProduktConfirmation">
+    <div class="modal fade" id="deletePrzepisPartProduktConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form name="deleteForm" ng-submit="confirmDelete(przepisPartProdukt.id)">
@@ -24,7 +24,7 @@
                     <div class="modal-body">
                         <p translate="kucharzApp.przepisPartProdukt.delete.question"
                            translate-values="{id: '{{przepisPartProdukt.id}}'}">Are you sure you want to delete this
-                            PrzepisProdukt?</p>
+                            PrzepisPartProdukt?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">

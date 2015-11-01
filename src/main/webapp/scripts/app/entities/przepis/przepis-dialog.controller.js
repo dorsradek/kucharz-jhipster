@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('kucharzApp').controller('PrzepisDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Przepis', 'KategoriaPrzepisu', 'PracochlonnoscPrzepisu', 'PrzepisProdukt',
-        function ($scope, $stateParams, $modalInstance, entity, Przepis, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisProdukt) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Przepis', 'KategoriaPrzepisu', 'PracochlonnoscPrzepisu', 'PrzepisPartProdukt',
+        function ($scope, $stateParams, $modalInstance, entity, Przepis, KategoriaPrzepisu, PracochlonnoscPrzepisu, PrzepisPartProdukt) {
 
             $scope.przepis = entity;
             $scope.kategoriaprzepisus = KategoriaPrzepisu.query();
             $scope.pracochlonnoscprzepisus = PracochlonnoscPrzepisu.query();
-            $scope.przepisprodukts = PrzepisProdukt.query();
+            $scope.przepisprodukts = PrzepisPartProdukt.query();
             $scope.load = function (id) {
                 Przepis.get({id: id}, function (result) {
                     $scope.przepis = result;

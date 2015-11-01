@@ -21,7 +21,7 @@
             "name": "Name",
             "kategoriaPrzepisu": "KategoriaPrzepisu",
             "pracochlonnoscPrzepisu": "PracochlonnoscPrzepisu",
-            "przepisProdukt": "PrzepisProdukt",
+            "przepisPartProdukt": "PrzepisPartProdukt",
             "przepisDescription": "PrzepisDescription"
         }
     }

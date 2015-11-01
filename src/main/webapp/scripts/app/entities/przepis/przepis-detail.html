@@ -52,8 +52,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="przepisPartProdukt in przepis.przepisPartProdukts track by przepisPartProdukt.id">
-                            <td><span>{{przepisPartProdukt.quantity}}{{przepisPartProdukt.produkt.miaraProduktu.shortcut}} {{przepisPartProdukt.produkt.name}}</span>
+                        <tr ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
+                            <td>
+                                <span>{{przepisPart.title}}</span>
+
+                                <p ng-repeat="przepisPartProdukt in przepisPart.przepisPartProdukts track by przepisPartProdukt.id">
+                                    {{przepisPartProdukt.quantity}}{{przepisPartProdukt.produkt.miaraProduktu.shortcut}}
+                                    {{przepisPartProdukt.produkt.name}}
+                                </p>
                             </td>
                         </tr>
                     </table>
@@ -74,10 +80,10 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
-                        <tr ng-repeat="przepisDescription in przepis.przepisDescriptions track by przepisDescription.id">
-                            <td><h4>{{przepisDescription.title}}</h4>
+                        <tr ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
+                            <td><h4>{{przepisPart.title}}</h4>
 
-                                <p>{{przepisDescription.text}}</p></td>
+                                <p>{{przepisPart.description}}</p></td>
                         </tr>
                         </tbody>
                     </table>

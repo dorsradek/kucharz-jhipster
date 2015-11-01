@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('kucharzApp')
-    .factory('PrzepisProdukt', function ($resource, DateUtils) {
-        return $resource('api/przepisProdukts/:id', {}, {
+    .factory('PrzepisPartProdukt', function ($resource, DateUtils) {
+        return $resource('api/przepisPartProdukts/:id', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

@@ -15,28 +15,28 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity PrzepisDescription.
+        Added the entity PrzepisPart.
     -->
     <changeSet id="20151017133831" author="jhipster">
-        <createTable tableName="przepis_description">
+        <createTable tableName="przepis_part">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)"/>
-            <column name="text" type="varchar(5000)"/>
+            <column name="description" type="varchar(5000)"/>
             <column name="przepis_id" type="bigint"/>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="przepis_id"
-                                 baseTableName="przepis_description"
-                                 constraintName="fk_przepisdescription_przepis_id"
+                                 baseTableName="przepis_part"
+                                 constraintName="fk_przepispart_przepis_id"
                                  referencedColumnNames="id"
                                  referencedTableName="przepis"/>
 
         <loadData encoding="UTF-8"
-                  file="config/liquibase/przepis_description.csv"
+                  file="config/liquibase/przepis_part.csv"
                   separator=";"
-                  tableName="przepis_description"/>
+                  tableName="przepis_part"/>
 
     </changeSet>
 </databaseChangeLog>

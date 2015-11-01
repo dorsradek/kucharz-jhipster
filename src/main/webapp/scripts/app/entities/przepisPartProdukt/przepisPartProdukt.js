@@ -3,95 +3,94 @@
 angular.module('kucharzApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('przepisDescription', {
+            .state('PrzepisPartProdukt', {
                 parent: 'entity',
-                url: '/przepisDescriptions',
+                url: '/PrzepisPartProdukts',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'kucharzApp.przepisDescription.home.title'
+                    pageTitle: 'kucharzApp.PrzepisPartProdukt.home.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/przepisDescription/przepisDescriptions.html',
-                        controller: 'PrzepisDescriptionController'
+                        templateUrl: 'scripts/app/entities/PrzepisPartProdukt/PrzepisPartProdukts.html',
+                        controller: 'PrzepisPartProduktController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('przepisDescription');
+                        $translatePartialLoader.addPart('PrzepisPartProdukt');
                         $translatePartialLoader.addPart('global');
                         return $translate.refresh();
                     }]
                 }
             })
-            .state('przepisDescription.detail', {
+            .state('PrzepisPartProdukt.detail', {
                 parent: 'entity',
-                url: '/przepisDescription/{id}',
+                url: '/PrzepisPartProdukt/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'kucharzApp.przepisDescription.detail.title'
+                    pageTitle: 'kucharzApp.PrzepisPartProdukt.detail.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/przepisDescription/przepisDescription-detail.html',
-                        controller: 'PrzepisDescriptionDetailController'
+                        templateUrl: 'scripts/app/entities/PrzepisPartProdukt/PrzepisPartProdukt-detail.html',
+                        controller: 'PrzepisPartProduktDetailController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('przepisDescription');
+                        $translatePartialLoader.addPart('PrzepisPartProdukt');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'PrzepisDescription', function ($stateParams, PrzepisDescription) {
-                        return PrzepisDescription.get({id: $stateParams.id});
+                    entity: ['$stateParams', 'PrzepisPartProdukt', function ($stateParams, PrzepisPartProdukt) {
+                        return PrzepisPartProdukt.get({id: $stateParams.id});
                     }]
                 }
             })
-            .state('przepisDescription.new', {
-                parent: 'przepisDescription',
+            .state('PrzepisPartProdukt.new', {
+                parent: 'PrzepisPartProdukt',
                 url: '/new',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/przepisDescription/przepisDescription-dialog.html',
-                        controller: 'PrzepisDescriptionDialogController',
+                        templateUrl: 'scripts/app/entities/PrzepisPartProdukt/PrzepisPartProdukt-dialog.html',
+                        controller: 'PrzepisPartProduktDialogController',
                         size: 'lg',
                         resolve: {
                             entity: function () {
                                 return {
-                                    title: null,
-                                    text: null,
+                                    quantity: null,
                                     id: null
                                 };
                             }
                         }
                     }).result.then(function (result) {
-                            $state.go('przepisDescription', null, {reload: true});
+                            $state.go('PrzepisPartProdukt', null, {reload: true});
                         }, function () {
-                            $state.go('przepisDescription');
+                            $state.go('PrzepisPartProdukt');
                         })
                 }]
             })
-            .state('przepisDescription.edit', {
-                parent: 'przepisDescription',
+            .state('PrzepisPartProdukt.edit', {
+                parent: 'PrzepisPartProdukt',
                 url: '/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$modal', function ($stateParams, $state, $modal) {
                     $modal.open({
-                        templateUrl: 'scripts/app/entities/przepisDescription/przepisDescription-dialog.html',
-                        controller: 'PrzepisDescriptionDialogController',
+                        templateUrl: 'scripts/app/entities/PrzepisPartProdukt/PrzepisPartProdukt-dialog.html',
+                        controller: 'PrzepisPartProduktDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['PrzepisDescription', function (PrzepisDescription) {
-                                return PrzepisDescription.get({id: $stateParams.id});
+                            entity: ['PrzepisPartProdukt', function (PrzepisPartProdukt) {
+                                return PrzepisPartProdukt.get({id: $stateParams.id});
                             }]
                         }
                     }).result.then(function (result) {
-                            $state.go('przepisDescription', null, {reload: true});
+                            $state.go('PrzepisPartProdukt', null, {reload: true});
                         }, function () {
                             $state.go('^');
                         })

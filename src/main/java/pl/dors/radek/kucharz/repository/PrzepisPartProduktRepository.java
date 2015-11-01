@@ -8,10 +8,10 @@ import java.util.Set;
 /**
  * Spring Data JPA repository for the PrzepisPartProdukt entity.
  */
-public interface PrzepisProduktRepository extends JpaRepository<PrzepisPartProdukt, Long> {
+public interface PrzepisPartProduktRepository extends JpaRepository<PrzepisPartProdukt, Long> {
 
-    Set<PrzepisPartProdukt> findAllByPrzepisId(Long przepisId);
+    Set<PrzepisPartProdukt> findAllByPrzepisPartId(Long przepisId);
 
-    Long deleteByPrzepisId(Long przepisId);
+    Long deleteByPrzepisPartId(Long przepisId);
 
 }

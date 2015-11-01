@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('kucharzApp').controller('ProduktDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Produkt', 'MiaraProduktu', 'RodzajProduktu', 'PrzepisProdukt',
-        function ($scope, $stateParams, $modalInstance, entity, Produkt, MiaraProduktu, RodzajProduktu, PrzepisProdukt) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Produkt', 'MiaraProduktu', 'RodzajProduktu', 'PrzepisPartProdukt',
+        function ($scope, $stateParams, $modalInstance, entity, Produkt, MiaraProduktu, RodzajProduktu, PrzepisPartProdukt) {
 
             $scope.produkt = entity;
             $scope.miaraproduktus = MiaraProduktu.query();
             $scope.rodzajproduktus = RodzajProduktu.query();
-            $scope.przepisprodukts = PrzepisProdukt.query();
+            $scope.przepisprodukts = PrzepisPartProdukt.query();
             $scope.load = function (id) {
                 Produkt.get({id: id}, function (result) {
                     $scope.produkt = result;

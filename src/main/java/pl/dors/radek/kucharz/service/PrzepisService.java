@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dors.radek.kucharz.domain.Przepis;
-import pl.dors.radek.kucharz.domain.PrzepisDescription;
+import pl.dors.radek.kucharz.domain.PrzepisPart;
 import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
-import pl.dors.radek.kucharz.repository.PrzepisDescriptionRepository;
-import pl.dors.radek.kucharz.repository.PrzepisProduktRepository;
+import pl.dors.radek.kucharz.repository.PrzepisPartProduktRepository;
+import pl.dors.radek.kucharz.repository.PrzepisPartRepository;
 import pl.dors.radek.kucharz.repository.PrzepisRepository;
 
 import javax.inject.Inject;
@@ -28,29 +28,34 @@ public class PrzepisService {
     private PrzepisRepository przepisRepository;
 
     @Inject
-    private PrzepisDescriptionRepository przepisDescriptionRepository;
+    private PrzepisPartRepository przepisPartRepository;
 
     @Inject
-    private PrzepisProduktRepository przepisProduktRepository;
+    private PrzepisPartProduktRepository przepisPartProduktRepository;
 
     public Optional<Przepis> getPrzepis(Long id) {
         log.debug("REST request to get Przepis : {}", id);
         return Optional.ofNullable(przepisRepository.findOne(id))
             .map(przepis -> {
-                Set<PrzepisDescription> przepisDescriptions = przepisDescriptionRepository.findAllByPrzepisId(przepis.getId());
-                przepis.setPrzepisDescriptions(przepisDescriptions);
-                Set<PrzepisPartProdukt> przepisPartProdukts = przepisProduktRepository.findAllByPrzepisId(przepis.getId());
-                przepis.setPrzepisPartProdukts(przepisPartProdukts);
+                Set<PrzepisPart> przepisParts = przepisPartRepository.findAllByPrzepisId(przepis.getId());
+                przepis.setPrzepisParts(przepisParts);
+                for (PrzepisPart przepisPart : przepisParts) {
+                    Set<PrzepisPartProdukt> przepisPartProdukts = przepisPartProduktRepository.findAllByPrzepisPartId(przepisPart.getId());
+                    przepisPart.setPrzepisPartProdukts(przepisPartProdukts);
+                }
                 return przepis;
             });
     }
 
     public void delete(Long id) {
-        log.debug("REST request to get Przepis : {}", id);
+        log.debug("REST request to delete Przepis : {}", id);
         Optional.ofNullable(przepisRepository.findOne(id))
             .map(przepis -> {
-                przepisDescriptionRepository.deleteByPrzepisId(przepis.getId());
-                przepisProduktRepository.deleteByPrzepisId(przepis.getId());
+                Set<PrzepisPart> przepisPartList = przepisPartRepository.findAllByPrzepisId(przepis.getId());
+                for (PrzepisPart przepisPart : przepisPartList) {
+                    przepisPartProduktRepository.deleteByPrzepisPartId(przepisPart.getId());
+                }
+                przepisPartRepository.deleteByPrzepisId(przepis.getId());
                 przepisRepository.delete(przepis.getId());
                 return przepis;
             });

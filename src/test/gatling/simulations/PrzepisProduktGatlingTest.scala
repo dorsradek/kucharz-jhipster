@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the PrzepisProdukt entity.
+ * Performance test for the PrzepisPartProdukt entity.
  */
-class PrzepisProduktGatlingTest extends Simulation {
+class PrzepisPartProduktGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -43,7 +43,7 @@ class PrzepisProduktGatlingTest extends Simulation {
         "x-auth-token" -> "${x_auth_token}"
     )
 
-    val scn = scenario("Test the PrzepisProdukt entity")
+    val scn = scenario("Test the PrzepisPartProdukt entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -72,16 +72,16 @@ class PrzepisProduktGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .body(StringBody("""{"id":null, "quantity":null}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_przepisProdukt_url")))
+            .check(headerRegex("Location", "(.*)").saveAs("new_przepisPartProdukt_url")))
             .pause(10)
             .repeat(5) {
                 exec(http("Get created przepisPartProdukt")
-                .get("${new_przepisProdukt_url}")
+                .get("${new_przepisPartProdukt_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
             .exec(http("Delete created przepisPartProdukt")
-            .delete("${new_przepisProdukt_url}")
+            .delete("${new_przepisPartProdukt_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

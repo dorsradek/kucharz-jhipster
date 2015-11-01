@@ -18,31 +18,31 @@
         Added the entity PrzepisPartProdukt.
     -->
     <changeSet id="20151010142612" author="jhipster">
-        <createTable tableName="przepis_produkt">
+        <createTable tableName="przepis_part_produkt">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="quantity" type="double"/>
             <column name="produkt_id" type="bigint"/>
-            <column name="przepis_id" type="bigint"/>
+            <column name="przepis_part_id" type="bigint"/>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="produkt_id"
-                                 baseTableName="przepis_produkt"
-                                 constraintName="fk_przepisprodukt_produkt_id"
+                                 baseTableName="przepis_part_produkt"
+                                 constraintName="fk_przepispartprodukt_produkt_id"
                                  referencedColumnNames="id"
                                  referencedTableName="produkt"/>
 
-        <addForeignKeyConstraint baseColumnNames="przepis_id"
-                                 baseTableName="przepis_produkt"
-                                 constraintName="fk_przepisprodukt_przepis_id"
+        <addForeignKeyConstraint baseColumnNames="przepis_part_id"
+                                 baseTableName="przepis_part_produkt"
+                                 constraintName="fk_przepispartprodukt_przepispart_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="przepis"/>
+                                 referencedTableName="przepis_part"/>
 
         <loadData encoding="UTF-8"
-                  file="config/liquibase/przepis_produkt.csv"
+                  file="config/liquibase/przepis_part_produkt.csv"
                   separator=";"
-                  tableName="przepis_produkt"/>
+                  tableName="przepis_part_produkt"/>
 
     </changeSet>
 </databaseChangeLog>

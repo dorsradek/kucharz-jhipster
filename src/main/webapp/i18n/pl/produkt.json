@@ -18,7 +18,7 @@
             "name": "Nazwa",
             "miaraProduktu": "Miara",
             "rodzajProduktu": "Rodzaj",
-            "przepisProdukt": "PrzepisProdukt",
+            "przepisPartProdukt": "PrzepisPartProdukt",
             "defaultType": "Wybierz typ",
             "defaultMeasure": "Wybierz miarę",
             "validate": {
