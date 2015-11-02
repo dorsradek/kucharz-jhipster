@@ -1,21 +1,17 @@
 <jh-alert></jh-alert>
 <div>
     <ul class="photo-grid">
-        <li>
+        <li class="image-container">
             <a ui-sref="przepis.new">
-                <div class="add-new-div">
-                    <img class="przepis_image">
-
-                    <div class="add-new-circle">
-                        <div class="add-new-plus">+
-                        </div>
-                    </div>
+                <div style="position: relative; margin: 10px" class="add-new-div">
+                    <img class="przepis_image" ng-src="images/0_thumbnail.jpeg">
+                    <img class="przepis_image-hover" ng-src="images/0_thumbnail-hover.jpeg">
                 </div>
             </a>
         </li>
-        <li ng-repeat="przepis in przepiss track by przepis.id">
+        <li ng-repeat="przepis in przepiss track by przepis.id" class="image-container">
             <a ui-sref="przepis.detail({id:przepis.id})">
-                <div style="position: relative;">
+                <div style="position: relative; margin: 10px">
                     <img class="przepis_image" ng-src="{{przepis.image}}">
 
                     <div class="entry_description">
@@ -49,7 +45,7 @@
                     </div>
 
                     <div class="entry_title">
-                        <p class="przepiss-entry-description">{{przepis.name}}</p>
+                        <p class="przepiss-entry-description-title">{{przepis.name}}</p>
                     </div>
                 </div>
             </a>

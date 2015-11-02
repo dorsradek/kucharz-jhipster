@@ -1,6 +1,7 @@
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     color: #333;
 }
 
@@ -211,21 +212,27 @@ ul#strengthBar {
     margin: 0 auto;
     border: 0;
     border-radius: 0;
-    padding: 20px;
+    padding: 0px;
     -webkit-box-shadow: none;
     box-shadow: none;
     background: none;
 }
 
 .przepis_image {
-    width: 300px;
-    height: 184px;
+    width: 100%;
+    height: 100%;
+}
+
+.przepis_image-hover {
+    width: 100%;
+    height: 100%;
+    display: none;
 }
 
 /* 480 768 992 1200*/
 @media only screen and (max-width: 480px) {
     .content {
-        width: 360px;
+        width: 100vw;
     }
 
     .przepis-detail-left {
@@ -239,11 +246,15 @@ ul#strengthBar {
     .photo-grid {
         padding: 0px;
     }
+
+    .image-container {
+        width: 100vw;
+    }
 }
 
 @media only screen and (min-width: 480px) {
     .content {
-        width: 480px;
+        width: 100vw;
     }
 
     .przepis-detail-left {
@@ -255,13 +266,17 @@ ul#strengthBar {
     }
 
     .photo-grid {
-        padding: 0px 60px;
+        padding: 0px;
+    }
+
+    .image-container {
+        width: 50vw;
     }
 }
 
 @media only screen and (min-width: 680px) {
     .content {
-        width: 680px;
+        width: 100vw;
     }
 
     .przepis-detail-left {
@@ -275,25 +290,56 @@ ul#strengthBar {
     .photo-grid {
         padding: 0px;
     }
+
+    .image-container {
+        width: 33.3vw;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
     .content {
-        width: 1000px;
+        width: 100vw;
     }
 
     .przepis-detail-left {
-        width: 200px;
+        width: 20vw;
     }
 
     .przepis-detail-right {
-        width: 760px;
+        width: 76vw;
     }
 
     .photo-grid {
         padding: 0px;
     }
+
+    .image-container {
+        width: 25vw;
+    }
 }
+
+@media only screen and (min-width: 1400px) {
+    .content {
+        width: 100vw;
+    }
+
+    .przepis-detail-left {
+        width: 20vw;
+    }
+
+    .przepis-detail-right {
+        width: 76vw;
+    }
+
+    .photo-grid {
+        padding: 0px;
+    }
+
+    .image-container {
+        width: 20vw;
+    }
+}
+
 
 .btn-file {
     position: relative;
@@ -317,7 +363,7 @@ ul#strengthBar {
 }
 
 .photo-grid li {
-    margin: 10px;
+    margin: 0px;
     display: inline-block;
     padding: 0px;
 }
@@ -359,38 +405,8 @@ ul#strengthBar {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, .75)
 }
 
-.add-new-div {
-    position: relative;
-    width: 300px;
-    height: 184px;
-    background-color: #E4E4E4;
-}
-
-.add-new-circle {
-    position: absolute;
-    top: 42px;
-    left: 100px;
-    background: whitesmoke;
-    height: 100px;
-    width: 100px;
-    -webkit-border-radius: 80px;
-}
-
-.add-new-plus {
-    color: #E4E4E4;
-    font-size: 100px;
-    text-align: center;
-    height: 100%;
-    line-height: 100px;
-}
-
-.add-new-div:hover .add-new-circle {
-    background: #CECECE;
-
-    top: 37px;
-    left: 95px;
-    height: 110px;
-    width: 110px;
+.add-new-div:hover .przepis_image {
+    display: none;
 
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
@@ -400,8 +416,8 @@ ul#strengthBar {
     transition-delay: 50ms;
 }
 
-.add-new-div:hover .add-new-plus {
-    line-height: 110px;
+.add-new-div:hover .przepis_image-hover {
+    display: inline;
 
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
@@ -429,6 +445,12 @@ ul#strengthBar {
 .przepiss-entry-description {
     padding-left: 2%;
     margin: 0px;
+}
+
+.przepiss-entry-description-title {
+    padding-left: 2%;
+    margin: 0px;
+    font-weight: 400;
 }
 
 .przepis-detail-left {
