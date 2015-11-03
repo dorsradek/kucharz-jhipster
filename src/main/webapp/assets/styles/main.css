@@ -282,17 +282,17 @@ ul#strengthBar {
     }
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 768px) {
     .content {
         width: 100vw;
     }
 
     .przepis-detail-left {
-        width: 200px;
+        width: 30vw;
     }
 
     .przepis-detail-right {
-        width: 440px;
+        width: 70vw;
     }
 
     .photo-grid {
@@ -308,17 +308,17 @@ ul#strengthBar {
     }
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 992px) {
     .content {
         width: 100vw;
     }
 
     .przepis-detail-left {
-        width: 20vw;
+        width: 30vw;
     }
 
     .przepis-detail-right {
-        width: 76vw;
+        width: 70vw;
     }
 
     .photo-grid {
@@ -334,17 +334,17 @@ ul#strengthBar {
     }
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1200px) {
     .content {
         width: 100vw;
     }
 
     .przepis-detail-left {
-        width: 20vw;
+        width: 30vw;
     }
 
     .przepis-detail-right {
-        width: 76vw;
+        width: 70vw;
     }
 
     .photo-grid {
@@ -474,15 +474,26 @@ ul#strengthBar {
 
 .przepis-detail-left {
     float: left;
-    background: #fff;
 }
 
-.przepis-detail-right {
-    float: left;
+.przepis-detail-left-title {
+    background: #fff;
+    padding: 100px 0px;
+}
+
+.przepis-detail-left-title-h2 {
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 40px;
+    color: #F57F17;
 }
 
 .przepis-detail-left-skladniki {
-    font-size: 20px;
+    margin-top: 40px;
+}
+
+.przepis-detail-left-skladniki-h3 {
+    font-size: 22px;
     font-weight: 500;
     color: #000;
     line-height: 24px;
@@ -493,7 +504,7 @@ ul#strengthBar {
 }
 
 .przepis-detail-left-skladniki-title {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 24px;
     font-weight: 500;
     color: #F57F17;
@@ -501,6 +512,10 @@ ul#strengthBar {
     margin: 20px 0 0 0;
     padding: 0;
     border: 0;
+}
+
+.przepis-detail-left-skladniki-skladnik {
+    font-size: 18px;
 }
 
 .przepis-detail-left ul {
@@ -513,6 +528,17 @@ ul#strengthBar {
 .przepis-detail-left ul li:before {
     content: '-';
     margin-right: 5px;
+}
+
+.przepis-detail-right {
+    float: left;
+}
+
+.przepis-detail-right-przygotowanie {
+    width: 100%;
+    display: inline-block;
+    background: #F57F17;
+    padding: 20px;
 }
 
 .przepis_image_div {

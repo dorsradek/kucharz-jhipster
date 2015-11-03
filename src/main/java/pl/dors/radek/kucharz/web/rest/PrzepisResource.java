@@ -149,9 +149,12 @@ public class PrzepisResource {
     public ResponseEntity<Przepis> getPrzepis(@PathVariable Long id) {
         log.debug("REST request to get Przepis : {}", id);
         return przepisService.getPrzepis(id)
-            .map(przepis -> new ResponseEntity<>(
-                przepis,
-                HttpStatus.OK))
+            .map(przepis ->
+            {
+                String imagePath = "images/" + przepis.getImage() + "_original.jpeg";
+                przepis.setImage(imagePath);
+                return new ResponseEntity<>(przepis, HttpStatus.OK);
+            })
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 

@@ -1,4 +1,4 @@
-<div>
+<div style="overflow: hidden;">
     <div class="modal fade" id="deletePrzepisConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -32,19 +32,36 @@
     </div>
 
     <div class="przepis-detail-left">
-        <div class="przepis-detail-title">
-            <h2>{{przepis.name}}</h2>
+        <div class="przepis-detail-left-title">
+            <h2 class="przepis-detail-left-title-h2">{{przepis.name}}</h2>
 
-            <p>Dupa dupa Dupa dupa Dupa dupaDupa dupaDupa dupaDupa dupa dupaDupa dupaDupa dupaDupa dupa dupaDupa
-                dupaDupa dupaDupa dupa</p>
+            <p style="font-size: 20px;">Gęś przygotowana na sposób podhalański - z pieczonymi ziemniaczkami i
+                zasmażanymi buraczkami.</p>
         </div>
-        <div class="przepis-detail-skladniki">
-            <h3 class="przepis-detail-left-skladniki">SKŁADNIKI</h3>
+        <div class="przepis-detail-right-przygotowanie">
+            <div style="width: 50%; float: left; text-align: center;">
+                {{przepis.pracochlonnoscPrzepisu.name}}
+            </div>
+            <div style="width: 50%; float: left; text-align: center;">
+                {{przepis.duration}}
+            </div>
+        </div>
+        <div class="przepis-detail-right-przygotowanie">
+            <div style="width: 50%; float: left; text-align: center;">
+                {{przepis.kategoriaPrzepisu.name}}
+            </div>
+            <div style="width: 50%; float: left; text-align: center;">
+                Kuchnia polska
+            </div>
+        </div>
+        <div class="przepis-detail-left-skladniki">
+            <h3 class="przepis-detail-left-skladniki-h3">SKŁADNIKI</h3>
 
             <div ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
                 <h3 class="przepis-detail-left-skladniki-title">{{przepisPart.title}}</h3>
                 <ul>
-                    <li ng-repeat="przepisPartProdukt in przepisPart.przepisPartProdukts track by przepisPartProdukt.id">
+                    <li class="przepis-detail-left-skladniki-skladnik"
+                        ng-repeat="przepisPartProdukt in przepisPart.przepisPartProdukts track by przepisPartProdukt.id">
                         {{przepisPartProdukt.produkt.name}} - {{przepisPartProdukt.quantity}}
                         {{przepisPartProdukt.produkt.miaraProduktu.shortcut}}
                     </li>
@@ -53,40 +70,31 @@
         </div>
     </div>
     <div class="przepis-detail-right">
-        <div class="przepis-detail-przygotowanie">
-            <div style="width: 100%; display: inline-block; background: #F57F17">
-                <div style="width: 33%; float: left; text-align: center;">
-                    {{przepis.pracochlonnoscPrzepisu.name}}
-                </div>
-                <div style="width: 33%; float: left; text-align: center;">
-                    {{przepis.duration}}
-                </div>
-                <div style="width: 33%; float: left; text-align: center;">
-                    {{przepis.kategoriaPrzepisu.name}}
-                </div>
-            </div>
-            <div ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id" style="margin-bottom: 40px;">
-                <h3 class="przepis-detail-left-skladniki">{{przepisPart.title}}</h3>
+        <div class="przepis-detail-right-image">
+            <img style="width: 100%" ng-src="{{przepis.image}}">
+        </div>
+        <div ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id" style="margin-bottom: 40px;">
+            <h3 class="przepis-detail-left-skladniki">{{przepisPart.title}}</h3>
 
-                <p style="text-align: justify;">{{przepisPart.description}}</p>
-            </div>
+            <p style="text-align: justify;">{{przepisPart.description}}</p>
         </div>
     </div>
 </div>
 
-<button type="submit" ui-sref="przepis"
-        class="btn btn-info">
-    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
-    translate="entity.action.back"> Back</span>
-</button>
-<button type="submit" ui-sref="przepis.edit({id:przepis.id})"
-        class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
-    <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
-    translate="entity.action.edit"> Edit</span>
-</button>
-<button type="submit" ng-click="delete(przepis.id)"
-        class="btn btn-danger btn-sm" has-authority="ROLE_ADMIN">
-    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-    translate="entity.action.delete"> Delete</span>
-</button>
+<div>
+    <button type="submit" ui-sref="przepis"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+        translate="entity.action.back"> Back</span>
+    </button>
+    <button type="submit" ui-sref="przepis.edit({id:przepis.id})"
+            class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
+        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+        translate="entity.action.edit"> Edit</span>
+    </button>
+    <button type="submit" ng-click="delete(przepis.id)"
+            class="btn btn-danger btn-sm" has-authority="ROLE_ADMIN">
+        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+        translate="entity.action.delete"> Delete</span>
+    </button>
 </div>
