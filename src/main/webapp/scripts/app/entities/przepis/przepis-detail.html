@@ -1,9 +1,4 @@
 <div>
-    <!-- <h2>
-        <span translate="kucharzApp.przepis.detail.title">Przepis</span>
-        {{przepis.name}}
-    </h2> -->
-
     <div class="modal fade" id="deletePrzepisConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -36,132 +31,62 @@
         </div>
     </div>
 
-    <div>
-        <div>
+    <div class="przepis-detail-left">
+        <div class="przepis-detail-title">
             <h2>{{przepis.name}}</h2>
-            <img ng-src="data:image/PNG;base64,{{dupa.test}}">
+
+            <p>Dupa dupa Dupa dupa Dupa dupaDupa dupaDupa dupaDupa dupa dupaDupa dupaDupa dupaDupa dupa dupaDupa
+                dupaDupa dupaDupa dupa</p>
         </div>
-        <div>
-            <div class="przepis-detail-left">
-                <div>
-                    <table class="table table-default">
-                        <thead>
-                        <tr>
-                            <th>Produkty</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
-                            <td>
-                                <span>{{przepisPart.title}}</span>
+        <div class="przepis-detail-skladniki">
+            <h3 class="przepis-detail-left-skladniki">SKŁADNIKI</h3>
 
-                                <p ng-repeat="przepisPartProdukt in przepisPart.przepisPartProdukts track by przepisPartProdukt.id">
-                                    {{przepisPartProdukt.quantity}}{{przepisPartProdukt.produkt.miaraProduktu.shortcut}}
-                                    {{przepisPartProdukt.produkt.name}}
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+            <div ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
+                <h3 class="przepis-detail-left-skladniki-title">{{przepisPart.title}}</h3>
+                <ul>
+                    <li ng-repeat="przepisPartProdukt in przepisPart.przepisPartProdukts track by przepisPartProdukt.id">
+                        {{przepisPartProdukt.produkt.name}} - {{przepisPartProdukt.quantity}}
+                        {{przepisPartProdukt.produkt.miaraProduktu.shortcut}}
+                    </li>
+                </ul>
             </div>
-            <div class="przepis-detail-right">
-                <div style="width: 100%; display: inline-block">
-                    <div style="width: 33%; float: left; text-align: center;">
-                        {{przepis.pracochlonnoscPrzepisu.name}}
-                    </div>
-                    <div style="width: 33%; float: left; text-align: center;">
-                        {{przepis.duration}}
-                    </div>
-                    <div style="width: 33%; float: left; text-align: center;">
-                        {{przepis.kategoriaPrzepisu.name}}
-                    </div>
-                </div>
-                <div>
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id">
-                            <td><h4>{{przepisPart.title}}</h4>
-
-                                <p>{{przepisPart.description}}</p></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div style="width: 0%; float: left; padding-top: 5px;"/>
         </div>
     </div>
+    <div class="przepis-detail-right">
+        <div class="przepis-detail-przygotowanie">
+            <div style="width: 100%; display: inline-block; background: #F57F17">
+                <div style="width: 33%; float: left; text-align: center;">
+                    {{przepis.pracochlonnoscPrzepisu.name}}
+                </div>
+                <div style="width: 33%; float: left; text-align: center;">
+                    {{przepis.duration}}
+                </div>
+                <div style="width: 33%; float: left; text-align: center;">
+                    {{przepis.kategoriaPrzepisu.name}}
+                </div>
+            </div>
+            <div ng-repeat="przepisPart in przepis.przepisParts track by przepisPart.id" style="margin-bottom: 40px;">
+                <h3 class="przepis-detail-left-skladniki">{{przepisPart.title}}</h3>
 
-    <!-- <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th translate="entity.detail.field">Field</th>
-                    <th translate="entity.detail.value">Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.duration">Duration</span>
-                    </td>
-                    <td><span class="form-control-static">{{przepis.duration}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.creationDate">CreationDate</span>
-                    </td>
-                    <td><span class="form-control-static">{{przepis.creationDate}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.modificationDate">ModificationDate</span>
-                    </td>
-                    <td><span class="form-control-static">{{przepis.modificationDate}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.name">Name</span></td>
-                    <td><span class="form-control-static">{{przepis.name}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.description">Description</span>
-                    </td>
-                    <td><span class="form-control-static">{{przepis.description}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span translate="kucharzApp.przepis.kategoriaPrzepisu">kategoriaPrzepisu</span>
-                    </td>
-                    <td><a class="form-control-static"
-                        ui-sref="kategoriaPrzepisu.detail({id:przepis.kategoriaPrzepisu.id})">{{przepis.kategoriaPrzepisu.id}}</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span
-                        translate="kucharzApp.przepis.pracochlonnoscPrzepisu">pracochlonnoscPrzepisu</span>
-                    </td>
-                    <td><a class="form-control-static"
-                        ui-sref="pracochlonnoscPrzepisu.detail({id:przepis.pracochlonnoscPrzepisu.id})">{{przepis.pracochlonnoscPrzepisu.id}}</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
+                <p style="text-align: justify;">{{przepisPart.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <button type="submit" ui-sref="przepis"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
-        translate="entity.action.back"> Back</span>
-    </button>
-    <button type="submit" ui-sref="przepis.edit({id:przepis.id})"
-            class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
-        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
-        translate="entity.action.edit"> Edit</span>
-    </button>
-    <button type="submit" ng-click="delete(przepis.id)"
-            class="btn btn-danger btn-sm" has-authority="ROLE_ADMIN">
-        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-        translate="entity.action.delete"> Delete</span>
-    </button>
+<button type="submit" ui-sref="przepis"
+        class="btn btn-info">
+    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+    translate="entity.action.back"> Back</span>
+</button>
+<button type="submit" ui-sref="przepis.edit({id:przepis.id})"
+        class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
+    <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+    translate="entity.action.edit"> Edit</span>
+</button>
+<button type="submit" ng-click="delete(przepis.id)"
+        class="btn btn-danger btn-sm" has-authority="ROLE_ADMIN">
+    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+    translate="entity.action.delete"> Delete</span>
+</button>
 </div>

@@ -3,7 +3,7 @@
     <ul class="photo-grid">
         <li class="image-container">
             <a ui-sref="przepis.new">
-                <div style="position: relative; margin: 10px" class="add-new-div">
+                <div class="add-new-div przepis_image_div">
                     <img class="przepis_image" ng-src="images/0_thumbnail.jpeg">
                     <img class="przepis_image-hover" ng-src="images/0_thumbnail-hover.jpeg">
                 </div>
@@ -11,7 +11,7 @@
         </li>
         <li ng-repeat="przepis in przepiss track by przepis.id" class="image-container">
             <a ui-sref="przepis.detail({id:przepis.id})">
-                <div style="position: relative; margin: 10px">
+                <div class="przepis_image_div">
                     <img class="przepis_image" ng-src="{{przepis.image}}">
 
                     <div class="entry_description">

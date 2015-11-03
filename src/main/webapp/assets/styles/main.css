@@ -250,6 +250,10 @@ ul#strengthBar {
     .image-container {
         width: 100vw;
     }
+
+    .przepis_image_div {
+        margin: 10px 0px;
+    }
 }
 
 @media only screen and (min-width: 480px) {
@@ -271,6 +275,10 @@ ul#strengthBar {
 
     .image-container {
         width: 50vw;
+    }
+
+    .przepis_image_div {
+        margin: 10px;
     }
 }
 
@@ -294,6 +302,10 @@ ul#strengthBar {
     .image-container {
         width: 33.3vw;
     }
+
+    .przepis_image_div {
+        margin: 10px;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -315,6 +327,10 @@ ul#strengthBar {
 
     .image-container {
         width: 25vw;
+    }
+
+    .przepis_image_div {
+        margin: 10px;
     }
 }
 
@@ -338,8 +354,11 @@ ul#strengthBar {
     .image-container {
         width: 20vw;
     }
-}
 
+    .przepis_image_div {
+        margin: 10px;
+    }
+}
 
 .btn-file {
     position: relative;
@@ -455,8 +474,47 @@ ul#strengthBar {
 
 .przepis-detail-left {
     float: left;
+    background: #fff;
 }
 
 .przepis-detail-right {
     float: left;
+}
+
+.przepis-detail-left-skladniki {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin: 0px 0px 20px 0px;
+    padding: 0;
+    border: 0;
+}
+
+.przepis-detail-left-skladniki-title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #F57F17;
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.przepis-detail-left ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.przepis-detail-left ul li:before {
+    content: '-';
+    margin-right: 5px;
+}
+
+.przepis_image_div {
+    position: relative;
 }
