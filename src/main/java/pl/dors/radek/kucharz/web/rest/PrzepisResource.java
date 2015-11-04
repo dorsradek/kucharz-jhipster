@@ -75,7 +75,21 @@ public class PrzepisResource {
                 image = ImageIO.read(bais);
             }
 
-            ImageIO.write(image, "jpeg", new File(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_original.jpeg"));
+            int width = image.getWidth();
+            int height = image.getHeight();
+            int expectedWidth = width;
+            int expectedHeight = Double.valueOf(width * 0.6).intValue();
+            if (expectedHeight > height) {
+                expectedWidth = Double.valueOf(height / 0.6).intValue();
+                expectedHeight = height;
+            }
+
+            Thumbnails.of(image)
+                .crop(Positions.CENTER)
+                .size(expectedWidth, expectedHeight)
+                .outputFormat("jpeg")
+                .outputQuality(1)
+                .toFile(path.toFile().getAbsolutePath() + File.separator + result.getId() + "_crop");
 
             Thumbnails.of(image)
                 .crop(Positions.CENTER)
@@ -151,7 +165,7 @@ public class PrzepisResource {
         return przepisService.getPrzepis(id)
             .map(przepis ->
             {
-                String imagePath = "images/" + przepis.getImage() + "_original.jpeg";
+                String imagePath = "images/" + przepis.getImage() + "_crop.jpeg";
                 przepis.setImage(imagePath);
                 return new ResponseEntity<>(przepis, HttpStatus.OK);
             })
