@@ -52,12 +52,7 @@ public class Przepis implements Serializable {
     private PracochlonnoscPrzepisu pracochlonnoscPrzepisu;
 
     @OneToMany(mappedBy = "przepis")
-    //@JsonIgnore
     private Set<PrzepisPart> przepisParts = new HashSet<>();
-
-//    @OneToMany(mappedBy = "przepis")
-//    //@JsonIgnore
-//    private Set<PrzepisDescription> przepisDescriptions = new HashSet<>();
 
     public Long getId() {
         return id;

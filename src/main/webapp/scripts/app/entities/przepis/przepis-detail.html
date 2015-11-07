@@ -40,15 +40,35 @@
         </div>
         <div class="przepis-detail-right-przygotowanie">
             <div style="width: 50%; float: left; text-align: center;">
-                {{przepis.pracochlonnoscPrzepisu.name}}
+                <div class="przepiss-entry">
+                    <div class="przepiss-entry-img-container">
+                        <img class="przepiss-entry-img" src="/assets/images/cook.png">
+                        <img
+                            ng-show="przepis.pracochlonnoscPrzepisu.name == 'Medium' || przepis.pracochlonnoscPrzepisu.name == 'Hard'"
+                            class="przepiss-entry-img" src="/assets/images/cook.png">
+                        <img ng-show="przepis.pracochlonnoscPrzepisu.name == 'Hard'" class="przepiss-entry-img"
+                             src="/assets/images/cook.png">
+                    </div>
+                    <span class="przepiss-entry-description">{{przepis.pracochlonnoscPrzepisu.name}}</span>
+                </div>
             </div>
             <div style="width: 50%; float: left; text-align: center;">
-                {{przepis.duration}}
+                <div class="przepiss-entry">
+                    <div class="przepiss-entry-img-container">
+                        <img class="przepiss-entry-img" src="/assets/images/clock.png">
+                    </div>
+                    <span class="przepiss-entry-description">{{divide(przepis.duration)}}</span>
+                </div>
             </div>
         </div>
         <div class="przepis-detail-right-przygotowanie">
             <div style="width: 50%; float: left; text-align: center;">
-                {{przepis.kategoriaPrzepisu.name}}
+                <div class="przepiss-entry">
+                    <div class="przepiss-entry-img-container">
+                        <img class="przepiss-entry-img" src="/assets/images/cooking-pot.png">
+                    </div>
+                    <span class="przepiss-entry-description">{{przepis.kategoriaPrzepisu.name}}</span>
+                </div>
             </div>
             <div style="width: 50%; float: left; text-align: center;">
                 Kuchnia polska

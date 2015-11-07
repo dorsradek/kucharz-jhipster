@@ -14,6 +14,7 @@ import pl.dors.radek.kucharz.domain.Przepis;
 import pl.dors.radek.kucharz.repository.PrzepisRepository;
 import pl.dors.radek.kucharz.service.PrzepisService;
 import pl.dors.radek.kucharz.web.rest.dto.PrzepisDTO;
+import pl.dors.radek.kucharz.web.rest.dto.PrzepisDetailDTO;
 import pl.dors.radek.kucharz.web.rest.util.HeaderUtil;
 
 import javax.imageio.ImageIO;
@@ -160,14 +161,25 @@ public class PrzepisResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Przepis> getPrzepis(@PathVariable Long id) {
+    public ResponseEntity<PrzepisDetailDTO> getPrzepis(@PathVariable Long id) {
         log.debug("REST request to get Przepis : {}", id);
         return przepisService.getPrzepis(id)
             .map(przepis ->
             {
                 String imagePath = "images/" + przepis.getImage() + "_crop.jpeg";
                 przepis.setImage(imagePath);
-                return new ResponseEntity<>(przepis, HttpStatus.OK);
+
+                PrzepisDetailDTO przepisDetailDTO = new PrzepisDetailDTO();
+                przepisDetailDTO.setImage(przepis.getImage());
+                przepisDetailDTO.setCreationDate(przepis.getCreationDate());
+                przepisDetailDTO.setDuration(przepis.getDuration());
+                przepisDetailDTO.setId(przepis.getId());
+                przepisDetailDTO.setKategoriaPrzepisu(przepis.getKategoriaPrzepisu());
+                przepisDetailDTO.setModificationDate(przepis.getModificationDate());
+                przepisDetailDTO.setName(przepis.getName());
+                przepisDetailDTO.setPracochlonnoscPrzepisu(przepis.getPracochlonnoscPrzepisu());
+                przepisDetailDTO.setPrzepisParts(przepis.getPrzepisParts());
+                return new ResponseEntity<>(przepisDetailDTO, HttpStatus.OK);
             })
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

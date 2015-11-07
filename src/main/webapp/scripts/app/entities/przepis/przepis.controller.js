@@ -26,17 +26,4 @@ angular.module('kucharzApp')
             };
         };
 
-        $scope.divide = function (duration) {
-            var hours = Math.floor(duration / 60);
-            var minutes = duration - (hours * 60);
-            var result = hours + ':';
-            if (minutes == 0) {
-                result += '00';
-            } else if (minutes < 10) {
-                result += '0' + minutes;
-            } else {
-                result += minutes;
-            }
-            return result;
-        };
     });

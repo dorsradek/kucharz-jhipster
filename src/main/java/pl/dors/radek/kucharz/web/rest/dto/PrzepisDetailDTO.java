@@ -3,7 +3,7 @@ package pl.dors.radek.kucharz.web.rest.dto;
 import org.joda.time.DateTime;
 import pl.dors.radek.kucharz.domain.KategoriaPrzepisu;
 import pl.dors.radek.kucharz.domain.PracochlonnoscPrzepisu;
-import pl.dors.radek.kucharz.domain.PrzepisPartProdukt;
+import pl.dors.radek.kucharz.domain.PrzepisPart;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class PrzepisDetailDTO {
     private String name;
     private KategoriaPrzepisu kategoriaPrzepisu;
     private PracochlonnoscPrzepisu pracochlonnoscPrzepisu;
-    private Set<PrzepisPartProdukt> przepisPartProdukts = new HashSet<>();
+    private Set<PrzepisPart> przepisParts = new HashSet<>();
     private String image;
 
     public Long getId() {
@@ -79,12 +79,12 @@ public class PrzepisDetailDTO {
         this.pracochlonnoscPrzepisu = pracochlonnoscPrzepisu;
     }
 
-    public Set<PrzepisPartProdukt> getPrzepisPartProdukts() {
-        return przepisPartProdukts;
+    public Set<PrzepisPart> getPrzepisParts() {
+        return przepisParts;
     }
 
-    public void setPrzepisPartProdukts(Set<PrzepisPartProdukt> przepisPartProdukts) {
-        this.przepisPartProdukts = przepisPartProdukts;
+    public void setPrzepisParts(Set<PrzepisPart> przepisParts) {
+        this.przepisParts = przepisParts;
     }
 
     public String getImage() {
@@ -94,7 +94,6 @@ public class PrzepisDetailDTO {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     @Override
     public String toString() {
